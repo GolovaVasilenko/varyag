@@ -63,7 +63,7 @@
 .form-row {
     display: flex;
     align-items: center;
-
+    margin-bottom: 10px;
 }
 .form-input-text input[type=text], .form-input-text input[type=email] {
     outline: none;
@@ -71,7 +71,7 @@
     width: 320px;
     font-size: 16px;
     border: 1px solid #c09f6f;
-    margin: 8px 10px 10px 0;
+    margin: 8px 10px 0 0;
 }
 .form-full-text textarea {
     width: 100%;
@@ -85,4 +85,13 @@
     padding: 18px 68px;
     font-size: 16px;
     text-transform: uppercase;
+}
+.form-image {
+    width: 240px;
+    margin-left: 30px;
+}
+.form-image img {
+    display: block;
+    width: 100%;
+    height: auto;
 }

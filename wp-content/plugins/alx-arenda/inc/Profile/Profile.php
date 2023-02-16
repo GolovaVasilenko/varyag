@@ -35,27 +35,7 @@ class Profile
         $first_name = stripslashes(strip_tags(trim($_POST['first_name'])));
         $redirect   = stripslashes(strip_tags(trim($_POST['redirect'])));
 
-        $user_id = wp_create_user( $username, $password, $email );
-
-        if ( is_wp_error( $user_id ) ) {
-            $_SESSION['errors'] = $user_id->get_error_message();
-            wp_redirect($redirect); die;
-        }
-
-        wp_update_user([
-            'ID'              => $user_id,
-            'display_name'    => $first_name . ' ' . $last_name,
-            'first_name'      => $first_name,
-            'last_name'       => $last_name,
-            'role'            => 'basic_contributor',
-        ]);
-        update_user_meta( $user_id, 'user_phone', $phone );
-
-        $subject = "Регистрация нового аккаунта на сайте " . site_url();
-        $message = '<h2>Спасибо за регистрацию!</h2>
-        <p>Вам доступны все услуги, предаставляемые нашим сайтом.</p>
-        <p>Ваш пароль для входа: <strong>' . $password . '</strong></p>';
-        $this->sendEmailAfterRegistration($email, $subject, $message);
+        $user_id = $this->processRegistration($username, $password, $email, $phone, $first_name, $last_name, $redirect);
 
         if(isset($_POST['flag']) && $_POST['flag'] == 'page') {
             $_SESSION['success'] = __('Thanks for registration');
@@ -70,6 +50,31 @@ class Profile
 
     }
 
+    public function processRegistration($username, $password, $email, $phone, $first_name, $last_name, $redirect, $role = 'basic_contributor') {
+        $user_id = wp_create_user( $username, $password, $email);
+
+        if ( is_wp_error( $user_id ) ) {
+            $_SESSION['errors'] = $user_id->get_error_message();
+            wp_redirect($redirect); die;
+        }
+
+        wp_update_user([
+            'ID'              => $user_id,
+            'display_name'    => $first_name . ' ' . $last_name,
+            'first_name'      => $first_name,
+            'last_name'       => $last_name,
+            'role'            => $role,
+        ]);
+        update_user_meta( $user_id, 'user_phone', $phone );
+
+        $subject = "Регистрация нового аккаунта на сайте " . site_url();
+        $message = '<h2>Спасибо за регистрацию!</h2>
+        <p>Вам доступны все услуги, предаставляемые нашим сайтом.</p>
+        <p>Ваш пароль для входа: <strong>' . $password . '</strong></p>';
+        $this->sendEmailAfterRegistration($email, $subject, $message);
+
+        return $user_id;
+    }
     /**
      * @return void
      */

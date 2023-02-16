@@ -25,7 +25,39 @@ class Coach
 
     public function updateCoach()
     {
+        $term_id = (int)$_POST["term_id"];
+        $user_id = (int)$_POST["user_id"];
+        $user_login = strip_tags(trim($_POST["user_login"]));
+        $polnoe_opisanie = strip_tags(trim($_POST["polnoe_opisanie"]));
+        $description = strip_tags(trim($_POST["description"]));
+        $name = strip_tags(trim($_POST["tag-name"]));
+        $phone = strip_tags(trim($_POST["phone"]));
+        $email = strip_tags(trim($_POST["email"]));
+        $last_name = strip_tags(trim($_POST["last_name"]));
+        $first_name = strip_tags(trim($_POST["first_name"]));
+        $redirect = $_POST["redirect"];
+        $login = $first_name . ' ' . $last_name;
+        if(!$user_id) {
+            $user_id = wp_create_user( $user_login, 'secret777', $email);
+            $redirect .= $user_id;
+        }
 
+        wp_update_term( $term_id, 'coach', [
+            'name' => $name,
+            'description' => $description
+        ] );
+        update_field( 'polnoe_opisanie', $polnoe_opisanie, $term_id );
+        wp_update_user([
+            'ID'              => $user_id,
+            'user_login'      => $user_login,
+            'email'           => $email,
+            'display_name'    => $first_name . ' ' . $last_name,
+            'first_name'      => $first_name,
+            'last_name'       => $last_name,
+        ]);
+        update_user_meta( $user_id, 'user_phone', $phone );
+        $this->updateRelationTermUser($term_id, $user_id);
+        wp_redirect($redirect); exit;
     }
 
     public static function listCoach()
@@ -52,5 +84,12 @@ class Coach
             return get_user_by('id', $result->user_id);
         }
         return [];
+    }
+
+    protected function updateRelationTermUser($term_id, $user_id)
+    {
+        global $wpdb;
+        $wpdb->delete($wpdb->prefix . "user_coach_term", ['term_id' => $term_id]);
+        $wpdb->insert($wpdb->prefix . "user_coach_term", ['term_id' => $term_id, 'user_id' => $user_id]);
     }
 }
