@@ -1,0 +1,162 @@
+/*!
+Theme Name: varyag
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: varyag
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+varyag is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+.top-block {
+    background-repeat: no-repeat;
+}
+
+.register-layout, .login-layout {
+    display: none;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.65);
+    z-index: 999;
+}
+.reg-block-wrapp {
+    position: relative;
+    color: #3c434a;
+    max-height: 840px;
+    width: 70%;
+    margin: 36px auto 0;
+    height: auto!important;
+}
+.button-popup-close {
+    color: #3c434a;
+    font-size: 46px;
+    position: absolute;
+    top: 20px;
+    right: 36px;
+    cursor: pointer;
+}
+.reg-block-wrapp .reg-block__right {
+    padding: 18px;
+}
+.reg-block-wrapp .reg-block__top-left .form__input {
+    max-width: none;
+    width: 100%;
+}
+.reg-block-wrapp .reg-block__top-left {
+    width: 100%;
+}
+.reg-block-wrapp .form__input input {
+    height: 42px;
+}
+.reg-block-wrapp h3{
+    color: #3c434a;
+    text-align: center;
+    padding: 5px 0;
+    margin: 0;
+}
+.button--border:hover, .button--full {
+    padding: 30px;
+}
+.reg-block-wrapp .form {
+    display: block;
+}
+.btn-block-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.reg-block-wrapp .reg-block__top .form {
+    display: block!important;
+    padding: 18px;
+}
+.log-button {
+    margin: 28px 0;
+}
+.text-block h6 {
+    font-size: 18px;
+}
+.wc-single-top-header {
+    box-sizing: border-box;
+    padding-top: 180px;
+    height: 270px;
+    margin-bottom: 80px;
+    background-repeat: no-repeat;
+}
+.woocommerce .woocommerce-breadcrumb {
+    color: white;
+    margin: 20px 0 0 20px;
+}
+.woocommerce .woocommerce-breadcrumb a {
+    color: white;
+}
+.woocommerce .woocommerce-breadcrumb a {
+    color: white;
+}
+.product {
+    padding-top: 60px!important;
+    color: #676767;
+}
+.woocommerce div.product form.cart div.quantity {
+    float: none;
+    margin-bottom: 16px;
+}
+.single_add_to_cart_button {
+    display: block;
+    width: 100%;
+    background-color: #c09f6f!important;
+    color: #fff;
+    padding: 20px 0!important;
+    text-transform: uppercase;
+}
+.product_meta a {
+    color: #c09f6f!important;
+}
+.products img {
+    display: block;
+    width: 237px!important;
+    height: 280px!important;
+}
+.products .add_to_cart_button {
+    background-color: #c09f6f!important;
+    width: 100%;
+    display: block;
+    color: #fff!important;
+    text-align: center;
+}
+.products h2 {
+    color: #676767;
+}
+.woocommerce-Price-amount {
+    color: red;
+    font-weight: bold;
+}
+.header__log a {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color .15s linear;
+    /*margin-left: 30px;*/
+    color: white;
+}
+.checkout-button, .wp-element-button {
+    background-color: #c09f6f!important;
+}

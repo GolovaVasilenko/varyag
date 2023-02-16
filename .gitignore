@@ -1,0 +1,38 @@
+./wp-admin
+./.idea
+./wp-includes
+./wp-config.php
+./wp-content/logs
+./wp-content/uploads
+./wp-content/themes/twentytwentyone
+./wp-content/themes/twentytwentytwo
+./wp-content/themes/twentytwentythree
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+ehthumbs.db
+Thumbs.db
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# -------------------------
+# BEGIN Whitelisted Files
+# -------------------------
+
+# track these files, if they exist
+!.gitignore
+!.editorconfig
+!.phpcs.xml.dist
+!README.md
+!CHANGELOG.md
+!composer.json

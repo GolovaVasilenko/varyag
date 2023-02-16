@@ -1,0 +1,88 @@
+.profile-block {
+    color: #676767;
+}
+.table {
+    width: 100%;
+
+}
+.table thead {
+
+    background-color: #ccc;
+    color: #333;
+    font-weight: bold;
+}
+.table td, .table th {
+    padding: 8px 0;
+}
+.table thead th:last-child {
+    width: 200px;
+}
+.table td {
+    text-align: center;
+}
+.table tbody tr:nth-child(odd) {
+    background-color: #eee;
+}
+.form-remove {
+    display: inline-block;
+}
+.profile-block-header {
+    padding: 0 0 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.input-search {
+    height: 33px;
+}
+.btn {
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+.btn-danger {
+    background-color: #aa1111;
+    color: white;
+}
+.btn-primary {
+    background-color: #0a4b78;
+    color: white;
+}
+.btn-sm {
+    padding: 4px 12px;
+}
+.btn-lg {
+    padding: 8px 28px;
+}
+.btn-default {
+    background-color: #4c6066;
+    color: white;
+}
+.form-row {
+    display: flex;
+    align-items: center;
+
+}
+.form-input-text input[type=text], .form-input-text input[type=email] {
+    outline: none;
+    height: 44px;
+    width: 320px;
+    font-size: 16px;
+    border: 1px solid #c09f6f;
+    margin: 8px 10px 10px 0;
+}
+.form-full-text textarea {
+    width: 100%;
+    height: 80px;
+}
+.btn-submit {
+    background-color: #c09f6f;
+    color: white;
+}
+.btn-big {
+    padding: 18px 68px;
+    font-size: 16px;
+    text-transform: uppercase;
+}

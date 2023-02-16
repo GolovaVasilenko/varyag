@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Alx Arenda\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-24 17:32+0000\n"
+"PO-Revision-Date: 2022-03-24 18:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: Українська\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-5.9.2\n"
+"X-Domain: alx-arenda"
+
+#: inc/System/Ctp.php:130
+msgid "Add New Heading"
+msgstr "Додати нову Рубрику"
+
+#: inc/System/Ctp.php:153
+msgid "Add New Location"
+msgstr "Додати нове розташування"
+
+#. Author of the plugin
+msgid "Aleksey Vasilenko"
+msgstr "Aleksey Vasilenko"
+
+#: inc/System/Ctp.php:124
+msgid "All Headings"
+msgstr "Всi Рубрики"
+
+#: inc/System/Ctp.php:147
+msgid "All Locations"
+msgstr "Всi Розташування"
+
+#. Name of the plugin
+msgid "Alx Arenda"
+msgstr "Alx Arenda"
+
+#: inc/System/Ctp.php:128
+msgid "Edit Heading"
+msgstr "Редагувати Рубрику"
+
+#: inc/System/Ctp.php:151
+msgid "Edit Location"
+msgstr "Редагувати Розташування"
+
+#: inc/System/Ctp.php:95
+msgid "For a Month"
+msgstr "За мiсяць"
+
+#: inc/System/Ctp.php:96
+msgid "For a Year"
+msgstr "За рiк"
+
+#: inc/System/Ctp.php:102
+msgid "Free"
+msgstr "Вiльно"
+
+#: inc/System/Ctp.php:132
+msgid "Heading"
+msgstr "Рубрика"
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://alex.com"
+msgstr "https://alex.com"
+
+#: inc/System/Ctp.php:93
+msgid "In a Day"
+msgstr "За день"
+
+#: inc/System/Ctp.php:92
+msgid "in ah Hour"
+msgstr "За Годину"
+
+#: inc/System/Ctp.php:94
+msgid "in Week"
+msgstr "За Тиждень"
+
+#: inc/System/Ctp.php:155
+msgid "Location"
+msgstr "Розташування"
+
+#: inc/System/Ctp.php:131
+msgid "New Heading Name"
+msgstr "Назва Рубрики"
+
+#: inc/System/Ctp.php:154
+msgid "New Location Name"
+msgstr "Нове Розташування"
+
+#: inc/System/Ctp.php:126
+msgid "Parent Heading"
+msgstr "Батькiвська Рубрика"
+
+#: inc/System/Ctp.php:127
+msgid "Parent Heading:"
+msgstr "Батькiвська Рубрика:"
+
+#: inc/System/Ctp.php:149
+msgid "Parent Location"
+msgstr "Батькiвське Розташування"
+
+#: inc/System/Ctp.php:150
+msgid "Parent Location:"
+msgstr "Батькiвське Розташування:"
+
+#: inc/System/Ctp.php:90
+msgid "Period"
+msgstr "Період"
+
+#: inc/System/Ctp.php:86
+msgid "Price"
+msgstr "Ціна"
+
+#. Description of the plugin
+msgid "Rent Tools"
+msgstr "Оренда інструментів"
+
+#: inc/System/Ctp.php:123
+msgid "Search Headings"
+msgstr "Пошук Рубрик"
+
+#: inc/System/Ctp.php:146
+msgid "Search Locations"
+msgstr "Пошук місць"
+
+#: inc/System/Ctp.php:103
+msgid "Sold"
+msgstr "В Орендi"
+
+#: inc/System/Ctp.php:100
+msgid "Status"
+msgstr "Статус"
+
+#: inc/System/Ctp.php:164
+msgid "Unit"
+msgstr "Одиниця"
+
+#: inc/System/Ctp.php:129
+msgid "Update Heading"
+msgstr "Оновити Рубрику"
+
+#: inc/System/Ctp.php:152
+msgid "Update Location"
+msgstr "Оновити Розташування"
+
+#: inc/System/Ctp.php:125
+msgid "View Heading"
+msgstr "Переглянути Рубрику"
+
+#: inc/System/Ctp.php:148
+msgid "View Location"
+msgstr "Переглянути Мiсце"
+
+#: inc/System/Ctp.php:133
+msgid "← Back to Heading"
+msgstr "← Повернутися до Рубрики"
+
+#: inc/System/Ctp.php:156
+msgid "← Back to Location"
+msgstr "← Повернутися до Розташування"
