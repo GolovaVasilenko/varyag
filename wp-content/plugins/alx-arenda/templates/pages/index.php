@@ -102,7 +102,7 @@
                     </form>
                 </div>
                 <div class="profile-block-create-button">
-                    <a class="btn btn-default btn-lg" href="#">Добавить тренера</a>
+                    <a class="btn btn-default btn-lg" href="/profile?p=coach-add">Добавить тренера</a>
                 </div>
             </div>
             <div class="profile-block">
@@ -127,12 +127,13 @@
                                 <td><?php echo (empty($coach['profile']) ? "" : $coach['profile']->data->user_email);?></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm" href="/profile?p=coach-edit&term_id=<?=$coach['term']->term_id;?>&user_id=<?=(empty($coach['profile']) ? '' : $coach['profile']->data->ID);?>">Изменить</a>
-                                    <form class="form-remove form-remove-js">
+                                    <form method="post" action="/wp-admin/admin-post.php" class="form-remove">
                                         <input type="hidden" name="term_id" value="<?=$coach['term']->term_id;?>">
                                         <input type="hidden" name="user_id" value="<?=(empty($coach['profile']) ? '' : $coach['profile']->data->ID);?>">
                                         <input type="hidden" name="action" value="alx_delete_coach">
-                                        <button class="btn btn-danger btn-sm">Удалить</button>
+                                        <button class="btn btn-danger btn-sm btn-remove-js">Удалить</button>
                                     </form>
+
                                 </td>
                             </tr>
                         <?php endforeach;?>

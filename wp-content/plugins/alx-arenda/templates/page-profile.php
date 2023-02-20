@@ -74,6 +74,9 @@ get_header('empty');
                 case 'coach-edit':
                     include_once PLUGIN_UNIT_PATH . "/templates/pages/coach-edit.php";
                     break;
+                case 'coach-add':
+                    include_once PLUGIN_UNIT_PATH . "/templates/pages/coach-add.php";
+                    break;
                 default:
                     include_once PLUGIN_UNIT_PATH . "/templates/pages/index.php";
             }

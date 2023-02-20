@@ -1,11 +1,11 @@
 <div class="reg-block__list">
     <a href="/profile/" class="reg-block__link active">
         <img src="<?=get_template_directory_uri();?>/img/user.png" alt="user" width="20" height="20" />
-        <span>Профиль</span>
-    </a>
-    <a href="/profile?p=coach_edit" class="reg-block__link">
-        <img src="<?=get_template_directory_uri();?>/img/user.png" alt="user" width="20" height="20" />
         <span>Тренера</span>
+    </a>
+    <a href="/profile?p=basic_contributor" class="reg-block__link">
+        <img src="<?=get_template_directory_uri();?>/img/user.png" alt="user" width="20" height="20" />
+        <span>Ученики</span>
     </a>
 
     <a href="/profile?p=reg" class="reg-block__link">
