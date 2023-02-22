@@ -80,6 +80,9 @@ get_header();
                 <div class="slider-block__slider">
                     <div class="owl-carousel js-owl-carousel-items owl-theme">
                         <?php foreach($products as $product):?>
+                            <?php if(in_array(65, $product->category_ids)) {
+                            continue;
+                            }?>
                         <div class="prod-item prod-item--prod">
                             <div class="prod-item__img">
                                 <img class="lazyload" data-src="<?= get_the_post_thumbnail_url($product->id); ?>"
@@ -113,6 +116,9 @@ get_header();
                 <div class="slider-block__slider">
                     <div class="owl-carousel js-owl-carousel-items owl-theme">
                         <?php foreach($products as $product): ?>
+                            <?php if(in_array(65, $product->category_ids)) {
+                                continue;
+                            }?>
                             <?php if(in_array(49, $product->category_ids)):?>
                                 <div class="prod-item prod-item--prod">
                             <div class="prod-item__img">
@@ -148,6 +154,9 @@ get_header();
                 <div class="slider-block__slider">
                     <div class="owl-carousel js-owl-carousel-items owl-theme">
                         <?php foreach($products as $product): ?>
+                            <?php if(in_array(65, $product->category_ids)) {
+                                continue;
+                            }?>
                             <?php if(in_array(48, $product->category_ids)):?>
                                 <div class="prod-item prod-item--prod">
                                     <div class="prod-item__img">
@@ -183,6 +192,9 @@ get_header();
                 <div class="slider-block__slider">
                     <div class="owl-carousel js-owl-carousel-items owl-theme">
                         <?php foreach($products as $product): ?>
+                            <?php if(in_array(65, $product->category_ids)) {
+                                continue;
+                            }?>
                             <?php if(in_array(47, $product->category_ids)):?>
                                 <div class="prod-item prod-item--prod">
                                     <div class="prod-item__img">

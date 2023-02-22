@@ -4193,7 +4193,7 @@ msgid "[%s] New Site Created"
 msgstr "[%s] Создан новый сайт"
 
 #. translators: %s: PHP function name.
-#: wp-includes/class-wp-image-editor-imagick.php:778
+#: wp-includes/class-wp-image-editor-imagick.php:824
 msgid "%s failed while writing image to stream."
 msgstr "Запись изображения в поток функцией %s не удался."
 
@@ -4921,10 +4921,10 @@ msgstr "Ключевое слово схемы \"type\" для %1$s может �
 #: wp-includes/block-template-utils.php:677
 #: wp-includes/block-template-utils.php:799 wp-includes/rest-api.php:708
 #: wp-includes/js/dist/edit-site.js:14506
-#: wp-admin/includes/class-wp-debug-data.php:1102
-#: wp-admin/includes/class-wp-debug-data.php:1121
-#: wp-admin/includes/class-wp-debug-data.php:1216
-#: wp-admin/includes/class-wp-debug-data.php:1377
+#: wp-admin/includes/class-wp-debug-data.php:1104
+#: wp-admin/includes/class-wp-debug-data.php:1123
+#: wp-admin/includes/class-wp-debug-data.php:1218
+#: wp-admin/includes/class-wp-debug-data.php:1379
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
@@ -5899,7 +5899,7 @@ msgstr "На сайте возникла критическая ошибка. П
 msgid "There has been a critical error on this website, putting it in recovery mode. Please check the Themes and Plugins screens for more details. If you just installed or updated a theme or plugin, check the relevant page for that first."
 msgstr "На вашем сайте возникла критическая ошибка и он был переведен в режим восстановления. Пожалуйста, проверьте экран тем и плагинов для подробной информации. Если вы только что установили или обновили тему или плагин, то сначала проверьте соответстующую страницу."
 
-#: wp-includes/class-wp-image-editor-imagick.php:656
+#: wp-includes/class-wp-image-editor-imagick.php:702
 msgid "The image cannot be rotated because the embedded meta data cannot be updated."
 msgstr "Это изображение нельзя повернуть, так как встроенные метаданные не могут быть обновлены."
 
@@ -6083,7 +6083,7 @@ msgid "20"
 msgstr "20"
 
 #: wp-includes/class-wp-image-editor-gd.php:277
-#: wp-includes/class-wp-image-editor-imagick.php:488
+#: wp-includes/class-wp-image-editor-imagick.php:532
 msgid "Cannot resize the image. Both width and height are not set."
 msgstr "Нельзя изменить размер изображения: не установлены ни высота, ни ширина."
 
@@ -11056,8 +11056,8 @@ msgid "Link selected."
 msgstr "Ссылка выбрана."
 
 #. translators: %s: ImageMagick method name.
-#: wp-includes/class-wp-image-editor-imagick.php:850
-#: wp-includes/class-wp-image-editor-imagick.php:861
+#: wp-includes/class-wp-image-editor-imagick.php:896
+#: wp-includes/class-wp-image-editor-imagick.php:907
 msgid "%s is required to strip image meta."
 msgstr "Для удаления метаданных изображения необходим метод %s."
 
@@ -16252,7 +16252,7 @@ msgid "A valid URL was not provided."
 msgstr "Предоставлен неверный URL."
 
 #: wp-includes/class-wp-image-editor-gd.php:200
-#: wp-includes/class-wp-image-editor-imagick.php:277
+#: wp-includes/class-wp-image-editor-imagick.php:319
 msgid "Could not calculate resized image dimensions"
 msgstr "Не удалось вычислить новый размер изображения"
 
@@ -17845,7 +17845,7 @@ msgid "Empty filename"
 msgstr "Пустое имя файла"
 
 #. translators: %s: Directory path.
-#: wp-includes/class-wp-image-editor-imagick.php:794
+#: wp-includes/class-wp-image-editor-imagick.php:840
 #: wp-includes/functions.php:2377 wp-includes/functions.php:2912
 msgid "Unable to create directory %s. Is its parent directory writable by the server?"
 msgstr "Не могу создать директорию %s. Проверьте, доступна ли родительская директория для записи."
@@ -18453,9 +18453,9 @@ msgstr "Сайты"
 #: wp-admin/includes/class-wp-debug-data.php:108
 #: wp-admin/includes/class-wp-debug-data.php:113
 #: wp-admin/includes/class-wp-debug-data.php:118
-#: wp-admin/includes/class-wp-debug-data.php:793
-#: wp-admin/includes/class-wp-debug-data.php:802
-#: wp-admin/includes/class-wp-debug-data.php:811
+#: wp-admin/includes/class-wp-debug-data.php:795
+#: wp-admin/includes/class-wp-debug-data.php:804
+#: wp-admin/includes/class-wp-debug-data.php:813
 #: wp-admin/includes/class-wp-links-list-table.php:264
 msgid "Yes"
 msgstr "Да"
@@ -18661,9 +18661,9 @@ msgstr "Изображения"
 #. translators: %s: Theme author.
 #. translators: %s: Theme author link.
 #: wp-includes/js/dist/block-directory.js:1927
-#: wp-admin/includes/class-wp-debug-data.php:942
-#: wp-admin/includes/class-wp-debug-data.php:989
-#: wp-admin/includes/class-wp-debug-data.php:1312
+#: wp-admin/includes/class-wp-debug-data.php:944
+#: wp-admin/includes/class-wp-debug-data.php:991
+#: wp-admin/includes/class-wp-debug-data.php:1314
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:537
 #: wp-admin/includes/class-wp-plugins-list-table.php:1060
 #: wp-admin/includes/class-wp-theme-install-list-table.php:370
@@ -18680,8 +18680,8 @@ msgstr "Автор: %s"
 #: wp-admin/includes/class-plugin-installer-skin.php:217
 #: wp-admin/includes/class-theme-installer-skin.php:240
 #: wp-admin/includes/class-wp-debug-data.php:70
-#: wp-admin/includes/class-wp-debug-data.php:1127
-#: wp-admin/includes/class-wp-debug-data.php:1222
+#: wp-admin/includes/class-wp-debug-data.php:1129
+#: wp-admin/includes/class-wp-debug-data.php:1224
 msgid "Version"
 msgstr "Версия"
 
@@ -19120,7 +19120,7 @@ msgstr "Изменить метку"
 #: wp-includes/script-loader.php:1043 wp-includes/js/dist/block-editor.js:38259
 #: wp-includes/js/dist/block-editor.js:38476
 #: wp-includes/js/dist/block-library.js:19259 wp-admin/edit-tag-form.php:186
-#: wp-admin/edit-tags.php:473 wp-admin/includes/class-wp-debug-data.php:1112
+#: wp-admin/edit-tags.php:473 wp-admin/includes/class-wp-debug-data.php:1114
 #: wp-admin/includes/media.php:1148 wp-admin/includes/media.php:1276
 #: wp-admin/includes/media.php:2962 wp-admin/includes/media.php:2978
 msgid "None"
@@ -19149,8 +19149,8 @@ msgstr "Описание"
 #: wp-includes/js/dist/edit-site.js:15536
 #: wp-includes/js/dist/reusable-blocks.js:356 wp-admin/edit-form-comment.php:54
 #: wp-admin/includes/class-wp-application-passwords-list-table.php:28
-#: wp-admin/includes/class-wp-debug-data.php:1118
-#: wp-admin/includes/class-wp-debug-data.php:1213
+#: wp-admin/includes/class-wp-debug-data.php:1120
+#: wp-admin/includes/class-wp-debug-data.php:1215
 #: wp-admin/includes/class-wp-users-list-table.php:369
 #: wp-admin/includes/template.php:482 wp-admin/user-edit.php:407
 #: wp-admin/includes/class-wp-ms-users-list-table.php:194
@@ -19367,9 +19367,9 @@ msgstr "Изменить"
 #: wp-admin/includes/class-wp-debug-data.php:108
 #: wp-admin/includes/class-wp-debug-data.php:113
 #: wp-admin/includes/class-wp-debug-data.php:118
-#: wp-admin/includes/class-wp-debug-data.php:793
-#: wp-admin/includes/class-wp-debug-data.php:802
-#: wp-admin/includes/class-wp-debug-data.php:811
+#: wp-admin/includes/class-wp-debug-data.php:795
+#: wp-admin/includes/class-wp-debug-data.php:804
+#: wp-admin/includes/class-wp-debug-data.php:813
 #: wp-admin/includes/class-wp-links-list-table.php:266
 msgid "No"
 msgstr "Нет"
@@ -19417,8 +19417,8 @@ msgstr "URL"
 #: wp-admin/includes/class-plugin-installer-skin.php:218
 #: wp-admin/includes/class-theme-installer-skin.php:241
 #: wp-admin/includes/class-wp-comments-list-table.php:471
-#: wp-admin/includes/class-wp-debug-data.php:1132
-#: wp-admin/includes/class-wp-debug-data.php:1227
+#: wp-admin/includes/class-wp-debug-data.php:1134
+#: wp-admin/includes/class-wp-debug-data.php:1229
 #: wp-admin/includes/class-wp-media-list-table.php:323
 #: wp-admin/includes/class-wp-post-comments-list-table.php:25
 #: wp-admin/includes/class-wp-posts-list-table.php:662
