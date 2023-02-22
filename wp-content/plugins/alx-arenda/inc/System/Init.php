@@ -4,6 +4,7 @@ namespace inc\System;
 
 use inc\Classes\TemplateLoader;
 use inc\Profile\Coach;
+use inc\Profile\Contributor;
 use inc\Profile\Profile;
 use inc\System\InitAssets;
 
@@ -12,6 +13,8 @@ class Init
     public $assets;
 
     public $coach;
+
+    public $contributor;
 
     public $templates;
 
@@ -25,6 +28,7 @@ class Init
         $this->templates = new TemplateLoader();
         $this->profile = new Profile();
         $this->coach = new Coach();
+        $this->contributor = new Contributor();
     }
 
     /**
@@ -40,6 +44,7 @@ class Init
         $this->templates->register();
         $this->profile->register();
         $this->coach->register();
+        $this->contributor->register();
     }
 
     public function loadTextDomain()

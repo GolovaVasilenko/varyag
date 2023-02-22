@@ -1,3 +1,23 @@
+<?php
+
+// $user_id = isset($_GET['user_id']) ? (int)$_GET['user_id'] : null;
+$user_id = wp_get_current_user()->id;
+// print_r(json_encode($user_id));
+if($user_id) {
+    $user = get_user_by('ID', $user_id);
+    // print_r(json_encode($user));
+    // $login = $user->user_login;
+    $email = $user->user_email;
+    $user_info = get_user_meta($user_id);
+    // print_r(json_encode(get_user_meta($user_id)));
+    $phone = $user_info['user_phone'][0] ?? null;
+    $firstName = $user_info['first_name'][0] ?? null;
+    $lastName = $user_info['last_name'][0] ?? null;
+    // $first_name = $user_info['first_name'][0] ?? null;
+    // $last_name = $user_info['last_name'][0] ?? null;
+}
+
+?>
 <div class="reg-block__right">
     <div class="open-lk">Открыть меню</div>
     <?php if(in_array('basic_contributor', $current_user->roles)):?>
@@ -8,57 +28,64 @@
     <div class="reg-block__top reg-block__top--inner">
         <div class="profile-block">
             <div class="profile-block__left">
-                <form class="profile-block__top-form">
+                <form class="profile-block__top-form" method="post" action="/wp-admin/admin-post.php" enctype="multipart/form-data">
                     <div class="profile-block__item">
                         <div class="profile-block__input">
-                            <label for="login">Логин</label>
-                            <input type="text" name="login" id="login" value="Джон Доу" />
+                            <label for="login">Имя</label>
+                            <input type="text" name="first-name" id="first-name" value="<?=$firstName;?>" />
                         </div>
-                        <div class="profile-block__change">сменить логин</div>
+                        <div class="profile-block__change" id="first-name-error">сменить имя</div>
+                    </div>
+                    <div class="profile-block__item">
+                        <div class="profile-block__input">
+                            <label for="login">Фамилия</label>
+                            <input type="text" name="last-name" id="last-name" value="<?=$lastName;?>" />
+                        </div>
+                        <div class="profile-block__change" id="last-name-error">сменить фамилию</div>
                     </div>
                     <div class="profile-block__item">
                         <div class="profile-block__input">
                             <label for="number">Укажите номер телефона</label>
-                            <input type="text" name="number" id="number" class="js-input-mask" value="+79004131156" />
+                            <input type="text" name="number" id="number" class="js-input-mask" value="<?=$phone;?>" />
                         </div>
-                        <div class="profile-block__change">сменить телефон</div>
+                        <div class="profile-block__change" id="number-error">сменить телефон</div>
                     </div>
                     <div class="profile-block__item">
                         <div class="profile-block__input">
                             <label for="login">Электронная почта</label>
-                            <input type="text" name="email" id="email" value="test@mail.ru" />
+                            <input type="text" name="email" id="email" value="<?=$email;?>" />
                         </div>
-                        <div class="profile-block__change">сменить email</div>
+                        <div class="profile-block__change" id="email-error">сменить email</div>
                     </div>
-                    <button class="profile-block__save">
-                        Сохранить
-                    </button>
+                    <input type="hidden" name="action" value="alx_update_contributor">
+                    <input type="hidden" name="redirect" value="<?=site_url() . $_SERVER['REQUEST_URI'];?>">
+                    <input type="submit" value="Сохранить" id="info-submit" class="profile-block__save">
                 </form>
                 <div class="profile-block__title">
                     Сменить пароль
                 </div>
-                <form class="profile-block__bottom-form">
+                <form class="profile-block__bottom-form" method="post" action="/wp-admin/admin-post.php" enctype="multipart/form-data">
                     <div class="profile-block__item">
                         <div class="profile-block__input">
-                            <label for="old-pass">Введите старый пароль</label>
+                            <label for="old-pass" id="old-pass-error">Введите старый пароль</label>
                             <input type="text" name="old-pass" id="old-pass" value="" />
                         </div>
                     </div>
                     <div class="profile-block__item">
                         <div class="profile-block__input">
-                            <label for="password">Введите новый пароль</label>
+                            <label for="password" id="password-error">Введите новый пароль</label>
                             <input type="text" name="password" id="password" value="" />
                         </div>
                     </div>
                     <div class="profile-block__item">
                         <div class="profile-block__input">
-                            <label for="new-pass">Введите новый пароль еще раз</label>
+                            <label for="new-pass" id="new-pass-error">Введите новый пароль еще раз</label>
                             <input type="text" name="new-pass" id="new-pass" value="" />
                         </div>
                     </div>
-                    <button class="profile-block__save">
-                        Подтвердить смену пароля
-                    </button>
+                    <input type="hidden" name="action" value="alx_update_contributor_password">
+                    <input type="hidden" name="redirect" value="<?=site_url() . $_SERVER['REQUEST_URI'];?>">
+                    <input type="submit" value="Подтвердить смену пароля" class="profile-block__save">
                 </form>
             </div>
             <div class="profile-block__right">
