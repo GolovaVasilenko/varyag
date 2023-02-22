@@ -1,20 +1,13 @@
 <?php
 
-// $user_id = isset($_GET['user_id']) ? (int)$_GET['user_id'] : null;
 $user_id = wp_get_current_user()->id;
-// print_r(json_encode($user_id));
 if($user_id) {
     $user = get_user_by('ID', $user_id);
-    // print_r(json_encode($user));
-    // $login = $user->user_login;
     $email = $user->user_email;
     $user_info = get_user_meta($user_id);
-    // print_r(json_encode(get_user_meta($user_id)));
     $phone = $user_info['user_phone'][0] ?? null;
     $firstName = $user_info['first_name'][0] ?? null;
     $lastName = $user_info['last_name'][0] ?? null;
-    // $first_name = $user_info['first_name'][0] ?? null;
-    // $last_name = $user_info['last_name'][0] ?? null;
 }
 
 ?>
@@ -85,7 +78,7 @@ if($user_id) {
                     </div>
                     <input type="hidden" name="action" value="alx_update_contributor_password">
                     <input type="hidden" name="redirect" value="<?=site_url() . $_SERVER['REQUEST_URI'];?>">
-                    <input type="submit" value="Подтвердить смену пароля" class="profile-block__save">
+                    <input type="submit" value="Подтвердить смену пароля" id="pass-submit" class="profile-block__save">
                 </form>
             </div>
             <div class="profile-block__right">

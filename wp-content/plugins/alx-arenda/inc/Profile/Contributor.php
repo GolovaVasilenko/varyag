@@ -35,8 +35,23 @@ class Contributor
 
     public function updateContributorPassword()
     {
-        $newpass = strip_tags(trim($_POST["password"]));
-        wp_set_password($newpass, (int)wp_get_current_user()->id);
+        $id = (int)wp_get_current_user()->id;
+        $user = get_user_by('ID', $id);
+        $password = $user->user_pass;
+        $redirect = strip_tags(trim($_POST["redirect"]));
+        if ($password != wp_hash(strip_tags(trim($_POST["old-pass"])))){
+            print_r('Wrong old pass ' . strip_tags(trim($_POST["old-pass"])));
+            print_r(' Old pass hash ' . $password);
+            print_r(' Your pass hash ' . wp_hash(strip_tags(trim($_POST["old-pass"]))));
+            // wp_redirect($redirect);
+            // exit;
+        } else {
+            print_r('Setting new pass ' . $password);
+            $newpass = strip_tags(trim($_POST["password"]));
+            wp_set_password($newpass, $id);
+            // wp_redirect($redirect);
+            // exit;
+        }
     }
 
     // public static function listContributor()
