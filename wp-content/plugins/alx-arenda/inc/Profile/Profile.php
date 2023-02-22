@@ -82,7 +82,7 @@ class Profile
     {
         $email    = stripslashes(strip_tags(trim($_POST['email'])));
         $password = stripslashes(strip_tags(trim($_POST['password'])));
-        $redirect = stripslashes(strip_tags(trim($_POST['redirect'])));
+        $redirect = "/".$_POST['redirect']."/";
 
         $creds = [];
         $creds['user_login'] = $email;
@@ -93,16 +93,16 @@ class Profile
         if(isset($_POST['flag']) && $_POST['flag'] == 'page') {
             if ( is_wp_error($user) ) {
                 $_SESSION['errors'] = $user->get_error_message();
-                wp_redirect($redirect); die;
+                wp_redirect($redirect); exit;
             }
             $_SESSION['user_email'] = $email;
-            wp_redirect('/profile/'); die;
+            wp_redirect($redirect); exit;
         } else {
             if ( is_wp_error($user) ) {
-                echo json_encode(['errors' => "Не верный логин или пароль", 'status' => 0]); die;
+                echo json_encode(['errors' => "Не верный логин или пароль", 'status' => 0]); exit;
             }
             $_SESSION['user_email'] = $email;
-            echo json_encode(['redirect' => '/profile/', 'status' => 1]); die;
+            echo json_encode(['redirect' => '/profile/', 'status' => 1]); exit;
         }
 
     }

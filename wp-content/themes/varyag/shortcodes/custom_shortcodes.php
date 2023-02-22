@@ -78,7 +78,8 @@ add_shortcode('products_list_home', 'product_list_home_callback');
 
 function product_list_home_callback()
 {
-    $query = new WC_Product_Query();
+
+    $query = new WC_Product_Query(['exclude_category' => 'abonementy']);
     $products_all = $query->get_products();
 
     $output = '<div class="products-block">
@@ -124,6 +125,9 @@ function product_list_home_callback()
                 <div class="owl-carousel js-owl-carousel-items owl-theme">';
 
     foreach($products_all as $product ) {
+        if(in_array(65, $product->category_ids)) {
+            continue;
+        }
         $output .= '<div class="prod-item prod-item--prod">
                     <div class="prod-item__img">
                       <img class="lazyload" data-src="' . get_the_post_thumbnail_url($product->id) . '" alt="img5" width="221" height="297" />
@@ -147,6 +151,9 @@ function product_list_home_callback()
               <div class="slider-block__slider">
                 <div class="owl-carousel js-owl-carousel-items owl-theme">';
     foreach( $products_all as $product ) {
+        if(in_array(65, $product->category_ids)) {
+            continue;
+        }
         if(in_array(50, $product->tag_ids)) {
             $output .= '<div class="prod-item prod-item--prod">
                     <div class="prod-item__img">
@@ -174,6 +181,9 @@ function product_list_home_callback()
               <div class="slider-block__slider">
                 <div class="owl-carousel js-owl-carousel-items owl-theme">';
     foreach($products_all as $product ) {
+        if(in_array(65, $product->category_ids)) {
+            continue;
+        }
         if(in_array(51, $product->tag_ids)) {
             $output .= '<div class="prod-item prod-item--prod">
                     <div class="prod-item__img">
@@ -199,6 +209,9 @@ function product_list_home_callback()
               <div class="slider-block__slider">
                 <div class="owl-carousel js-owl-carousel-items owl-theme">';
     foreach($products_all as $product ) {
+        if(in_array(65, $product->category_ids)) {
+            continue;
+        }
         if(in_array(52, $product->tag_ids)) {
             $output .= '<div class="prod-item prod-item--prod">
                     <div class="prod-item__img">
@@ -225,6 +238,9 @@ function product_list_home_callback()
                 <div class="owl-carousel js-owl-carousel-items owl-theme">';
 
     foreach($products_all as $product ) {
+        if(in_array(65, $product->category_ids)) {
+            continue;
+        }
         if(in_array(47, $product->category_ids)) {
             $output .= '<div class="prod-item prod-item--prod">
                     <div class="prod-item__img">

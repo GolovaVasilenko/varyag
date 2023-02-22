@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
 
         $.ajax({
             method: 'post',
-            url: '../uploads/senda.php',
+            url: '/wp-admin/admin-ajax.php',
             data: form,
             success: function(response) {
                 console.log(response);

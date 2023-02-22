@@ -232,3 +232,17 @@ function wpbl_breadcrumbs() {
         'home' => _x( 'Главнвя', 'breadcrumb', 'woocommerce' )
     );
 }
+
+function custom_pre_get_posts_query( $query ) {
+    if ( $query->is_main_query() && ! is_admin() && $query->is_post_type_archive( 'product' ) ) {
+        $tax_query = (array)$query->get('tax_query');
+        $tax_query[] = array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => array('abonementy'),
+            'operator' => 'NOT IN'
+        );
+        $query->set('tax_query', $tax_query);
+    }
+}
+add_action( 'woocommerce_product_query', 'custom_pre_get_posts_query' );

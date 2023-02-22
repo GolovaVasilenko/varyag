@@ -95,11 +95,11 @@
                     Срисок тренеров
                 </div>
                 <div class="form-profile-search" >
-                    <form id="ps-search">
+                    <!--<form id="ps-search">
                         <input class="input-search" type="text" name="ps-search" value="">
                         <input type="hidden" name="table" value="coach">
                         <button class="btn btn-default btn-lg">Искать</button>
-                    </form>
+                    </form>-->
                 </div>
                 <div class="profile-block-create-button">
                     <a class="btn btn-default btn-lg" href="/profile?p=coach-add">Добавить тренера</a>
@@ -115,7 +115,7 @@
                             <th>Фото</th>
                             <th>Имя</th>
                             <th>Email</th>
-                            <th>Actions</th>
+                            <th>Действия</th>
                         </tr>
                     </thead>
                     <tbody>
