@@ -11,6 +11,10 @@ class Contributor
 
         add_action('admin_post_alx_update_contributor_password', [$this, 'updateContributorPassword']);
         add_action('admin_post_nopriv_alx_update_contributor', [$this, 'notAuth']);
+
+        add_action('admin_post_alx_add_contributor', [$this, 'addContributor']);
+        add_action('admin_post_nopriv_alx_add_contributor', [$this, 'addContributor']);
+
     }
 
     public function updateContributor()
@@ -39,16 +43,41 @@ class Contributor
         wp_set_password($newpass, (int)wp_get_current_user()->id);
     }
 
-    // public static function listContributor()
-    // {
-    //     $result = [];
-    //     $terms = get_terms(['taxonomy' => 'contributor']);
-    //     foreach($terms as $item) {
-    //         $result[$item->term_id]['profile'] = self::getUser($item->term_id);
-    //         $result[$item->term_id]['term'] = $item;
-    //     }
-    //     return $result;
-    // }
+    public static function listContributor()
+    {
+        $result = get_users([
+            'role' => 'basic_contributor',
+        ]);
+        return $result;
+    }
+
+    public function addContributor()
+    {
+        $user_login = strip_tags(trim($_POST["user_login"]));
+        $first_name = strip_tags(trim($_POST["first_name"]));
+        $last_name = strip_tags(trim($_POST["last_name"]));
+        $user_email = strip_tags(trim($_POST["email"]));
+        $user_phone = strip_tags(trim($_POST["phone"]));
+        $redirect = $_POST["redirect"];
+        $password = uniqid();
+        $disciplin_id = $_POST["disciplin_id"];
+        $product_id = $_POST["product_id"];
+        $total_cost = $_POST["total_cost"];
+
+        $profile = new Profile();
+        $seasonTicket = new SeasonTicket();
+
+        $user_id = $profile->processRegistration($user_login, $password, $user_email, $user_phone, $first_name, $last_name, $redirect);
+        $data = [
+            'product_id' => $product_id,
+            'disciplin_id' => $disciplin_id,
+            'user_id' => $user_id,
+            'total_cost' => $total_cost,
+            'end_time' => date("Y-m-d H:i:s", time() + (3600*24*30))
+        ];
+        $seasonTicket->addTicket($data);
+        wp_redirect($redirect); exit;
+    }
 
     public function deleteContributor()
     {
@@ -73,6 +102,6 @@ class Contributor
     // }
 
     public function notAuth(){
-        
+
     }
 }

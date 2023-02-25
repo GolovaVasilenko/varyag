@@ -59,5 +59,24 @@ jQuery(document).ready(function($) {
         $('#new-pass-error').css('color', 'red')
       } else $('#new-pass-error').css('color', 'red').css('color', '#c09f6f')
     });
-    
+
+    setPriceSelectedProduct();
+    $('#select_product').on('change', function(){
+        setPriceSelectedProduct();
+    });
+
+    function setPriceSelectedProduct()
+    {
+        let productId = $('#select_product option:selected').val();
+        $.ajax({
+            type: 'post',
+            url: '/wp-admin/admin-ajax.php',
+            data: { 'action': 'alx_get_price_product', 'product_id': productId },
+            success: function(response) {
+                let result = JSON.parse(response);
+                $('#select_price').val(result.price);
+            }
+        });
+    }
 });
+

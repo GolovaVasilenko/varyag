@@ -83,6 +83,12 @@ get_header('empty');
                 case 'list_students':
                     include_once PLUGIN_UNIT_PATH . "/templates/pages/list_students.php";
                     break;
+                case 'contributor_add':
+                    include_once PLUGIN_UNIT_PATH . "/templates/pages/contributor_add.php";
+                    break;
+                case 'contributor_edit':
+                    include_once PLUGIN_UNIT_PATH . "/templates/pages/contributor_edit.php";
+                    break;
                 default:
                     include_once PLUGIN_UNIT_PATH . "/templates/pages/index.php";
             }

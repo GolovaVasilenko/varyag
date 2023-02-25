@@ -6,6 +6,7 @@ use inc\Classes\TemplateLoader;
 use inc\Profile\Coach;
 use inc\Profile\Contributor;
 use inc\Profile\Profile;
+use inc\Profile\SeasonTicket;
 use inc\System\InitAssets;
 
 class Init
@@ -20,6 +21,8 @@ class Init
 
     public $profile;
 
+    public $seasonTicket;
+
 
     public function __construct()
     {
@@ -29,6 +32,7 @@ class Init
         $this->profile = new Profile();
         $this->coach = new Coach();
         $this->contributor = new Contributor();
+        $this->seasonTicket = new SeasonTicket();
     }
 
     /**
@@ -45,6 +49,7 @@ class Init
         $this->profile->register();
         $this->coach->register();
         $this->contributor->register();
+        $this->seasonTicket->register();
     }
 
     public function loadTextDomain()

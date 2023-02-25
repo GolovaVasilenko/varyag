@@ -31,6 +31,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #333333;
 }
 .input-search {
     height: 33px;
@@ -81,6 +82,14 @@
     background-color: #c09f6f;
     color: white;
 }
+.form-row select {
+    border: 1px solid #c09f6f;
+    width: 100%;
+    outline: none;
+    height: 44px;
+    font-size: 16px;
+    margin: 8px 10px 0 0;
+}
 .btn-big {
     padding: 18px 68px;
     font-size: 16px;
@@ -94,4 +103,13 @@
     display: block;
     width: 100%;
     height: auto;
+}
+.row-block {
+    display: flex;
+    justify-content: space-between;
+}
+.card {
+    border: #c09f6f solid 1px;
+    padding: 10px;
+    margin: 10px;
 }

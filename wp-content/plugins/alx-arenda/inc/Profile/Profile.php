@@ -93,10 +93,10 @@ class Profile
         if(isset($_POST['flag']) && $_POST['flag'] == 'page') {
             if ( is_wp_error($user) ) {
                 $_SESSION['errors'] = $user->get_error_message();
-                wp_redirect($redirect); exit;
+                wp_redirect('/profile-login/'); exit;
             }
             $_SESSION['user_email'] = $email;
-            wp_redirect($redirect); exit;
+            wp_redirect('/profile/'); exit;
         } else {
             if ( is_wp_error($user) ) {
                 echo json_encode(['errors' => "Не верный логин или пароль", 'status' => 0]); exit;
@@ -104,7 +104,6 @@ class Profile
             $_SESSION['user_email'] = $email;
             echo json_encode(['redirect' => '/profile/', 'status' => 1]); exit;
         }
-
     }
 
     public function alxForgotPassword()
