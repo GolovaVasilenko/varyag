@@ -1,16 +1,5 @@
 <?php
 
-/*$data = [
-  'product_id' => 567,
-  'disciplin_id' => 181,
-  'user_id' => 2,
-  'total_cost' => 6000,
-  'end_time' => date("Y-m-d H:i:s", time() + (3600*24*30))
-];
-
-$seasonTicket = new \inc\Profile\SeasonTicket();
-$seasonTicket->addTicket($data);*/
-
 $students = \inc\Profile\Contributor::listContributor();
 
 ?>
@@ -32,10 +21,10 @@ $students = \inc\Profile\Contributor::listContributor();
                     <thead>
                     <tr>
                         <th>#ID</th>
-                        <th>Имя Фамилия</th>
-                        <th>Телефон</th>
-                        <th>Email</th>
+                        <th>Имя Фамилия Контакты</th>
                         <th>Абонемент</th>
+                        <!--<th>?</th>
+                        <th>?</th>-->
                         <th>Дата Продления</th>
                         <th>Действия</th>
                     </tr>
@@ -49,26 +38,26 @@ $students = \inc\Profile\Contributor::listContributor();
                             $time_end = '';
                             if(!empty($seasonTickets)) {
                                 foreach($seasonTickets as $ticket) {
-                                    $abonement = $ticket->discipline . " - " . $ticket->abonement . "<br>";
-                                    $time_end = $ticket->end_time . "<br>";
+                                    $abonement .= $ticket->discipline . "<br> - " . $ticket->abonement . "<hr>";
+                                    $time_end .= $ticket->end_time . "<hr>";
                                 }
                             }
 
                         ?>
                             <tr>
                                 <td><?=$student->ID;?></td>
-                                <td><?=$student->display_name;?></td>
-                                <td><?=$phone;?></td>
-                                <td><?=$student->user_email;?></td>
+                                <td><?=$student->display_name;?> <br> <?=$phone;?> <br><?=$student->user_email;?></td>
                                 <td><?=$abonement;?></td>
+                                <!--<td></td>
+                                <td></td>-->
                                 <td><?=$time_end;?></td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="/profile?p=contributor-edit&user_id=<?=$student->ID;?>">Изменить</a>
-                                    <form method="post" action="/wp-admin/admin-post.php" class="form-remove">
+                                    <a class="btn btn-primary btn-sm" href="/profile?p=contributor_edit&user_id=<?=$student->ID;?>">Изменить</a>
+                                    <!--<form method="post" action="/wp-admin/admin-post.php" class="form-remove">
                                         <input type="hidden" name="user_id" value="<?=$student->ID;?>">
                                         <input type="hidden" name="action" value="alx_delete_contributor">
                                         <button class="btn btn-danger btn-sm btn-remove-js">Удалить</button>
-                                    </form>
+                                    </form>-->
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -81,8 +81,10 @@
 .btn-submit {
     background-color: #c09f6f;
     color: white;
+    cursor: pointer;
 }
 .form-row select {
+    display: block;
     border: 1px solid #c09f6f;
     width: 100%;
     outline: none;
@@ -93,6 +95,11 @@
 .btn-big {
     padding: 18px 68px;
     font-size: 16px;
+    text-transform: uppercase;
+}
+.btn-small {
+    padding: 12px 40px;
+    font-size: 14px;
     text-transform: uppercase;
 }
 .form-image {
@@ -112,4 +119,63 @@
     border: #c09f6f solid 1px;
     padding: 10px;
     margin: 10px;
+
+}
+
+.header-title-ticket {
+    width: 420px;
+    position: relative;
+    padding: 4px;
+    background-color: #eee;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.content-ticket {
+    margin-bottom: 10px;
+}
+.header-title-ticket.active:after {
+    transform: rotate(270deg);
+}
+.header-title-ticket:after {
+    content: "›";
+    font-size: 28px;
+    position: absolute;
+    right: 18px;
+    top: 4px;
+    transform: rotate(90deg);
+}
+.content-ticket {
+    display: none;
+}
+.content-ticket.active {
+    display: block;
+}
+.add-ticket-layout {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(3,3,3, .7);
+    z-index: 99;
+}
+.add-ticket-layout.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-ticket-content {
+    width: 460px;
+    height: 320px;
+    padding: 40px 16px 16px;
+    background-color: white;
+}
+.add-ticket-layout span {
+    color: white;
+    font-size: 46px;
+    position: absolute;
+    right: 40px;
+    top: 30px;
+    cursor: pointer;
 }

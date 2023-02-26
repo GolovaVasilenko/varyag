@@ -35,7 +35,7 @@ class SeasonTicket
     public static function getTicketByUserId($user_id)
     {
         global $wpdb;
-        $sql = "SELECT p.post_title AS abonement , utd.created_at, utd.end_time, d.post_title AS discipline 
+        $sql = "SELECT utd.id, p.ID AS product_id, d.ID AS disciplin_id, p.post_title AS abonement , utd.total_cost, utd.created_at, utd.end_time, d.post_title AS discipline 
                 FROM " . $wpdb->prefix . "user_tiket_disciplin utd
                 JOIN vr_posts p ON( p.ID = utd.product_id) 
                 JOIN vr_posts d ON( d.ID = utd.disciplin_id) 

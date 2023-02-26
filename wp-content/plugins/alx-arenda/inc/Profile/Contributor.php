@@ -15,6 +15,9 @@ class Contributor
         add_action('admin_post_alx_add_contributor', [$this, 'addContributor']);
         add_action('admin_post_nopriv_alx_add_contributor', [$this, 'addContributor']);
 
+        add_action('admin_post_alx_add_ticket_for_contributor', [$this, 'addTicketForContributor']);
+        add_action('admin_post_nopriv_alx_add_ticket_for_contributor', [$this, 'addTicketForContributor']);
+
     }
 
     public function updateContributor()
@@ -39,8 +42,23 @@ class Contributor
 
     public function updateContributorPassword()
     {
-        $newpass = strip_tags(trim($_POST["password"]));
-        wp_set_password($newpass, (int)wp_get_current_user()->id);
+        $id = (int)wp_get_current_user()->id;
+        $user = get_user_by('ID', $id);
+        $password = $user->user_pass;
+        $redirect = strip_tags(trim($_POST["redirect"]));
+        if ($password != wp_hash(strip_tags(trim($_POST["old-pass"])))){
+            print_r('Wrong old pass ' . strip_tags(trim($_POST["old-pass"])));
+            print_r(' Old pass hash ' . $password);
+            print_r(' Your pass hash ' . wp_hash(strip_tags(trim($_POST["old-pass"]))));
+            // wp_redirect($redirect);
+            // exit;
+        } else {
+            print_r('Setting new pass ' . $password);
+            $newpass = strip_tags(trim($_POST["password"]));
+            wp_set_password($newpass, $id);
+            // wp_redirect($redirect);
+            // exit;
+        }
     }
 
     public static function listContributor()
@@ -79,27 +97,25 @@ class Contributor
         wp_redirect($redirect); exit;
     }
 
+    public function addTicketForContributor()
+    {
+        $data['product_id'] = (int) $_POST["product_id"];
+        $data['disciplin_id'] = (int) $_POST["disciplin_id"];
+        $data['user_id'] = (int) $_POST["user_id"];
+        $data['total_cost'] = (int) $_POST["total_cost"];
+
+        $prod = wc_get_product($data['product_id']);
+        $data['end_time'] = date("Y-m-d H:i:s", time() + ((int) $prod->get_attribute('timestamp')));
+        $seasonTicket = new SeasonTicket();
+        $seasonTicket->addTicket($data);
+        wp_redirect('/profile/?p=contributor_edit&user_id='.$data['user_id']); exit;
+    }
+
     public function deleteContributor()
     {
 
     }
 
-    // protected static function getUser($term_id)
-    // {
-    //     global $wpdb;
-    //     $result = $wpdb->get_row("SELECT user_id FROM " . $wpdb->prefix . "user_contributor_term WHERE term_id=" . $term_id);
-    //     if($result) {
-    //         return get_user_by('id', $result->user_id);
-    //     }
-    //     return [];
-    // }
-
-    // protected function updateRelationTermUser($term_id, $user_id)
-    // {
-    //     global $wpdb;
-    //     $wpdb->delete($wpdb->prefix . "user_contributor_term", ['term_id' => $term_id]);
-    //     $wpdb->insert($wpdb->prefix . "user_contributor_term", ['term_id' => $term_id, 'user_id' => $user_id]);
-    // }
 
     public function notAuth(){
 
