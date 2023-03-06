@@ -23,6 +23,50 @@
     <link rel="manifest" href="<?=get_template_directory_uri();?>/favicon/site.webmanifest" />
 
 	<?php wp_head(); ?>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m, e, t, r, i, k, a) {
+            m[i] =
+                m[i] ||
+                function() {
+                    (m[i].a = m[i].a || []).push(arguments);
+                };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            (k = e.createElement(t)),
+                (a = e.getElementsByTagName(t)[0]),
+                (k.async = 1),
+                (k.src = r),
+                a.parentNode.insertBefore(k, a);
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(90723758, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/90723758" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <meta name="google-site-verification" content="HupIVvJZ3xezYN9kUedeB5JOwWSyODdndKh7sZmVESk" />
+    <script type="text/javascript">
+        !(function() {
+            var t = document.createElement("script");
+            (t.type = "text/javascript"),
+                (t.async = !0),
+                (t.src = "https://vk.com/js/api/openapi.js?169"),
+                (t.onload = function() {
+                    VK.Retargeting.Init("VK-RTRG-1555476-gmBsf"), VK.Retargeting.Hit();
+                }),
+                document.head.appendChild(t);
+        })();
+    </script>
+    <noscript><img src="https://vk.com/rtrg?p=VK-RTRG-1555476-gmBsf" style="position:fixed; left:-999px;" alt=""/></noscript>
 </head>
 
 <body <?php body_class(); ?> >
@@ -122,6 +166,9 @@
                             <div class="big-menu__title">
                                 Услуги
                             </div>
+                            <a href="#" class="link link--footer">
+                                Для детей
+                            </a>
                             <a href="/discipline/dlya-detej-tajskij-boks/" class="link link--footer">
                                 Тайский бокс
                             </a>
@@ -135,7 +182,7 @@
                                 HIIT (интервальные тренировки) для девушек
                             </a>
                             <a href="/discipline/dlya-detej-greppling/" class="link link--footer">
-                                Греплинг
+                                Грэпплинг
                             </a>
                             <a href="/discipline/fitnes-dlya-devushek-v-podolske-2/" class="link link--footer">
                                 Силовые функциональные тренировки для девушек и женщин
@@ -147,7 +194,10 @@
                                 Здоровая спина и гибкое тело, functional flow
                             </a>
                             <a href="/discipline/dlya-muzhchin-brazilskoe-dzhiu-dzhitsu/" class="link link--footer">
-                                Бразильское Джиу Джитсу Бокс
+                                Бразильское Джиу Джитсу
+                            </a>
+                            <a href="#" class="link link--footer">
+                                Бокс
                             </a>
                             <a href="/services/" class="big-menu__link">
                                 Смотреть все услуги
@@ -434,13 +484,40 @@
                     </div>
                     <div class="header__bottom">
                         <div class="header__menu">
+                            <a href="/katalog/" class="link--menu is-current">Каталог</a>
+                            <div class="drop-wrap">
+                                <a href="/services/" class="link--menu link--dropdown">
+                                    Услуги
+                                </a>
+                                <span class="drop-menu">
+                                  <a href="/for-child-main.html"><span>для детей</span></a>
+                                  <a href="/services.html#for-man"><span>для мужчин</span></a>
+                                  <a href="/services.html#for-woman"><span>для девушек</span></a>
+                                </span>
+                            </div>
+                            <a href="/raspisanie/" class="link--menu">Расписание тренировок</a>
+                            <a href="/sales/" class="link--menu">Акции</a>
+                            <a href="/coach/" class="link--menu">Тренера</a>
+                            <div class="drop-wrap drop-wrap--tablet">
+                                <a class="link--menu link--dropdown">
+                                    ...
+                                </a>
+                                <span class="drop-menu">
+                                  <a href="/sbory/"><span>Сборы</span></a>
+                                  <a href="/kontakty/"><span>Контакты</span></a>
+                                </span>
+                            </div>
+                            <a href="/sbory/" class="link--menu">Сборы</a>
+                            <a href="/kontakty/" class="link--menu">Контакты</a>
+                        </div>
+                        <!--<div class="header__menu">
                             <?php
                             $items_menu = wp_get_nav_menu_items(30);
                             foreach($items_menu as $item) :?>
                                 <a href="<?=$item->url;?>" class="link--menu"><?=$item->title;?></a>
                             <?php endforeach ?>
 
-                        </div>
+                        </div>-->
                         <div class="header__full js-full-menu">
                             <span>Полное меню</span>
                             <div class="burger">

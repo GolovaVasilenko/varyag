@@ -231,6 +231,9 @@
                     <div class="footer__title">
                         Услуги
                     </div>
+                    <a href="#" class="link link--footer">
+                        Для детей
+                    </a>
                     <a href="/discipline/dlya-detej-tajskij-boks/" class="link link--footer">
                         Тайский бокс
                     </a>
@@ -267,7 +270,7 @@
                         КОНТАКТЫ
                     </div>
                     <div class="footer__connect">
-                        <a href="tel:+79037284090" class="footer__number"> +7 903 728-40-90</a>
+                        <a href="tel:+79675553288" class="footer__number"> +7 967 555-32-88</a>
                         <a href="https://wa.me/79037284090" target="_blank" class="footer__soc">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/whatsap.png" alt="logo" width="17" height="17">
                         </a>
@@ -305,8 +308,8 @@
                 </div>
                 <div class="footer__column">
                     <div class="footer__text">
-                        ИНН: 7702775114, ОГРН: 770901001 Тел.: <a href="tel: +79037284090">+7 (903) 728-40-90</a> ИП Норов
-                        Рустам
+                        ИНН 503012728428, ОГРН 322508100503649 Тел.: <a href="tel: +79675553288">+7 (967) 555-32-88</a> ИП
+                        НОРОВ РУСТАМ БАХТИЕРОВИЧ
                     </div>
                 </div>
                 <div class="footer__column">
