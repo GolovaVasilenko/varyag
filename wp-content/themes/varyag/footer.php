@@ -11,7 +11,6 @@
 
 ?>
 <div class="map-block">
-    <div class="block-anchor" id="map-block"></div>
     <a
             href="https://yandex.ru/maps/org/sportivny_klub_boyevykh_iskusstv_varyag/1172045747/?ll=37.531249%2C55.422689&mode=search&sll=37.544737%2C55.431177&sspn=0.246506%2C0.075844&text=%D0%BF%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%20%D0%B2%D0%B0%D1%80%D1%8F%D0%B3&utm_source=share&z=15"
             class="map-block__taxi"
@@ -19,6 +18,7 @@
     >
         <img src="<?=get_template_directory_uri();?>/img/taxi.png" alt="taxi" width="182" height="50" />
     </a>
+    <div class="block-anchor" id="map-block"></div>
     <div id="map" class="map-block__map"></div>
 </div>
 <?php if(is_home() || is_front_page()):?>
@@ -190,7 +190,7 @@
                     <div class="footer__title">
                         ИНФОРМАЦИЯ
                     </div>
-                    <a href="/katalog/" class="footer__link">
+                    <a href="/katalog/" class="link link--footer">
                         Каталог
                     </a>
                     <a href="/raspisanie/" class="link link--footer">
@@ -351,6 +351,8 @@
         src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=6be5698f-d1e7-4a41-b2bf-c37a919c4247"
         type="text/javascript"
 ></script>
+<!--<script src="icon_customImage.js" type="text/javascript"></script>-->
+
 <script type="text/javascript">
     ymaps.ready(function() {
         var myMap = new ymaps.Map(

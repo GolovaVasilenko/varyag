@@ -77,8 +77,14 @@ get_header('empty');
                 case 'coach-add':
                     include_once PLUGIN_UNIT_PATH . "/templates/pages/coach-add.php";
                     break;
-                case 'aboniment':
-                    include_once PLUGIN_UNIT_PATH . "/templates/pages/aboniment.php";
+                case 'abonement':
+                    include_once PLUGIN_UNIT_PATH . "/templates/pages/abonement.php";
+                    break;
+                case 'abonement_add':
+                    include_once PLUGIN_UNIT_PATH . "/templates/pages/abonement_add.php";
+                    break;
+                case 'abonement_edit':
+                    include_once PLUGIN_UNIT_PATH . "/templates/pages/abonement_edit.php";
                     break;
                 case 'list_students':
                     include_once PLUGIN_UNIT_PATH . "/templates/pages/list_students.php";

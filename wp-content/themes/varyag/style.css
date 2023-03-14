@@ -160,3 +160,25 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .checkout-button, .wp-element-button {
     background-color: #c09f6f!important;
 }
+.child-advantages {
+    color: #333;
+}
+.work-schedule {
+    width: 177px!important;
+}
+.tel-info-link {
+    display: inline!important;
+}
+.about-block__slider {
+    max-width: 590px!important;
+}
+.text-block--inner a.button {
+    color: white!important;
+    text-decoration: none;
+}
+@media (min-width: 1367px) {
+    .button--big {
+        min-width: 300px!important;
+    }
+}
+

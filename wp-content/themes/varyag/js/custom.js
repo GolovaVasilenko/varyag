@@ -9,7 +9,7 @@ jQuery(document).ready(function ($) {
             url: '/wp-admin/admin-ajax.php',
             data: form,
             success: function(response) {
-                console.log(response);
+                window.location.href = "/spasibo/";
             }
         });
     });

@@ -129,10 +129,12 @@ function product_list_home_callback()
             continue;
         }
         $output .= '<div class="prod-item prod-item--prod">
+                    <a href="' . get_post_permalink($product->id) . '">
                     <div class="prod-item__img">
                       <img class="lazyload" data-src="' . get_the_post_thumbnail_url($product->id) . '" alt="img5" width="221" height="297" />
                       <span>' . $product->name . '</span>
                     </div>
+                    </a>
                     <span class="prod-item__body">
                       <span>' . $product->name . '</span>
                       <span
@@ -156,10 +158,11 @@ function product_list_home_callback()
         }
         if(in_array(50, $product->tag_ids)) {
             $output .= '<div class="prod-item prod-item--prod">
+                    <a href="' . get_post_permalink($product->id) . '">
                     <div class="prod-item__img">
                       <img class="lazyload" data-src="' . get_the_post_thumbnail_url($product->id) . '" alt="img5" width="221" height="297" />
                       <span>' . $product->name . '</span>
-                    </div>
+                    </div></a>
                     <span class="prod-item__body">
                       <span>' . $product->name . '</span>
                       <span
@@ -186,10 +189,11 @@ function product_list_home_callback()
         }
         if(in_array(51, $product->tag_ids)) {
             $output .= '<div class="prod-item prod-item--prod">
+                    <a href="' . get_post_permalink($product->id) . '">
                     <div class="prod-item__img">
                       <img class="lazyload" data-src="' . get_the_post_thumbnail_url($product->id) . '" alt="img5" width="221" height="297" />
                       <span>' . $product->name . '</span>
-                    </div>
+                    </div></a>
                     <span class="prod-item__body">
                       <span>' . $product->name . '</span>
                       <span
@@ -214,10 +218,11 @@ function product_list_home_callback()
         }
         if(in_array(52, $product->tag_ids)) {
             $output .= '<div class="prod-item prod-item--prod">
+                    <a href="' . get_post_permalink($product->id) . '">
                     <div class="prod-item__img">
                       <img class="lazyload" data-src="' . get_the_post_thumbnail_url($product->id) . '" alt="img5" width="221" height="297" />
                       <span>' . $product->name . '</span>
-                    </div>
+                    </div></a>
                     <span class="prod-item__body">
                       <span>' . $product->name . '</span>
                       <span
@@ -243,10 +248,11 @@ function product_list_home_callback()
         }
         if(in_array(47, $product->category_ids)) {
             $output .= '<div class="prod-item prod-item--prod">
+                    <a href="' . get_post_permalink($product->id) . '">
                     <div class="prod-item__img">
                       <img class="lazyload" data-src="' . get_the_post_thumbnail_url($product->id) . '" alt="img5" width="221" height="297" />
                       <span>' . $product->name . '</span>
-                    </div>
+                    </div></a>
                     <span class="prod-item__body">
                       <span>' . $product->name . '</span>
                       <span
@@ -265,5 +271,71 @@ function product_list_home_callback()
 
     $output .= '</div></div>';
 
+    return $output;
+}
+
+add_shortcode('about-block-for-children', 'alx_about_block_for_children');
+
+function alx_about_block_for_children()
+{
+    $args_deti = [
+        'post_type' => 'discipline',
+        'post_status' => 'publish',
+        'order' => 'ASC',
+        'orderby' => 'ID',
+        'tax_query' => [
+            'relation' => 'OR',
+            [
+                'taxonomy' => 'services',
+                'field'    => 'slug',
+                'terms'    => ['dlya-detej']
+            ]
+        ]
+    ];
+    $query_deti = new WP_Query($args_deti);
+    $output = '<div class="about-block about-block--black">
+        <div class="container">
+          <div class="safe-block">
+            <div class="safe-block__body">
+              <h2>БЕЗОПАСНОСТЬ</h2>
+              <p>
+                Тренера нашего спортивного клуба тщательно следят за ребенком во время тренировок. Вам не стоит
+                беспокоиться, что ребенок получит травмы или синяки во время тренировочного процесса. Все наши занятия
+                проходят в максимально щадящей обстановке и за ребенком, как за новичком так и за опытным ведется
+                постоянное наблюдение. Мы приглашаем родителей присутствовать на занятиях, чтобы лично убедиться в
+                профессиональном и безопасном подходе к юным спортсменам.
+              </p>
+            </div>
+            <div class="safe-block__img">
+              <img class="lazyload" data-src="/wp-content/themes/varyag/img/slide21.jpeg" alt="slide1" width="924" height="600" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+            </div>
+          </div>
+          <div class="child-vector">
+            <h2>
+                Главные направления <br>
+                              занятий в спортшколе
+                </h2>
+            <p>Спортивные занятия в центре «Варяг» проводятся по нескольким разновидностям восточных единоборств:</p>
+            <div class="slider-block" data-slider="1">
+              <div class="slider-block__slider">
+                <div class="owl-carousel js-owl-carousel-items owl-theme">';
+                foreach($query_deti->posts as $item) {
+                  $image_for_home = get_field('izobrazhenie_dlya_glavnoj_straniczy', $item->ID);
+                  $output .= '<a href="' . get_permalink($item->ID) . '" class="slider-block__item">
+                    <img class="owl-lazy" data-src="' . $image_for_home . '" alt="' . $item->post_title . '" width="280" height="363" />
+                    <span>' . $item->post_title . '</span>
+                  </a>';
+                }
+                $output .= '</div>
+                <div class="nav-next" data-slider="1"></div>
+                <div class="nav-prev" data-slider="1"></div>
+              </div>
+            </div>
+            <a class="button button--big button--border" href="/services/">
+              <span>Посмотрите подробно о каждом направлении тренировок </span>
+            </a>
+          </div>
+        </div>
+      </div>';
     return $output;
 }

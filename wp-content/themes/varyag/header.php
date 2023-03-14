@@ -94,12 +94,12 @@
                                 <div class="subscribe-big__text">
                                     Запишись на бесплатное занятие
                                 </div>
-                                <a href="#callback" class="button button--full button--small js-full-close">
+                                <a class="button button--full button--small js-open-form">
                                     <span>Записаться</span>
                                 </a>
                             </div>
                         </div>
-                        <a href="/reg.html" class="big-menu__reg">
+                        <a href="/sales/" class="big-menu__reg">
                             Скидка 20% многодетным семьям
                         </a>
                     </div>
@@ -108,7 +108,7 @@
                             <div class="big-menu__title">
                                 ИНФОРМАЦИЯ
                             </div>
-                            <a href="/services/" class="big-menu__link">
+                            <a href="/services/" class="link link--footer">
                                 О клубе
                             </a>
                             <a href="/raspisanie/" class="link link--footer">
@@ -153,7 +153,7 @@
                                 <a href="tel:<?=get_option('tel_2');?>" class="big-menu__number"> <?=get_option('tel_1');?></a>
                                 <a href="mailto:<?=get_option('email');?>"><?=get_option('email');?></a>
                             </div>
-                            <div class="big-menu__address">
+                            <div class="big-menu__address work-schedule">
                                 <span> Режим работы:</span>
                                 <?=get_option('work_schedule');?>
                             </div>
@@ -166,7 +166,7 @@
                             <div class="big-menu__title">
                                 Услуги
                             </div>
-                            <a href="#" class="link link--footer">
+                            <a href="/dlya-detej/" class="link link--footer">
                                 Для детей
                             </a>
                             <a href="/discipline/dlya-detej-tajskij-boks/" class="link link--footer">
@@ -210,8 +210,12 @@
                         <div class="big-menu__text">2008 - 2023 © Варяг Все права защищены</div>
                     </div>
                     <div class="big-menu__column">
+                        <?php
+                            $tel_display = get_option('tel_1');
+                            $tel_link = preg_replace('#([ \-])#', '', $tel_display);
+                        ?>
                         <div class="big-menu__text">
-                            ИНН: 7702775114, ОГРН: 770901001 Тел.: <?=get_option('tel_1')?> ИП Норов Рустам
+                            ИНН: 7702775114, ОГРН: 770901001<br> Тел.: <a class="tel-info-link" href="tel:<?=$tel_link;?>"><?=$tel_display;?></a> ИП Норов Рустам
                         </div>
                     </div>
                     <div class="big-menu__column">
@@ -247,7 +251,7 @@
             </div>
             <div class="mobile-menu__main js-main-menu">
                 <div class="mobile-menu__items">
-                    <a href="/catalog.html" class="mobile-menu__link">
+                    <a href="/katalog/" class="mobile-menu__link">
                         <span>Каталог</span>
                     </a>
                     <div class="mobile-menu__link js-inner-link" data-id="services">
@@ -256,19 +260,19 @@
                             <img src="<?php echo get_template_directory_uri(); ?>/img/mini-arrow-right.svg" alt="arrow" width="14" height="14">
                         </div>
                     </div>
-                    <a href="/schedule.html" class="mobile-menu__link">
+                    <a href="/raspisanie/" class="mobile-menu__link">
                         <span>Расписание тренировок</span>
                     </a>
-                    <a href="/sales.html" class="mobile-menu__link">
+                    <a href="/sales/" class="mobile-menu__link">
                         <span>Акции</span>
                     </a>
-                    <a href="/treners.html" class="mobile-menu__link">
+                    <a href="/coach/" class="mobile-menu__link">
                         <span>Тренеры</span>
                     </a>
-                    <a href="/sbory.html" class="mobile-menu__link">
+                    <a href="/sbory/" class="mobile-menu__link">
                         <span>Сборы</span>
                     </a>
-                    <a href="/contacts.html" class="mobile-menu__link">
+                    <a href="/kontakty/" class="mobile-menu__link">
                         <span>Контакты</span>
                     </a>
                 </div>
@@ -307,22 +311,22 @@
                         </div>
                         <span>Назад</span>
                     </div>
-                    <a href="/for-child.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-detej-mma/" class="mobile-menu__link">
                         <span>ММА</span>
                     </a>
-                    <a href="/child-ty.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-detej-tajskij-boks/" class="mobile-menu__link">
                         <span>Тайский бокс</span>
                     </a>
-                    <a href="/child-box.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-detej-boks/" class="mobile-menu__link">
                         <span>Бокс (только персональные) </span>
                     </a>
-                    <a href="/child-brazil.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-detej-brazilskoe-dzhiu-dzhitsu/" class="mobile-menu__link">
                         <span>Бразильское джиу джитсу </span>
                     </a>
-                    <a href="/child-grap.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-detej-greppling/" class="mobile-menu__link">
                         <span>Грэплинг</span>
                     </a>
-                    <a href="/child-ofp.html" class="mobile-menu__link">
+                    <a href="/discipline/obshhaya-fizicheskaya-podgotovka-dlya-detej/" class="mobile-menu__link">
                         <span>ОФП</span>
                     </a>
                 </div>
@@ -333,25 +337,25 @@
                         </div>
                         <span>Назад</span>
                     </div>
-                    <a href="/man-mma.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-muzhchin-mma/" class="mobile-menu__link">
                         <span>ММА</span>
                     </a>
-                    <a href="/man-ty.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-muzhchin-tajskij-boks/" class="mobile-menu__link">
                         <span>Тайский бокс</span>
                     </a>
-                    <a href="/man-box.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-muzhchin-boks/" class="mobile-menu__link">
                         <span>Бокс (только персональные) </span>
                     </a>
-                    <a href="/man-brazil.html" class="mobile-menu__link">
+                    <a href="/discipline/dlya-muzhchin-brazilskoe-dzhiu-dzhitsu/" class="mobile-menu__link">
                         <span>Бразильское джиу джитсу </span>
                     </a>
-                    <a href="/man-grap.html" class="mobile-menu__link">
+                    <a href="/discipline/sekcziya-po-grepplingu-dlya-muzhchin-v-podolske/" class="mobile-menu__link">
                         <span>Грэплинг</span>
                     </a>
-                    <a href="/child-ofp.html" class="mobile-menu__link">
+                    <a href="/discipline/silovye-trenirovki-dlya-muzhchin-v-mini-gruppah/" class="mobile-menu__link">
                         <span>Силовые тренировки</span>
                     </a>
-                    <a href="/man-gym.html" class="mobile-menu__link">
+                    <a href="/discipline/silovye-trenirovki-dlya-muzhchin/" class="mobile-menu__link">
                         <span>Тренажерный зал</span>
                     </a>
                 </div>
@@ -362,41 +366,41 @@
                         </div>
                         <span>Назад</span>
                     </div>
-                    <a href="/ff-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/functional-flow-dya-devushek/" class="mobile-menu__link">
                         <span>Functional flow фитнес для девушек</span>
                     </a>
-                    <a href="/strong-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/fitnes-dlya-devushek-v-podolske/" class="mobile-menu__link">
                         <span>Здоровая спина и гибкое тело для девушек</span>
                     </a>
-                    <a href="/hiit-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/intervalnye-trenirovki-hiit/" class="mobile-menu__link">
                         <span>Hiit интервальные тренировки для девушек</span>
                     </a>
-                    <a href="/tabata-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/tabata-trenirovki-dlya-devushek/" class="mobile-menu__link">
                         <span>Tabata для девушек</span>
                     </a>
-                    <a href="/muaytuy-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/tajskij-boks-dlya-devushek/" class="mobile-menu__link">
                         <span>Тайский бокс</span>
                     </a>
-                    <a href="/box-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/boks-dlya-devushek/" class="mobile-menu__link">
                         <span>Бокс (только персональные)</span>
                     </a>
-                    <a href="/train-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/silovye-intervalnye-trenirovki-dlya-devushek/" class="mobile-menu__link">
                         <span>Тренажерный зал</span>
                     </a>
-                    <a href="/fitnes-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/fitnes-dlya-devushek/" class="mobile-menu__link">
                         <span>Занятия фитнесом для женщин в мини-группах с персональным подходом</span>
                     </a>
-                    <a href="/fitnes-girl.html" class="mobile-menu__link">
+                    <a href="/discipline/silovye-intervalnye-trenirovki-dlya-devushek-2/" class="mobile-menu__link">
                         <span>Силовые интервальные тренировки</span>
                     </a>
                 </div>
             </div>
             <div class="mobile-menu__connect">
                 <a href="tel:<?=get_option('tel_2');?>" class="mobile-menu__number"> <?=get_option('tel_1');?></a>
-                <a href="<?=get_option('whatsaap_link');?>" class="mobile-menu__soc">
+                <a href="<?=get_option('whatsaap_link');?>" class="mobile-menu__soc" target="_blank">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/whatsap.png" alt="logo" width="17" height="17">
                 </a>
-                <a href="<?=get_option('telegram_link');?>" class="mobile-menu__soc">
+                <a href="<?=get_option('telegram_link');?>" class="mobile-menu__soc" target="_blank">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/telegram.png" alt="logo" width="17" height="17">
                 </a>
             </div>
@@ -440,10 +444,10 @@
                         </div>
                         <div class="header__connect">
                             <a href="tel:<?=get_option('tel_2');?>" class="header__number"> <?=get_option('tel_1');?></a>
-                            <a href="<?=get_option('whatsaap_link');?>" class="header__soc">
+                            <a href="<?=get_option('whatsaap_link');?>" class="header__soc" target="_blank">
                                 <img src="<?php echo get_template_directory_uri(); ?>/img/whatsap.png" alt="logo" width="17" height="17">
                             </a>
-                            <a href="<?=get_option('telegram_link');?>" class="header__soc">
+                            <a href="<?=get_option('telegram_link');?>" class="header__soc" target="_blank">
                                 <img src="<?php echo get_template_directory_uri(); ?>/img/telegram.png" alt="logo" width="17" height="17">
                             </a>
                         </div>
@@ -490,9 +494,9 @@
                                     Услуги
                                 </a>
                                 <span class="drop-menu">
-                                  <a href="/for-child-main.html"><span>для детей</span></a>
-                                  <a href="/services.html#for-man"><span>для мужчин</span></a>
-                                  <a href="/services.html#for-woman"><span>для девушек</span></a>
+                                  <a href="/dlya-detej/"><span>для детей</span></a>
+                                  <a href="/services/#for-man"><span>для мужчин</span></a>
+                                  <a href="/services/#for-woman"><span>для девушек</span></a>
                                 </span>
                             </div>
                             <a href="/raspisanie/" class="link--menu">Расписание тренировок</a>
