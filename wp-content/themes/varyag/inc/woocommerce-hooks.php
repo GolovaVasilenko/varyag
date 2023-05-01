@@ -42,6 +42,8 @@ if( wp_doing_ajax() ) {
 function alx_cart_recalculate_price_by_qty()
 {
     $status = 0;
+    setcookie('_recalculate', null,time()-3600, );
+    $_COOKIE['_recalculate'] = null;
     $qty = trim($_POST["qty"]);
     $product_id = trim($_POST["product_id"]);
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
@@ -52,6 +54,7 @@ function alx_cart_recalculate_price_by_qty()
         }
     }
     $result = recalculate_price_by_bonuses();
+
     echo json_encode(['status' => 1, 'data' => ['total_cost' => $result['total_cost'], 'bonuses' => $result['bonuses']]]);
     wp_die();
 }
@@ -65,7 +68,7 @@ function alx_cart_recalculate_price_by_bonuses()
 {
     $result = recalculate_price_by_bonuses();
     if(empty($result)) {
-        echo json_encode(['status' => 0, 'data' => ['message' => 'У вас недостаточное количество бонусов!']]);
+        echo json_encode(['status' => 0, 'data' => ['message' => 'У вас недостаточное<br> количество бонусов!']]);
     } else {
         echo json_encode(['status' => 1, 'data' => ['total_cost' => $result['total_cost'], 'bonuses' => $result['bonuses']]]);
     }
@@ -79,10 +82,11 @@ function get_bonuses_info()
     $user_bonuses = new \inc\Classes\UserBonuses();
     $bonuses = (int) ($user_bonuses->getAllUserBonuses($user_id))->bonuses;
     $total_cost = (int) WC()->cart->get_cart_contents_total();
-    $percent = floor((20 / $total_cost) * 100);
+
+    $percent = (int) WC()->cart->get_total_discount() ?? floor((20 / $total_cost) * 100);
     if($bonuses >= $percent) {
         $total_cost_new = $total_cost - $percent;
-        return ['total_cost' => $total_cost_new, 'diff' => $total_cost - $total_cost_new];
+        return ['total_cost' => $total_cost, 'diff' => $total_cost - $total_cost_new, 'total_cost_new' => $total_cost_new];
     } else {
         return [];
     }
@@ -102,7 +106,7 @@ function recalculate_price_by_bonuses()
     $total_cost = (int) WC()->cart->get_cart_contents_total();
     $percent = floor((20 / $total_cost) * 100);
 
-    if($bonuses >= $percent) {
+    if($bonuses >= $percent && $percent) {
         $total_cost_new = $total_cost - $percent;
         $bonuses -= $percent;
         $data_cookie[$user_id] = [
@@ -111,15 +115,17 @@ function recalculate_price_by_bonuses()
             'user_bonuses' => $bonuses,
             'total_cost' => $total_cost,
             'percent' => $percent,
+            'finish' => ($percent ? 1 : 0),
         ];
+        WC()->cart->set_cart_contents_total((string) $total_cost_new);
+        WC()->cart->set_total($total_cost_new);
+        WC()->cart->set_discount_total($percent);
 
-        WC()->cart->set_cart_contents_total((string) $total_cost);
         $user_bonuses->setUserBonusByUserId($bonuses, $user_id);
 
-        $data_cookie_serialized = serialize($data_cookie);
-        setcookie('_recalculate', $data_cookie_serialized ,time()+3600*24, '/');
+        $data_cookie_serialized = base64_encode(json_encode($data_cookie));
+        setcookie('_recalculate', $data_cookie_serialized , time()+3600*24, '/');
         $_COOKIE['_recalculate'] = $data_cookie_serialized;
-        $_SESSION['recalculate'] = 1;
 
         return ['total_cost' => $total_cost, 'diff' => $total_cost - $total_cost_new];
     } else {

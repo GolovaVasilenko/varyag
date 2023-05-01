@@ -44,11 +44,14 @@ defined('ABSPATH') || exit;
         <div class="basket__top">
             <?php if(is_user_logged_in()) : ?>
             <?php
+                $finish = 0;
+                $user_id = (int)wp_get_current_user()->id;
                 $userBonuses = new \inc\Classes\UserBonuses();
                 $result = $userBonuses->getAllUserBonuses((wp_get_current_user())->data->ID);
                 $res_bonus_calculate = get_bonuses_info();
                 if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
-                    $cookie_info = unserialize($_COOKIE['_recalculate']);
+                    $cookie_info = json_decode(base64_decode($_COOKIE['_recalculate']), true);
+                    $finish = $cookie_info[$user_id]['finish'];
                 }
             ?>
             <form id="bonus-product-form" class="basket__form" action="" method="post">
@@ -56,9 +59,9 @@ defined('ABSPATH') || exit;
                     <div class="basket__input">
                         <label class="user-bonuses-label">Ваши бонусы: <span><?php echo $result->bonuses; ?></span></label>
                         <input type="hidden" name="bonuses" id="user-bonuses" value="<?php echo $result->bonuses; ?>" />
-                        <?php if(!empty($res_bonus_calculate) && !isset($_SESSION['recalculate'])): ?>
+                        <?php if(!empty($res_bonus_calculate) && !$finish): ?>
                         <button class="recalculate-cost button--full button--middle recalculate-cost-js"><spsn>Применить Бонусы</spsn></button>
-                        <?php elseif(isset($_SESSION['recalculate'])) : ?>
+                        <?php elseif($finish) : ?>
                             <div> &nbsp; Скидка успешно пресчитана!</div>
                         <?php else: ?>
                             <div> &nbsp; У вас недостаточное количество бонусов!</div>
@@ -74,13 +77,13 @@ defined('ABSPATH') || exit;
                     <a href="#" class="basket-login-link basket-show-form-js">авторизоваться</a>!</p>
             <?php endif; ?>
             <div class="basket__text">
-                <div class="price-total-block">Итого: &nbsp; <?php echo WC()->cart->get_cart_subtotal();?></div>
+                <div class="price-total-block">Итого: &nbsp; <?php echo WC()->cart->get_cart_total();?></div>
                 <div style="clear: both"></div>
 
                 <?php if(is_user_logged_in() && !empty($res_bonus_calculate)) : ?>
 
                 <div class="bonus-total-results">
-                    <div class="total-results"><span><?=$res_bonus_calculate['total_cost'];?></span> руб.</div>
+                    <div class="total-results"><span><?php echo $res_bonus_calculate['total_cost_new'];?></span> руб.</div>
                     <div class="different-results">Экономия: <span><?=$res_bonus_calculate['diff'];?></span> руб.</div>
                 </div>
                 <?php endif; ?>
