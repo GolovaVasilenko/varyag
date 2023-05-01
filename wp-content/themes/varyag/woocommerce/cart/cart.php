@@ -50,7 +50,6 @@ defined('ABSPATH') || exit;
                 if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
                     $cookie_info = unserialize($_COOKIE['_recalculate']);
                 }
-                var_dump($cookie_info); die;
             ?>
             <form id="bonus-product-form" class="basket__form" action="" method="post">
                 <?php if($result->bonuses) : ?>
