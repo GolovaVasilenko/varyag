@@ -77,14 +77,14 @@ defined('ABSPATH') || exit;
                     <a href="#" class="basket-login-link basket-show-form-js">авторизоваться</a>!</p>
             <?php endif; ?>
             <div class="basket__text">
-                <div class="price-total-block">Итого: &nbsp; <?php echo WC()->cart->get_cart_total();?></div>
+                <div class="price-total-block">Итого: &nbsp; <?php echo WC()->cart->get_cart_contents_total();?> руб.</div>
                 <div style="clear: both"></div>
 
                 <?php if(is_user_logged_in() && !empty($res_bonus_calculate)) : ?>
 
                 <div class="bonus-total-results">
-                    <div class="total-results"><span><?php echo $res_bonus_calculate['total_cost_new'];?></span> руб.</div>
-                    <div class="different-results">Экономия: <span><?=$res_bonus_calculate['diff'];?></span> руб.</div>
+                    <div class="total-results"><span><?php echo $res_bonus_calculate['total_cost'];?></span> руб.</div>
+                    <div class="different-results">Экономия: <span><?php echo WC()->cart->get_discount_total() ?? 0;?></span> руб.</div>
                 </div>
                 <?php endif; ?>
             </div>

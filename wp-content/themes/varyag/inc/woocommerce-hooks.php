@@ -102,24 +102,31 @@ function recalculate_price_by_bonuses()
     } else {
         $bonuses = (int) $_COOKIE['_recalculate'][$user_id]['total_cost'];
     }
-
     $total_cost = (int) WC()->cart->get_cart_contents_total();
     $percent = floor((20 / $total_cost) * 100);
 
     if($bonuses >= $percent && $percent) {
         $total_cost_new = $total_cost - $percent;
         $bonuses -= $percent;
+
+        $cart_total_session = WC()->session->get('cart_totals');
+        $cart_total_session['total'] = $total_cost_new;
+        $cart_total_session['cart_contents_total'] = $total_cost_new;
+        $cart_total_session['subtotal'] = $total_cost_new;
+        WC()->session->set('cart_totals', $cart_total_session);
+
         $data_cookie[$user_id] = [
-            'reminder_bonus' => $bonuses,
             'total_cost_new' => $total_cost_new,
             'user_bonuses' => $bonuses,
             'total_cost' => $total_cost,
             'percent' => $percent,
             'finish' => ($percent ? 1 : 0),
         ];
-        WC()->cart->set_cart_contents_total((string) $total_cost_new);
+
+        /*WC()->cart->set_cart_contents_total((string) $total_cost_new);
         WC()->cart->set_total($total_cost_new);
         WC()->cart->set_discount_total($percent);
+        WC()->cart->calculate_totals();*/
 
         $user_bonuses->setUserBonusByUserId($bonuses, $user_id);
 
@@ -132,6 +139,14 @@ function recalculate_price_by_bonuses()
         return [];
     }
 }
+/*add_filter( 'woocommerce_calculated_total', 'alx_custom_calculated_total', 10, 2 );
+function alx_custom_calculated_total( $total, $cart ) {
+    // Вычисляем новую общую стоимость заказа
+    $new_total = 199;
+
+    // Возвращаем новую общую стоимость заказа
+    return $new_total;
+}*/
 
 if( wp_doing_ajax() ) {
     add_action('wp_ajax_alx_cart_clear', 'alx_cart_clear');
