@@ -49,7 +49,7 @@ $discipline = get_posts(['numberposts' => -1, 'post_type' => 'discipline']);
                                 <input type="text" name="one_trening_price" value="" placeholder="Стоимость одной тренировки">
                             </div>
                             <div class="form-input-text">
-                                <input type="text" name="total_price" value="" placeholder="Итоговая стоимость тренировок">
+                                <input type="text" name="total_price" value="" placeholder="Итоговая стоимость тренировок" required>
                             </div>
                         </div>
 
@@ -63,7 +63,7 @@ $discipline = get_posts(['numberposts' => -1, 'post_type' => 'discipline']);
                         </div>
                         <div class="form-row">
                             <div class="form-input-text">
-                                <input type="text" name="count_trening" value="" placeholder="Количество тренировок">
+                                <input type="text" name="count_trening" value="" placeholder="Количество тренировок" required>
                             </div>
                         </div>
                         <div class="form-row">

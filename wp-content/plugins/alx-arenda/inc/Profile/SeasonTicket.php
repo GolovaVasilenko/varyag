@@ -29,6 +29,68 @@ class SeasonTicket
 
         add_action( 'wp_ajax_alx_get_price_product', [$this, 'getProductPrice'] );
         add_action( 'wp_ajax_nopriv_alx_get_price_product', [$this, 'getProductPrice'] );
+
+        add_action( 'wp_ajax_alx_filter_abonement', [$this, 'filterAbonement'] );
+        add_action( 'wp_ajax_nopriv_alx_filter_abonement', [$this, 'filterAbonement'] );
+
+        add_action('admin_post_alx_set_personal_abonement', [$this, 'setPersonalAbonement']);
+        add_action('admin_post_nopriv_alx_set_personal_abonement', [$this, 'setPersonalAbonement']);
+
+    }
+
+    public function setPersonalAbonement()
+    {
+        var_dump($_POST);
+    }
+
+    public function filterAbonement()
+    {
+        global $wpdb;
+        $ids = [];
+        $discipline_id = (int) $_POST['discipline_id'];
+        $service_id = (int) $_POST['service_id'];
+        if($service_id) {
+            $ids = get_posts([
+                'fields' => 'ids',
+                'numberposts' => -1,
+                'post_type'   => 'discipline',
+                'tax_query' => [
+                    [
+                        'taxonomy' => 'services',
+                        'field'    => 'term_id',
+                        'terms'    => $service_id
+                    ]
+                ]
+            ]);
+        }
+        if($discipline_id) {
+            $ids[] = $discipline_id;
+        }
+        if(!empty($ids)) {
+            $output = '';
+            $sql = "SELECT ti.*, p.post_title FROM ". $wpdb->prefix . "ticket_info ti INNER JOIN " . $wpdb->prefix . "posts p ON p.id = ti.discipline_id WHERE ti.discipline_id IN (" . implode(',', $ids) . ")";
+            $abonements = $wpdb->get_results($sql);
+            foreach($abonements as $abonement) {
+                $output .= '<tr><td>' . $abonement->id . '</td>';
+                $output .= '<td>' . $abonement->count_month . '</td>';
+                $output .= '<td>' . $abonement->post_title . '</td>';
+                $output .= '<td>' . (($abonement->type_trening == 1) ? "Персональная" : "Груповая") . '</td>';
+                $output .= '<td>' . $abonement->count_trening . '</td>';
+                $output .= '<td>' . $abonement->total_price . '</td>';
+                $output .= '<td>
+                                        <a class="btn btn-primary btn-sm" href="/profile?p=abonement_edit&id=' . $abonement->id . '">Изменить</a>
+                                        <form method="post" action="/wp-admin/admin-post.php" class="form-remove">
+                                        <input type="hidden" name="id" value="' . $abonement->id . '">
+                                        <input type="hidden" name="redirect" value="/profile?p=abonement">
+                                        <input type="hidden" name="action" value="alx_delete_abonement">
+                                        <button class="btn btn-danger btn-sm btn-remove-js">Удалить</button>
+                                        </form>
+                                    </td>
+                                </tr>';
+            }
+            echo $output; exit;
+        }
+        echo 0; exit;
     }
 
     public static function listAbonement()
@@ -100,6 +162,8 @@ class SeasonTicket
         echo json_encode(['status' => 1, 'price' => $product->price]); exit;
     }
 
+
+
     public static function getTicketByUserId($user_id)
     {
         /*global $wpdb;
@@ -118,13 +182,5 @@ class SeasonTicket
         $wpdb->insert('vr_user_tiket_disciplin', $data, ['%d', '%d', '%d', '%d', '%s']);
     }
 
-    public function updateTicket()
-    {
 
-    }
-
-    public function deleteTicket()
-    {
-
-    }
 }

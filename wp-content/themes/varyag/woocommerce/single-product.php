@@ -19,53 +19,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-get_header(); ?>
+get_header('shop');?>
+<div class="container">
+<?php do_action( 'woocommerce_before_main_content' );?>
+
+<?php while ( have_posts() ) : ?>
+    <?php the_post(); ?>
+
+    <?php wc_get_template_part( 'content', 'single-product' ); ?>
+
+<?php endwhile; // end of the loop. ?>
 
 <?php
-echo '<div class="wc-single-top-header" style="background-image: url(' . get_template_directory_uri() . '/img/basketback.jpg);">
-		<div class="top-block__body container" style="">
-			<div class="top-block__middle">';
+do_action( 'woocommerce_after_main_content' );
+do_action( 'woocommerce_sidebar' );
+?>
+</div>
 
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		do_action( 'woocommerce_before_main_content' );
-
-echo '
-			</div>
-		</div>
-	</div>';
-	?>
-
-		<?php while ( have_posts() ) : ?>
-			<?php the_post(); ?>
-
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
-
-		<?php endwhile; // end of the loop. ?>
-
-	<?php
-		/**
-		 * woocommerce_after_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-		 */
-		do_action( 'woocommerce_after_main_content' );
-	?>
-
-	<?php
-		/**
-		 * woocommerce_sidebar hook.
-		 *
-		 * @hooked woocommerce_get_sidebar - 10
-		 */
-		do_action( 'woocommerce_sidebar' );
-	?>
-	<div style="clear: both"></div>
 <?php
 get_footer();
 
-/* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */

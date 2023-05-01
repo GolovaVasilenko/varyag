@@ -71,7 +71,17 @@
 
 <body <?php body_class(); ?> >
 <?php wp_body_open(); ?>
-
+<a href="https://yandex.ru/maps/org/varyag/1172045747/?ll=37.531249%2C55.422689&amp;mode=search&amp;sll=37.544737%2C55.431177&amp;sspn=0.246506%2C0.075844&amp;text=%D0%BF%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%20%D0%B2%D0%B0%D1%80%D1%8F%D0%B3&amp;utm_source=share&amp;z=15" target="_blank" class="build-route show">
+      <span class="build-route__text">
+        Построить маршрут
+      </span>
+    <span class="build-route__img">
+        <img src="<?=get_template_directory_uri();?>/img/yandex-icon.png" alt="logo" width="22" height="22">
+      </span>
+</a>
+<a href="https://yandex.ru/maps/org/varyag/1172045747/?ll=37.531249%2C55.422689&amp;mode=search&amp;sll=37.544737%2C55.431177&amp;sspn=0.246506%2C0.075844&amp;text=%D0%BF%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%20%D0%B2%D0%B0%D1%80%D1%8F%D0%B3&amp;utm_source=share&amp;z=15" target="_blank" class="yandex-maps show">
+    <img src="<?=get_template_directory_uri();?>/img/yandex-maps2.png" alt="logo" width="47" height="56">
+</a>
 <div class="wrapper">
     <div class="big-menu" style="display: none;">
         <div class="container">
@@ -237,10 +247,19 @@
                     <span>Клуб спортивных боевых исскуств</span>
                 </a>
                 <div class="mobile-menu__top-links">
+                    <?php if(is_user_logged_in()) : ?>
+                        <div class="mobile-menu__log">
+                            <a href="/profile/">
+                            <img src="<?php echo get_template_directory_uri(); ?>/img/user.png" alt="logo" width="21" height="21">
+                            <span>Войти</span>
+                            </a>
+                        </div>
+                    <?php else: ?>
                     <div class="mobile-menu__log mobile-menu__log--login">
                         <img src="<?php echo get_template_directory_uri(); ?>/img/user.png" alt="logo" width="21" height="21">
                         <span>Войти</span>
                     </div>
+                    <?php endif; ?>
                     <div class="mobile-menu__log mobile-menu__log--basket">
                         <a href="<?=wc_get_cart_url();?>">
                         <img src="<?php echo get_template_directory_uri(); ?>/img/basket.png" alt="logo" width="20" height="18">
@@ -451,10 +470,17 @@
                                 <img src="<?php echo get_template_directory_uri(); ?>/img/telegram.png" alt="logo" width="17" height="17">
                             </a>
                         </div>
-                        <a href="/" class="header__log header__log--login">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/user.png" alt="logo" width="21" height="21">
-                            <span>Войти</span>
-                        </a>
+                        <?php if(is_user_logged_in()) : ?>
+                            <a href="/profile/" class="header__log">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/user.png" alt="logo" width="21" height="21">
+                                <span>Войти</span>
+                            </a>
+                        <?php else: ?>
+                            <a href="/" class="header__log header__log--login">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/user.png" alt="logo" width="21" height="21">
+                                <span>Войти</span>
+                            </a>
+                        <?php endif; ?>
                         <div class="header__log header__log--basket">
                             <a href="<?=wc_get_cart_url();?>">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/basket.png" alt="logo" width="20" height="18">

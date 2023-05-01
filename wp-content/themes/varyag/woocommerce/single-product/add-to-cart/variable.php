@@ -31,18 +31,20 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 	<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
 		<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'woocommerce' ) ) ); ?></p>
 	<?php else : ?>
+    <div class="block-bocks-wrapper">
 		<table class="variations" cellspacing="0" role="presentation">
 			<tbody>
 				<?php foreach ( $attributes as $attribute_name => $options ) : ?>
 					<tr>
-						<th class="label"><label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?php echo wc_attribute_label( $attribute_name ); // WPCS: XSS ok. ?></label></th>
-						<td class="value">
+						<th class="label"><span>Рамзер: </span></th>
+						<td class="value inner-cart__select">
 							<?php
 								wc_dropdown_variation_attribute_options(
 									array(
 										'options'   => $options,
 										'attribute' => $attribute_name,
 										'product'   => $product,
+                                        'id'        => 'size'
 									)
 								);
 								echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'woocommerce' ) . '</a>' ) ) : '';
@@ -75,9 +77,12 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 				 */
 				do_action( 'woocommerce_after_single_variation' );
 			?>
+
 		</div>
 	<?php endif; ?>
-
+        <button type="submit" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
+            <?php echo esc_html( $product->single_add_to_cart_text() ); ?>
+        </button>
 	<?php do_action( 'woocommerce_after_variations_form' ); ?>
 </form>
 

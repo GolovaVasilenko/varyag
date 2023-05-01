@@ -155,6 +155,42 @@ function cptui_register_my_cpts_discipline() {
         "show_in_graphql" => false,
     ];
     register_post_type("sales", $args );
+
+    $labels = [
+        "name" => esc_html__( "Расписание", "varyag" ),
+        "singular_name" => esc_html__( "Расписание", "varyag" ),
+        "menu_name" => esc_html__( "Расписание", "varyag" ),
+        "all_items" => esc_html__( "Расписания", "varyag" ),
+        "add_new" => esc_html__( "Добавить", "varyag" ),
+        "add_new_item" => esc_html__( "Добавить Расписание", "varyag" ),
+        "edit_item" => esc_html__( "Редактировать", "varyag" ),
+        "new_item" => esc_html__( "Расписание", "varyag" ),
+    ];
+
+    $args = [
+        "label" => esc_html__( "Расписание для групповых тренировок", "varyag" ),
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "publicly_queryable" => true,
+        "show_ui" => true,
+        "show_in_rest" => true,
+        "rest_base" => "group_schedule",
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "show_in_nav_menus" => true,
+        "delete_with_user" => false,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "can_export" => false,
+        "query_var" => true,
+        "supports" => [ "title", "editor", "thumbnail", "excerpt" ],
+        "taxonomies" => [],
+        "show_in_graphql" => false,
+    ];
+    register_post_type("group_schedule", $args );
 }
 
 add_action( 'init', 'cptui_register_my_cpts_discipline' );

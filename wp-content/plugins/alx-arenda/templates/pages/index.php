@@ -99,10 +99,77 @@ if($user_id) {
     </div>
     <?php elseif(in_array('coach', $current_user->roles)):?>
         <div class="reg-block__title">
-            Профиль Тренета
+            Профиль Тренета <?=$firstName . " " . $lastName;?>
         </div>
-    <div class="reg-block__top reg-block__top--inner">
-        <div class="profile-block">
+    <?php if(isset($_SESSION['error'])):?>
+    <div class="error-mess">
+        <?php
+        $mess = $_SESSION['error'];
+        unset($_SESSION['error']);
+        echo "<p>" . $mess . "</p>";
+        ?>
+    </div>
+    <?php elseif(isset($_SESSION['success'])):?>
+    <div class="success-mess">
+        <?php
+        $mess = $_SESSION['success'];
+        unset($_SESSION['success']);
+        echo "<p>" . $mess . "</p>";
+        ?>
+    </div>
+    <?php endif; ?>
+    <div class="profile-block-header">
+        <div class="reg-block__top-right">
+            <div class="reg-block__top reg-block__top--inner">
+                <div class="profile-block-header">
+                    <div class="profile-block__title">
+                        Сменить данные
+                    </div>
+                </div>
+                <div class="profile-block">
+                    <form id="change-coach-data" method="post" action="/wp-admin/admin-post.php">
+                        <div class="form__input">
+                            <div class="form__input-name">Email</div>
+                            <input type="email" name="user_email" value="<?=$email;?>" required>
+                        </div>
+                        <div class="form__input">
+                            <div class="form__input-name">Телефон</div>
+                            <input class="js-input-mask" type="text" name="user_phone" value="<?=$phone;?>" required>
+                        </div><br>
+                        <input type="hidden" name="action" value="alx_change_coach_data">
+                        <input type="hidden" name="redirect" value="/profile/">
+                        <button class="button button--full button--big">
+                            <span>Сохранить</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="reg-block__top-right">
+            <div class="reg-block__top reg-block__top--inner">
+                <div class="profile-block-header">
+                    <div class="profile-block__title">
+                        Сменить пароль
+                    </div>
+                </div>
+                <div class="profile-block">
+                    <form id="change-coach-password" method="post" action="/wp-admin/admin-post.php">
+                        <div class="form__input">
+                            <div class="form__input-name">Укажите старый пароль</div>
+                            <input type="password" name="old_pass" required>
+                        </div>
+                        <div class="form__input">
+                            <div class="form__input-name">Укажите новый пароль</div>
+                            <input type="password" name="mew_pass" required>
+                        </div><br>
+                        <input type="hidden" name="action" value="alx_change_coach_password">
+                        <input type="hidden" name="redirect" value="/profile/">
+                        <button class="button button--full button--big">
+                            <span>Сменить пароль</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <?php else: ?>

@@ -31,22 +31,22 @@ if($user_id) {
             <form method="post" action="/wp-admin/admin-post.php" enctype="multipart/form-data">
                 <h3>Пользовательские данные</h3>
                 <div class="form-row">
-                    <div class="form-input-text"><input type="text" name="user_login" value="<?= (!empty($user_coach)) ? $user_coach->data->user_login : null;?>"></div>
+                    <div class="form-input-text"><input type="text" name="user_login" value="<?= (!empty($user_coach)) ? $user_coach->data->user_login : null;?>" required></div>
                 </div>
                 <div class="form-row">
-                    <div class="form-input-text"><input type="text" name="first_name" placeholder="Имя" value="<?= (!empty($first_name)) ? $first_name : null;?>"></div>
-                    <div class="form-input-text"><input type="text" name="last_name" placeholder="Фамилия" value="<?= (!empty($last_name)) ? $last_name : null;?>"></div>
+                    <div class="form-input-text"><input type="text" name="first_name" placeholder="Имя" value="<?= (!empty($first_name)) ? $first_name : null;?>" required></div>
+                    <div class="form-input-text"><input type="text" name="last_name" placeholder="Фамилия" value="<?= (!empty($last_name)) ? $last_name : null;?>" required></div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-input-text"><input type="email" name="email" placeholder="Email" value="<?= (!empty($user_coach)) ? $user_coach->data->user_email : null;?>"></div>
-                    <div class="form-input-text"><input class="js-input-mask" type="text" name="phone" placeholder="Телефон" value="<?= (!empty($phone)) ? $phone : null;?>"></div>
+                    <div class="form-input-text"><input type="email" name="email" placeholder="Email" value="<?= (!empty($user_coach)) ? $user_coach->data->user_email : null;?>" required></div>
+                    <div class="form-input-text"><input class="js-input-mask" type="text" name="phone" placeholder="Телефон" value="<?= (!empty($phone)) ? $phone : null;?>" required></div>
                 </div>
 
                 <h3>Данные для публикации на сайте</h3>
                 <div class="form-row">
                     <div class="form-input-text">
-                    <input type="text" name="tag-name" placeholder="Фамилия Имя" value="<?=$term_coach->name?>">
+                    <input type="text" name="tag-name" placeholder="Фамилия Имя" value="<?=$term_coach->name?>" required>
                     </div>
                 </div>
                 <div class="form-row">

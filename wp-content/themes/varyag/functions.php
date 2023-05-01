@@ -7,6 +7,8 @@
  * @package varyag
  */
 
+if(session_status() === PHP_SESSION_NONE) session_start();
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -136,6 +138,17 @@ function varyag_widgets_init() {
 	);
     register_sidebar(
         array(
+            'name'          => esc_html__( 'Sidebar Shop Filter', 'varyag' ),
+            'id'            => 'sidebar-filter',
+            'description'   => esc_html__( 'Add widgets here.', 'varyag' ),
+            'before_widget' => '<div id="%1$s" class="accordion-block widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
             'name'          => esc_html__( 'Card', 'varyag' ),
             'id'            => 'card_section',
             'description'   => esc_html__( 'Add widgets here.', 'varyag' ),
@@ -171,7 +184,7 @@ function callback_alx_send_mail()
     $message = 'Привет. Меня зовут ' . $name . '.  Хочу записаться на пробное занятие. tel:' .$phone;
 
     if ($name) {
-        $to      = 'edmondboxer2014@yandex.ru,varyagclub-pd@yandex.ru,Varyagclubpd@gmail.com';
+        $to      = 'varyagclub-pd@yandex.ru';
         $headers = 'From: tyler145688887@gmail.com' . "\r\n" .
             'Reply-To: serhdmc96@gmail.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
@@ -201,6 +214,8 @@ require get_template_directory() . '/inc/template-functions.php';
 /**
  * Customizer additions.
  */
+require get_template_directory() . '/inc/woocommerce-hooks.php';
+
 require get_template_directory() . '/inc/customizer.php';
 
 require get_template_directory() . '/inc/cpt-functions.php';
@@ -209,6 +224,7 @@ require get_template_directory() . '/shortcodes/custom_shortcodes.php';
 
 require get_template_directory() . '/inc/classes/OptionPage.php';
 
+
 /**
  * Load Jetpack compatibility file.
  */
@@ -216,33 +232,3 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-add_action( 'wp', 'theme_remove_sidebar_all_woo_pages' );
-function theme_remove_sidebar_all_woo_pages() {
-    remove_action('woocommerce_sidebar','woocommerce_get_sidebar',10);
-}
-
-add_filter( 'woocommerce_breadcrumb_defaults', 'wpbl_breadcrumbs' );
-function wpbl_breadcrumbs() {
-    return array(
-        'delimiter' => ' | ', // Меняем разделитель
-        'wrap_before' => '<nav class="woocommerce-breadcrumb wpbl_custom" itemprop="breadcrumb">', // Добавляем CSS класс wpbl_custom
-        'wrap_after' => '</nav>',
-        'before' => '<span>',
-        'after' => '</span>',
-        'home' => _x( 'Главнвя', 'breadcrumb', 'woocommerce' )
-    );
-}
-
-function custom_pre_get_posts_query( $query ) {
-    if ( $query->is_main_query() && ! is_admin() && $query->is_post_type_archive( 'product' ) ) {
-        $tax_query = (array)$query->get('tax_query');
-        $tax_query[] = array(
-            'taxonomy' => 'product_cat',
-            'field' => 'slug',
-            'terms' => array('abonementy'),
-            'operator' => 'NOT IN'
-        );
-        $query->set('tax_query', $tax_query);
-    }
-}
-add_action( 'woocommerce_product_query', 'custom_pre_get_posts_query' );

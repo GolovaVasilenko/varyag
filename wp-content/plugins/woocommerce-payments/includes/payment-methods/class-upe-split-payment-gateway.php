@@ -31,6 +31,7 @@ use WC_Payment_Token_CC;
 use WC_Payments_Token_Service;
 use WC_Payment_Token_WCPay_SEPA;
 use WC_Payments_Utils;
+use WC_Payments_Features;
 use WP_User;
 
 
@@ -118,14 +119,8 @@ class UPE_Split_Payment_Gateway extends UPE_Payment_Gateway {
 		if ( $this->supports( 'tokenization' ) ) {
 			$script_dependencies[] = 'woocommerce-tokenization-form';
 		}
+		WC_Payments::register_script_with_dependencies( 'wcpay-upe-checkout', 'dist/upe_split_checkout', $script_dependencies );
 
-		wp_register_script(
-			'wcpay-upe-checkout',
-			plugins_url( 'dist/upe_split_checkout.js', WCPAY_PLUGIN_FILE ),
-			$script_dependencies,
-			WC_Payments::get_file_version( 'dist/upe_split_checkout.js' ),
-			true
-		);
 	}
 
 	/**
@@ -502,5 +497,14 @@ class UPE_Split_Payment_Gateway extends UPE_Payment_Gateway {
 	 */
 	public function get_payment_method() {
 		return $this->payment_method;
+	}
+
+	/**
+	 * Returns Stripe payment method type ID.
+	 *
+	 * @return string
+	 */
+	public function get_stripe_id() {
+		return $this->stripe_id;
 	}
 }

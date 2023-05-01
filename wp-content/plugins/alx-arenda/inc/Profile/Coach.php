@@ -2,11 +2,13 @@
 
 namespace inc\Profile;
 
+use JetBrains\PhpStorm\NoReturn;
+
 class Coach
 {
     public function register()
     {
-        add_action('admin_post_alx_add_coach', [$this, 'addCoach']);
+        add_action('alx_add_coach', [$this, 'addCoach']);
         add_action('admin_post_nopriv_alx_add_coach', [$this, 'addCoach']);
 
         add_action('admin_post_alx_update_coach', [$this, 'updateCoach']);
@@ -14,6 +16,54 @@ class Coach
 
         add_action('admin_post_alx_delete_coach', [$this, 'deleteCoach']);
         add_action('admin_post_nopriv_alx_delete_coach', [$this, 'deleteCoach']);
+
+        add_action('admin_post_alx_change_coach_password', [$this, 'changeCoachPassword']);
+        add_action('admin_post_nopriv_alx_change_coach_password', [$this, 'changeCoachPassword']);
+
+        add_action('admin_post_alx_change_coach_data', [$this, 'changeCoachData']);
+        add_action('admin_post_nopriv_alx_change_coach_data', [$this, 'changeCoachData']);
+    }
+
+    public function changeCoachPassword()
+    {
+        $old_pass = trim($_POST['old_pass']);
+        $mew_pass = trim($_POST['mew_pass']);
+        $redirect = $_POST['redirect'];
+
+        if(empty($old_pass) || empty($mew_pass)) {
+            $_SESSION['error'] = "Заполните все поля для обновления пароля";
+            wp_redirect($redirect); exit;
+        }
+
+        $user_id = (int)wp_get_current_user()->id;
+        $user = get_user_by('ID', $user_id);
+
+        if(wp_check_password( $old_pass, $user->user_pass, $user_id )) {
+            wp_set_password($mew_pass, $user_id);
+            $_SESSION['success'] = "Новый пароль успешно сохранен";
+            wp_redirect($redirect); exit;
+        }
+        $_SESSION['error'] = "Не верный старый пароль";
+        wp_redirect($redirect); exit;
+    }
+
+    public function changeCoachData()
+    {
+        $id = (int)wp_get_current_user()->id;
+        $phone = strip_tags(trim($_POST["user_phone"]));
+        $email = strip_tags(trim($_POST["user_email"]));
+        $redirect = $_POST['redirect'];
+        if(empty($phone) || empty($email)) {
+            $_SESSION['error'] = "Заполните все поля для обновления данных";
+            wp_redirect($redirect); exit;
+        }
+        wp_update_user([
+            'ID'              => $id,
+            'user_email'      => $email,
+        ]);
+        update_user_meta($id, 'user_phone', $phone);
+        wp_redirect($redirect);
+        exit;
     }
 
     public function addCoach()

@@ -72,6 +72,13 @@ class OptionPage
             'section_id'    => 'address_id',
             'section_title' => 'Арес и режим паботы',
             'callback'      =>  'option_area_field_html'
+        ),
+        array (
+            'option_name'   => 'bonus_for_register',
+            'option_title'  => 'Бонусы за регистрацию',
+            'section_id'    => 'bonuses_id',
+            'section_title' => 'Бонусная программа',
+            'callback'      =>  'option_text_field_html'
         )
     );
 

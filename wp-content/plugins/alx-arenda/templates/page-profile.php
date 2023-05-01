@@ -95,6 +95,9 @@ get_header('empty');
                 case 'contributor_edit':
                     include_once PLUGIN_UNIT_PATH . "/templates/pages/contributor_edit.php";
                     break;
+                case 'coach_schedule':
+                    include_once PLUGIN_UNIT_PATH . "/templates/pages/coach_schedule.php";
+                    break;
                 default:
                     include_once PLUGIN_UNIT_PATH . "/templates/pages/index.php";
             }

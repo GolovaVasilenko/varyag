@@ -18,6 +18,9 @@ class Contributor
         add_action('admin_post_alx_add_ticket_for_contributor', [$this, 'addTicketForContributor']);
         add_action('admin_post_nopriv_alx_add_ticket_for_contributor', [$this, 'addTicketForContributor']);
 
+        add_action( 'wp_ajax_alx_user_exists', [$this, 'ContributorExists'] );
+        add_action( 'wp_ajax_nopriv_alx_user_exists', [$this, 'ContributorExists'] );
+
     }
 
     public function updateContributor()
@@ -46,19 +49,15 @@ class Contributor
         $user = get_user_by('ID', $id);
         $password = $user->user_pass;
         $redirect = strip_tags(trim($_POST["redirect"]));
-        if ($password != wp_hash(strip_tags(trim($_POST["old-pass"])))){
-            print_r('Wrong old pass ' . strip_tags(trim($_POST["old-pass"])));
-            print_r(' Old pass hash ' . $password);
-            print_r(' Your pass hash ' . wp_hash(strip_tags(trim($_POST["old-pass"]))));
-            // wp_redirect($redirect);
-            // exit;
-        } else {
-            print_r('Setting new pass ' . $password);
+        if(wp_check_password(trim($_POST["old-pass"]), $password, $id)) {
             $newpass = strip_tags(trim($_POST["password"]));
             wp_set_password($newpass, $id);
-            // wp_redirect($redirect);
-            // exit;
+            $_SESSION['success'] = "Новый пароль успешно сохранен";
+            wp_redirect($redirect);
+            exit;
         }
+        $_SESSION['error'] = "Не верный старый пароль";
+        wp_redirect($redirect); exit;
     }
 
     public static function listContributor()
@@ -86,6 +85,7 @@ class Contributor
         $seasonTicket = new SeasonTicket();
 
         $user_id = $profile->processRegistration($user_login, $password, $user_email, $user_phone, $first_name, $last_name, $redirect);
+        //TO DO : Add Abonement
         $data = [
             'product_id' => $product_id,
             'disciplin_id' => $disciplin_id,
@@ -114,6 +114,22 @@ class Contributor
     public function deleteContributor()
     {
 
+    }
+
+    public function ContributorExists()
+    {
+        $email = $_POST['user_email'];
+        $user = get_user_by('email', $email);
+        if($user && in_array('basic_contributor', $user->roles)) {
+            $data['phone'] = get_user_meta( $user->ID, 'user_phone', true );
+            $data['first_name'] = get_user_meta( $user->ID, 'first_name', true );
+            $data['last_name'] = get_user_meta( $user->ID, 'last_name', true );
+            $data['login'] = $user->data->user_login;
+            $data['status'] = 1;
+            echo json_encode($data);
+            exit;
+        }
+        echo json_encode(['status' => 0]); exit;
     }
 
 

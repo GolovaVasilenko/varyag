@@ -27,9 +27,9 @@
                     <button class="button button--full button--big log-button" type="submit">
                         <span>Войти</span>
                     </button>
-                    <a href="#" class="lost-password">Забыли пароль?</a>
+                    <a href="/forgot-password/" class="lost-password">Забыли пароль?</a>
                 </div>
-                <a href="#" class="go-reg">Нет учетной записи? СОЗДАЙТЕ УЧЕТНУЮ ЗАПИСЬ</a>
+                <a href="/profile-register/" class="go-reg">Нет учетной записи? СОЗДАЙТЕ УЧЕТНУЮ ЗАПИСЬ</a>
                 <p>Продолжая вы согласны с политикой конфиденциальности и обработкой персональных данных</p>
             </form>
         </div>

@@ -18,16 +18,16 @@
             <form method="post" action="/wp-admin/admin-post.php" enctype="multipart/form-data">
                 <h3>Пользовательские данные</h3>
                 <div class="form-row">
-                    <div class="form-input-text"><input type="text" name="user_login" value="" placeholder="Логин"></div>
+                    <div class="form-input-text"><input type="text" name="user_login" value="" placeholder="Логин" required></div>
                 </div>
                 <div class="form-row">
-                    <div class="form-input-text"><input type="text" name="first_name" placeholder="Имя" value=""></div>
-                    <div class="form-input-text"><input type="text" name="last_name" placeholder="Фамилия" value=""></div>
+                    <div class="form-input-text"><input type="text" name="first_name" placeholder="Имя" value="" required></div>
+                    <div class="form-input-text"><input type="text" name="last_name" placeholder="Фамилия" value="" required></div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-input-text"><input type="email" name="email" placeholder="Email" value=""></div>
-                    <div class="form-input-text"><input class="js-input-mask" type="text" name="phone" placeholder="Телефон" value=""></div>
+                    <div class="form-input-text"><input type="email" name="email" placeholder="Email" value="" required></div>
+                    <div class="form-input-text"><input class="js-input-mask" type="text" name="phone" placeholder="Телефон" value="" required></div>
                 </div>
 
                 <h3>Данные для публикации на сайте</h3>

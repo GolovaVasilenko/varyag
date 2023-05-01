@@ -4,6 +4,7 @@ namespace inc\System;
 
 use inc\Classes\TemplateLoader;
 use inc\Profile\Coach;
+use inc\Profile\CoachSchedule;
 use inc\Profile\Contributor;
 use inc\Profile\Profile;
 use inc\Profile\SeasonTicket;
@@ -23,11 +24,13 @@ class Init
 
     public $seasonTicket;
 
+    public $coachSchedule;
+
 
     public function __construct()
     {
         $this->assets = new InitAssets();
-        //$this->ctp = new Ctp();
+        $this->coachSchedule = new CoachSchedule();
         $this->templates = new TemplateLoader();
         $this->profile = new Profile();
         $this->coach = new Coach();
@@ -43,7 +46,7 @@ class Init
         add_action('init', [$this, 'loadTextDomain']);
         add_action('init', [$this, 'initAuthUser']);
 
-        //$this->ctp->register();
+        $this->coachSchedule->register();
         $this->assets->register();
         $this->templates->register();
         $this->profile->register();

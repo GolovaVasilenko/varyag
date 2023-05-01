@@ -7,12 +7,12 @@
 }
 .table thead {
 
-    background-color: #ccc;
-    color: #333;
+    background-color: #333;
+    color: #fff;
     font-weight: bold;
 }
 .table td, .table th {
-    padding: 8px 0;
+    padding: 16px 0;
 }
 .table thead th:last-child {
     width: 200px;
@@ -60,6 +60,10 @@
 .btn-default {
     background-color: #c09f6f;
     color: white;
+}
+.filter-select {
+    height: 32px;
+    border: 1px solid #c09f6f;
 }
 .form-row {
     display: flex;
@@ -178,4 +182,189 @@
     right: 40px;
     top: 30px;
     cursor: pointer;
+}
+.error-mess {
+    color: red;
+}
+.success-mess {
+    color: #3c434a;
+}
+
+.calendar-item {
+    width: 100%;
+}
+.calendar-item .calendar-head {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar-item .calendar-head span {
+    padding: 4px 8px;
+    cursor: pointer;
+    border: 1px #ccc solid;
+}
+.table-calendar {
+    width: 100%;
+}
+.table-calendar th {
+    height: 80px;
+    background-color: #ddd;
+}
+.table-calendar td {
+    height: 100px;
+    text-align: center;
+    border: 1px solid #c09f6f;
+    cursor: pointer;
+}
+.table-calendar td.sun {
+    background-color: #f8484f;
+    color: #fff;
+}
+.table-calendar td.tren {
+    background-color: #e0b996;
+    color: #fff;
+}
+.form-row:nth-of-type(1) .remove-time-interval {
+    display: none;
+}
+
+.layout-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(3,3,3,.65);
+}
+.popup-content {
+    position: relative;
+    background-color: #fff;
+    margin: 15% auto;
+    width: 480px;
+}
+.popup-content-form {
+    padding: 26px;
+}
+.popup-content .remove-sunday {
+    display: none;
+}
+.popup-content-header {
+    padding: 26px;
+    background-color: #333;
+    color: white;
+    height: 40px;
+}
+.popup-close {
+    cursor: pointer;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    color: #fff;
+    font-size: 36px;
+}
+.remove-time-interval {
+    padding: 1px 9px;
+    font-size: 18px;
+    background-color: #761919;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.add-time-interval {
+    display: block;
+    max-width: 30px;
+    padding: 1px 9px;
+    font-size: 18px;
+    background-color: #0a4b78;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.btn-logout {
+    display: flex;
+    border: 1px solid #c09f6f;
+    align-items: center;
+    color: #c09f6f;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+}
+.btn-logout img {
+    margin-right: 18px;
+}
+.panel-toggle-form {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 0;
+    cursor: pointer;
+    position: relative;
+}
+.panel-toggle-form h3 {
+    color: #fff;
+    text-align: center;
+
+}
+.panel-toggle-form:after {
+    content: "\27A7";
+    position: absolute;
+    font-size: 25px;
+    bottom: 1px;
+    left:50%;
+    transform:translate(-50%, 0);
+    transform: rotate(90deg);
+}
+.reg-block__top.hidden-form {
+    display: none;
+}
+.calendar-header {
+    background-color: #c09f6f;
+    color: #fff;
+    padding: 6px 0;
+}
+.calendar-header h2 {
+    text-align: center;
+}
+#schedule-table {
+    width: 100%;
+}
+#schedule-table thead tr {
+    background-color: #333;
+    color: #fff;
+}
+#schedule-table thead tr th {
+    padding: 8px 0;
+    border: none;
+}
+#schedule-table td {
+    height: 160px;
+    width: 160px;
+    border: 1px solid #ccc;
+}
+#schedule-table tr:nth-of-type(even) {
+    background-color: #eee;
+}
+.popup-layout-edit-user {
+    display: none;
+}
+
+.select-box {
+    width: 100%;
+    height: 56px;
+    color: #272a34;
+    border: 1px solid #dcdcdc;
+    padding: 0 25px;
+    border-radius: 0;
+}
+.select-box:hover {
+    border-color: #c09f6f;
 }

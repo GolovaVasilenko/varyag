@@ -35,3 +35,37 @@ function varyag_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'varyag_pingback_header' );
+
+if( wp_doing_ajax() ) {
+    add_action('wp_ajax_alx_cart_login_user', 'alx_cart_login_user');
+    add_action('wp_ajax_nopriv_alx_cart_login_user', 'alx_cart_login_user');
+}
+function alx_cart_login_user()
+{
+    $email = strip_tags(trim($_POST['email']));
+    $pass = strip_tags(trim($_POST['pass']));
+    $redirect = '/' . $_POST['redirect'] . '/';
+
+    $credentials = [
+        'user_login'    => $email,
+        'user_password' => $pass,
+    ];
+    $user = wp_signon( $credentials, false );
+
+    if ( is_wp_error($user) ) {
+        echo json_encode(["status" => 0, "data" => $user->get_error_message()]);
+    } else {
+        echo json_encode(["status" => 1, "redirect" => site_url() . $redirect]);
+    }
+    wp_die();
+}
+
+/*add_action( 'woocommerce_before_calculate_totals', 'your_function_for_calculate_cart_totals', 10, 1 );
+function your_function_for_calculate_cart_totals( $cart ){
+    // перебор в цикле всех товаров в корзине, примерно так:
+    foreach ( $cart->get_cart() as $cart_item ) {
+        // получаете значения переменных:
+        $rangeby1 = get_post_meta( $cart_item['data']->get_ID(), 'rangeby1', true );
+        // прописываете логику перерасчета цен... тут уже всё индивидуально...
+    }
+}*/

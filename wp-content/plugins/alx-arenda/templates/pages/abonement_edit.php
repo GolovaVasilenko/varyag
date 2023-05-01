@@ -62,17 +62,17 @@ $monthes = [
                     </div>
                     <div class="form-row">
                         <div class="form-input-text">
-                            <input type="text" name="total_price" value="<?=$abonement->total_price;?>" placeholder="Итоговая стоимость тренировок">
+                            <input type="text" name="total_price" value="<?=$abonement->total_price;?>" placeholder="Итоговая стоимость тренировок" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-input-text">
-                            <input type="text" name="action_info" value="<?=$abonement->action_info;?>" placeholder="Старая цена">
+                            <input type="text" name="action_info" value="<?=$abonement->action_info;?>" placeholder="Акция (Полная информация)">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-input-text">
-                            <input type="text" name="count_trening" value="<?=$abonement->count_trening;?>" placeholder="Количество тренировок">
+                            <input type="text" name="count_trening" value="<?=$abonement->count_trening;?>" placeholder="Количество тренировок" required>
                         </div>
                     </div>
                     <div class="form-row">

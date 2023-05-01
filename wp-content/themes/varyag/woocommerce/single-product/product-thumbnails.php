@@ -26,8 +26,12 @@ global $product;
 
 $attachment_ids = $product->get_gallery_image_ids();
 
-if ( $attachment_ids && $product->get_image_id() ) {
-	foreach ( $attachment_ids as $attachment_id ) {
-		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', wc_get_gallery_image_html( $attachment_id ), $attachment_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-	}
-}
+if ( $attachment_ids && $product->get_image_id() ) : ?>
+<div class="slider-nav">
+	  <?php foreach($attachment_ids as $img_id) : ?>
+          <img src="<?php echo wp_get_attachment_image_url($img_id, 'thumbnail');?>" alt="prod1" width="126" height="108" />
+      <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+

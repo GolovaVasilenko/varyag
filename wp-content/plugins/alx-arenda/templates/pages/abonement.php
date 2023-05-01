@@ -1,6 +1,8 @@
 <?php
 $abonements = \inc\Profile\SeasonTicket::listAbonement();
 
+$cat_discipline = get_terms(['taxonomy' => 'services', 'hide_empty' => false]);
+$disciplines = get_posts(['post_type' => 'discipline', 'numberposts' => -1]);
 ?>
 
     <div class="reg-block__right">
@@ -13,10 +15,30 @@ $abonements = \inc\Profile\SeasonTicket::listAbonement();
                 <div class="profile-block__title">
                     <a class="btn btn-default btn-lg" href="/profile?p=abonement_add">Новый Абонемент</a>
                 </div>
+                <div class="filters-block">
+                    <form id="filter-form-abonement" method="post">
+                        <label> По сервисам</label>
+                        <select id="select-service" name="service_id" class="filter-select">
+                            <option value="0">---</option>
+                            <?php foreach($cat_discipline as $service) : ?>
+                                <option value="<?=$service->term_id;?>"><?=$service->name;?></option>
+                            <?php endforeach; ?>
+                        </select>
+
+                        <label> По дисцирлинам</label>
+                        <select id="select-discipline" name="discipline_id" class="filter-select">
+                            <option value="0">---</option>
+                            <?php foreach($disciplines as $discipline) : ?>
+                                <option value="<?=$discipline->ID;?>"><?=$discipline->post_title;?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="submit" value="Фильровать" class="btn btn-lg btn-default">
+                    </form>
+                </div>
             </div>
             <div class="profile-block">
                 <div class="profile-block__item">
-                    <table class="table">
+                    <table class="table table-abonement">
                         <thead>
                         <tr>
                             <th>#ID</th>

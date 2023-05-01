@@ -2,6 +2,10 @@
 
 namespace inc\Profile;
 
+use inc\Classes\UserBonuses;
+use WC_Cart;
+
+
 class Profile
 {
     /**
@@ -20,6 +24,18 @@ class Profile
 
         add_action('admin_post_alx_new_pass', [$this, 'alxNewPassword']);
         add_action('admin_post_nopriv_alx_new_pass', [$this, 'alxNewPassword']);
+
+        add_action('admin_post_alx_logout_user', [$this, 'alxLogoutUser']);
+        add_action('admin_post_nopriv_alx_logout_user', [$this, 'alxLogoutUser']);
+
+    }
+
+    public function alxLogoutUser()
+    {
+        if( isset( $_POST['action'] ) ) {
+            wp_logout();
+        }
+        wp_redirect(site_url()); exit;
     }
 
     /**
@@ -67,6 +83,9 @@ class Profile
         ]);
         update_user_meta( $user_id, 'user_phone', $phone );
 
+        $userBonuses = new UserBonuses();
+        $userBonuses->bonusForRegister($user_id);
+
         $subject = "Регистрация нового аккаунта на сайте " . site_url();
         $message = '<h2>Спасибо за регистрацию!</h2>
         <p>Вам доступны все услуги, предаставляемые нашим сайтом.</p>
@@ -75,6 +94,7 @@ class Profile
 
         return $user_id;
     }
+
     /**
      * @return void
      */
@@ -96,13 +116,13 @@ class Profile
                 wp_redirect('/profile-login/'); exit;
             }
             $_SESSION['user_email'] = $email;
-            wp_redirect('/profile/'); exit;
+            wp_redirect($redirect); exit;
         } else {
             if ( is_wp_error($user) ) {
                 echo json_encode(['errors' => "Не верный логин или пароль", 'status' => 0]); exit;
             }
             $_SESSION['user_email'] = $email;
-            echo json_encode(['redirect' => '/profile/', 'status' => 1]); exit;
+            echo json_encode(['redirect' => $redirect, 'status' => 1]); exit;
         }
     }
 

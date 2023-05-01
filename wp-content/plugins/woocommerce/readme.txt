@@ -1,10 +1,10 @@
 === WooCommerce ===
-Contributors: automattic, mikejolley, jameskoster, claudiosanches, rodrigosprimo, peterfabian1000, vedjain, jamosova, obliviousharmony, konamiman, sadowski, wpmuguru, royho, barryhughes-1
+Contributors: automattic, mikejolley, jameskoster, claudiosanches, rodrigosprimo, peterfabian1000, vedjain, jamosova, obliviousharmony, konamiman, sadowski, wpmuguru, royho, barryhughes-1, leifsinger
 Tags: online store, ecommerce, shop, shopping cart, sell online, storefront, checkout, payments, woo, woo commerce, e-commerce, store
-Requires at least: 5.9
-Tested up to: 6.1
+Requires at least: 6.0
+Tested up to: 6.2
 Requires PHP: 7.2
-Stable tag: 7.4.1
+Stable tag: 7.6.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -163,34 +163,14 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 == Changelog ==
 
-= 7.4.1 2023-03-01 =
+= 7.6.1 2023-04-26 =
 
 **WooCommerce**
 
-* Update - Update WooCommerce Blocks to 9.4.4. [#36982](https://github.com/woocommerce/woocommerce/pull/36982)
-
-
-= 7.4.0 2023-02-18 =
-
-**WooCommerce**
-
-* Fix - Add support for sorting by includes param. [#36215](https://github.com/woocommerce/woocommerce/pull/36215)
-* Fix - Allow product tab navigation without prompting for unsaved changes [#36235](https://github.com/woocommerce/woocommerce/pull/36235)
-* Fix - Convert HTML to blocks in product variation description [#36241](https://github.com/woocommerce/woocommerce/pull/36241)
-* Fix - Decode HTML entities in CategoryBreadcrumbs. [#36321](https://github.com/woocommerce/woocommerce/pull/36321)
-* Fix - Decode HTML entities in CategoryFieldItem. [#36367](https://github.com/woocommerce/woocommerce/pull/36367)
-* Fix - Ensure order emails are responsive in most email clients, including when the current language is RTL. [#36310](https://github.com/woocommerce/woocommerce/pull/36310)
-* Fix - Ensures product variation sort order is correctly persisted. [#36343](https://github.com/woocommerce/woocommerce/pull/36343)
-* Fix - Ensure wc_get_order() works without arguments when HPOS is enabled. [#36496](https://github.com/woocommerce/woocommerce/pull/36496)
-* Fix - Fix "Save changes?" modal saves the options after selecting the 'Discard' option [#36160](https://github.com/woocommerce/woocommerce/pull/36160)
-* Fix - Fix attributes/options lists corrupt render #36236 [#36236](https://github.com/woocommerce/woocommerce/pull/36236)
-* Fix - Fix bug when filtering for customer_id=0. [#36216](https://github.com/woocommerce/woocommerce/pull/36216)
-* Fix - Fix deprecated usage of ${var} in strings [#36439](https://github.com/woocommerce/woocommerce/pull/36439)
-* Fix - Fix edit attribute modal terms list [#36186](https://github.com/woocommerce/woocommerce/pull/36186)
-* Fix - Fixes editing of child product reviews. [#35888](https://github.com/woocommerce/woocommerce/pull/35888)
-* Fix - Fix for product filters when 'shop' page is the front page. [#36224](https://github.com/woocommerce/woocommerce/pull/36224)
-* Fix - Fix issue where attribute term dropdown was not adhering to sort order setting. [#36047](https://github.com/woocommerce/woocommerce/pull/36047)
-* Fix - Fix navigation between variations and tab selection [#36239](https://github.com/woocommerce/woocommerce/pull/36239)
-
+* Fix - Fix regression in supporting nested date query arguments in HPOS. [#37827](https://github.com/woocommerce/woocommerce/pull/37827)
+* Fix - Sync up date_column_name default for orders table, between stats and table data. [#37927](https://github.com/woocommerce/woocommerce/pull/37927)
+* Fix - Revert "Change Variations form shown in Variations tab when there are no variations created (#36957)" [#37889](https://github.com/woocommerce/woocommerce/pull/37889)
+* Fix – Revert changes to use window.fetch in legacy cart JS [#37463](https://github.com/woocommerce/woocommerce/pull/37463)
+* Update - Update WooCommerce Blocks to 9.8.5 [#37921](https://github.com/woocommerce/woocommerce/pull/37921)
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt).
