@@ -368,3 +368,17 @@
 .select-box:hover {
     border-color: #c09f6f;
 }
+.select-discipline-id,
+.select-abonement-id,
+.selected-discount-id {
+    width: 100%!important;
+    height: 56px;
+    border-color: #c09f6f;
+    border-radius: 0;
+}
+.select-discipline-id:focus-visible,
+.select-abonement-id:focus-visible,
+.selected-discount-id:focus-visible {
+    border-color: #c09f6f!important;
+}
+

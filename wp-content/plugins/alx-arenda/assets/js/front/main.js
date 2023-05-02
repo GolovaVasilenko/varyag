@@ -168,4 +168,17 @@ jQuery(document).ready(function($) {
     }
   });
 
+  $('.select-discipline-id').on('change', function() {
+    let discipline_id = $(this).val();
+    $.ajax({
+      type: 'post',
+      url: '/wp-admin/admin-ajax.php',
+      data: { 'action': 'alx_get_individual_abonements_list', 'discipline_id': discipline_id },
+      success: function(response) {
+        $('.select-abonement-id-js').html(response);
+      }
+    });
+    $('.button-send-js').attr('disabled', false);
+  });
+
 });

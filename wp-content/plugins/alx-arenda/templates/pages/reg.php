@@ -27,70 +27,39 @@ $discounts = get_posts(['post_type' => 'sales', 'numberposts' => -1]);
                 </div>
                 <div class="form__input">
                     <div class="form__input-name">Укажите Имя<span>*</span></div>
-                    <input type="text" name="name" id="first_name" required>
+                    <input type="text" name="first_name" id="first_name" required>
                 </div>
                 <div class="form__input">
                     <div class="form__input-name">Укажите Фамилию<span>*</span></div>
-                    <input type="text" name="name" id="last_name" required>
+                    <input type="text" name="last_name" id="last_name" required>
                 </div>
-
                 <input type="hidden" name="action" value="alx_set_personal_abonement">
-                <!--<div class="reg-block__m-title">
-                    Права доступа
-                </div>
-                <div class="reg-block__checks">
-                    <div class="form__block form__block--check">
-                        <input type="checkbox" name="check" id="check1" class="form__field form__field--check js-filter-check" checked="">
-                        <label for="check1"><span>Менеджер</span></label>
-                    </div>
-                    <div class="form__block form__block--check">
-                        <input type="checkbox" name="pay" id="chack3" class="form__field form__field--check js-filter-check">
-                        <label for="chack3"><span> Главный администратор</span></label>
-                    </div>
-                    <div class="form__block form__block--check">
-                        <input type="checkbox" name="check" id="check2" class="form__field form__field--check js-filter-check">
-                        <label for="check2"><span>Тренер</span></label>
-                    </div>
-                    <div class="form__block form__block--check">
-                        <input type="checkbox" name="pay" id="chack4" class="form__field form__field--check js-filter-check">
-                        <label for="chack4"><span>Ученик</span></label>
-                    </div>
-                </div>-->
             </div>
             <div class="reg-block__top-right">
                 <div class="form__input form__input--select">
-                    <!--<div class="form__input-arr"><img src="<?=get_template_directory_uri();?>/img/arr.png" alt="logo" width="12" height="10" /></div>-->
                     <div class="form__input-name">Выберите Дисциплину:</div>
-                    <select name="discipline_id" id="ggrgr" aria-labelledby="ggrgr" class="js-select select-box" style="width:100%;height: 56px;color: #272a34;border: 1px solid #dcdcdc;padding: 0 25px;border-radius: 0;">
+                    <select name="discipline_id" class="select-discipline-id select-discipline-id-js"> <!--id="ggrgr" aria-labelledby="ggrgr" class="js-select select-box" style="width:100%;height: 56px;color: #272a34;border: 1px solid #dcdcdc;padding: 0 25px;border-radius: 0;">-->
                         <?php foreach($disciplines as $discipline) : ?>
                             <option value="<?=$discipline->ID;?>"><?=$discipline->post_title;?></option>
                         <?php endforeach; ?>
                     </select>
-                    <!--<label class="form__input-label js-multi-label" for="ggrgr">Выбрать дисциплину</label>-->
                 </div>
                 <div class="form__input form__input--select">
-                    <!--<div class="form__input-arr"><img src="<?=get_template_directory_uri();?>/img/arr.png" alt="logo" width="12" height="10"></div>-->
                     <div class="form__input-name">Выберите абонемент:</div>
-                    <select name="abonement_id" id="ggrgr1" aria-labelledby="ggrgr1" class="js-select select-box" disabled>
+                    <select name="abonement_id" class="select-abonement-id select-abonement-id-js">
                         <option>Прежде следует выбрать дисциплину</option>
                     </select>
-                    <!--<label class="form__input-label js-multi-label" for="ggrgr1">Выберите абонемент:</label>-->
                 </div>
                 <div class="form__input form__input--select">
-                    <div class="form__input-arr"><img src="<?=get_template_directory_uri();?>/img/arr.png" alt="logo" width="12" height="10"></div>
                     <div class="form__input-name">Выберите доступные акции:</div>
-                    <select name="action_id[]" id="trhr" multiple="" aria-labelledby="trhr" class="js-select">
+                    <select name="action_id[]" class="selected-discount-id" multiple>
                         <?php foreach($discounts as $action) : ?>
                             <option value="<?=$action->ID ;?>"><?=$action->post_title; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <label class="form__input-label js-multi-label" for="trhr">Выбрать акцию</label>
                 </div>
-                <div class="form__input">
-                    <div class="form__input-name">Укажите счет в рублях</div>
-                    <input type="text" name="name" id="namgrgre">
-                </div>
-                <button class="button button--full button--big button-send-js">
+                <input type="hidden" name="redirect" value="<?=site_url();?>/profile/?p=reg" />
+                <button type="submit" class="button button--full button--big button-send-js">
                     <span>Добавить аккаунт</span>
                 </button>
             </div>

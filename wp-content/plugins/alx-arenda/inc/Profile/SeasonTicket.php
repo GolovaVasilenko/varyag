@@ -7,6 +7,9 @@ class SeasonTicket
     public const PERSONAL = 1;
     public const GROUP = 2;
 
+    public string $table = 'vr_ticket_info';
+    public string $table_ticket = 'vr_user_tiket_disciplin';
+
     public function register()
     {
         add_action('admin_post_alx_add_ticket', [$this, 'addTicket']);
@@ -36,11 +39,42 @@ class SeasonTicket
         add_action('admin_post_alx_set_personal_abonement', [$this, 'setPersonalAbonement']);
         add_action('admin_post_nopriv_alx_set_personal_abonement', [$this, 'setPersonalAbonement']);
 
+        add_action('wp_ajax_alx_get_individual_abonements_list', [$this, 'getIndividualAbonementByDiscipline']);
+        add_action('wp_ajax_nopriv_alx_get_individual_abonements_list', [$this, 'getIndividualAbonementByDiscipline']);
+
     }
 
     public function setPersonalAbonement()
     {
-        var_dump($_POST);
+        global $wpdb;
+        $data['abonement_id'] = (int) $_POST['abonement_id'];
+        $data['discipline_id'] = (int) $_POST['discipline_id'];
+        $data['action_id'] = serialize($_POST['action_id']);
+        $username   = stripslashes(strip_tags(trim($_POST['login'])));
+        $password   = uniqid();
+        $email      = stripslashes(strip_tags(trim($_POST['email'])));
+        $phone      = stripslashes(strip_tags(trim($_POST['phone'])));
+        $last_name  = stripslashes(strip_tags(trim($_POST['last_name'])));
+        $first_name = stripslashes(strip_tags(trim($_POST['first_name'])));
+        $redirect   = stripslashes(strip_tags(trim($_POST['redirect'])));
+
+        $profile = new Profile();
+        $data['user_id'] = $profile->processRegistration($username, $password, $email, $phone, $first_name, $last_name, $redirect);
+        $wpdb->insert($this->table_ticket, $data);
+        wp_redirect($redirect);
+        exit;
+    }
+
+    public function getIndividualAbonementByDiscipline()
+    {
+        global $wpdb;
+        $output = '';
+        $results = $wpdb->get_results("SELECT * FROM " . $this->table . " WHERE type_trening = 1 AND discipline_id = " . (int) $_POST['discipline_id']);
+        foreach($results as $result) {
+            $output .= '<option value="' . $result->id . '">Абонемент ' . $result->count_month . ' ' . $result->total_price . ' ' . $result->count_trening . ' занятий</option>';
+        }
+        echo $output;
+        exit;
     }
 
     public function filterAbonement()
