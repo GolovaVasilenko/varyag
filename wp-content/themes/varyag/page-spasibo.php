@@ -10,7 +10,7 @@ get_header();
         <div class="error-page__text">
             <?php the_content(); ?>
         </div>
-        <a href="/" class="button button--big button--border js-open-form">
+        <a href="/" class="button button--big button--border ">
             <span>на главную</span>
         </a>
     </div>
