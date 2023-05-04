@@ -381,4 +381,29 @@
 .selected-discount-id:focus-visible {
     border-color: #c09f6f!important;
 }
-
+.edit-discipline-select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #dcdcdc;
+}
+.form__select {
+    width: 20%!important;
+}
+.del-block {
+    width: 20%!important;
+}
+.red-item {
+    justify-content: space-around!important;
+}
+.form__input input {
+    padding: 0 0 0 12px!important;
+}
+.red-item .form__input {
+    width: 25%!important;
+}
+.edit_item_button {
+    background: #2d6ca2;
+    color: #fff;
+    height: 32px;
+    border: 1px solid #0a4b78;
+}

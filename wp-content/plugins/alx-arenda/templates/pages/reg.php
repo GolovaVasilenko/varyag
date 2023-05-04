@@ -1,6 +1,8 @@
 <?php
-$disciplines = get_posts(['post_type' => 'discipline', 'numberposts' => -1]);
+$contributors = (new \inc\Profile\Contributor())->getContributorsIndividualTrening();
+$disciplines = (new \inc\Classes\Discipline())->getDisciplineForIndividualTrening();
 $discounts = get_posts(['post_type' => 'sales', 'numberposts' => -1]);
+
 ?>
 <div class="reg-block__right">
     <div class="open-lk">Открыть меню</div>
@@ -39,6 +41,7 @@ $discounts = get_posts(['post_type' => 'sales', 'numberposts' => -1]);
                 <div class="form__input form__input--select">
                     <div class="form__input-name">Выберите Дисциплину:</div>
                     <select name="discipline_id" class="select-discipline-id select-discipline-id-js"> <!--id="ggrgr" aria-labelledby="ggrgr" class="js-select select-box" style="width:100%;height: 56px;color: #272a34;border: 1px solid #dcdcdc;padding: 0 25px;border-radius: 0;">-->
+                        <option value="0">Выбрать дисциплину</option>
                         <?php foreach($disciplines as $discipline) : ?>
                             <option value="<?=$discipline->ID;?>"><?=$discipline->post_title;?></option>
                         <?php endforeach; ?>
@@ -59,6 +62,7 @@ $discounts = get_posts(['post_type' => 'sales', 'numberposts' => -1]);
                     </select>
                 </div>
                 <input type="hidden" name="redirect" value="<?=site_url();?>/profile/?p=reg" />
+                <input type="hidden" name="count_trening" class="count-trening-str" value="" />
                 <button type="submit" class="button button--full button--big button-send-js">
                     <span>Добавить аккаунт</span>
                 </button>
@@ -77,88 +81,65 @@ $discounts = get_posts(['post_type' => 'sales', 'numberposts' => -1]);
                         Имя
                     </div>
                     <div class="form__input form__input--text">
-                        Права доступа
+                        Дмсциплина
                     </div>
                     <div class="form__input form__input--text">
                         Абонемент
                     </div>
-                    <div class="form__input form__input--text">
-                        Счет
-                    </div>
                     <div class="del-block del-block--fake"></div>
                 </div>
+                <?php $count = 1; ?>
+                <?php foreach($contributors as $contributor) : ?>
+                <form id="form-edit-abonement_<?=$contributor->id;?>" method="post" action="/wp-admin/admin-post.php">
                 <div class="red-item">
                     <div class="red-item__numb">
-                        01
+                        <?php
+                         if($count < 10) {
+                             echo "0" . $count;
+                         } else {
+                             echo $count;
+                         }
+                        ?>
                     </div>
                     <div class="form__input">
-                        <input type="text" name="name" id="name2" placeholder="Введите имя">
+                        <input type="text" name="display_name" id="edit_name" value="<?php if($contributor->display_name) { echo $contributor->display_name; } else { echo $contributor->user_login; } ?>">
                     </div>
-                    <div class="form__input form__input--select">
-                        <div class="form__input-arr"><img src="<?=get_template_directory_uri();?>/img/arr.png" alt="logo" width="12" height="10"></div>
-                        <select name="states[]" id="98489" multiple="" aria-labelledby="ggrgr" class="js-select select2-hidden-accessible" data-select2-id="98489" tabindex="-1" aria-hidden="true">
-                            <option value="1">Бокс</option>
-                            <option value="2">Карате</option>
-                            <option value="3">Тайский бокс</option>
-                        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="3" style="width: 93.1875px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                        <label class="form__input-label js-multi-label" for="ggrgr">Выбрать</label>
-                    </div>
-                    <div class="form__input form__input--select">
-                        <div class="form__input-arr"><img src="<?=get_template_directory_uri();?>/img/arr.png" alt="logo" width="12" height="10"></div>
-                        <select name="states[]" id="NGFGN" multiple="" aria-labelledby="ggrgr" class="js-select select2-hidden-accessible" data-select2-id="NGFGN" tabindex="-1" aria-hidden="true">
-                            <option value="1">Бокс</option>
-                            <option value="2">Карате</option>
-                            <option value="3">Тайский бокс</option>
-                        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="4" style="width: 93.1875px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                        <label class="form__input-label js-multi-label" for="ggrgr">Выбрать</label>
+                    <div class="form__select">
+                        <select name="discipline_id" id="edit_discipline_id" class="edit-discipline-select">
+                            <option value="0">Выбрать дисциплину</option>
+                            <?php foreach($disciplines as $discipline) : ?>
+                                <?php
+                                $selected = "";
+                                if($discipline->ID == $contributor->ID) {
+                                    $selected = "selected";
+                                }
+                                ?>
+                                <option value="<?=$discipline->ID;?>" <?=$selected?>><?=$discipline->post_title;?></option>
+                            <?php endforeach; ?>
+                        </select>
+
                     </div>
                     <div class="form__input">
-                        <input type="text" name="name" id="namHTTHe2" placeholder="Введите счет">
+                        <select id="edit_abonement" name="abonement_id" class="edit-discipline-select" disabled>
+                            <option><?php echo $contributor->abonement_full_info;?></option>
+                        </select>
                     </div>
+
                     <div class="del-block">
-                        <div class="change-pass">Сменить пароль</div>
-                        <div class="del-item">
+                        <input type="hidden" name="id" value="<?php echo $contributor->main_id; ?>">
+                        <input type="hidden" name="action" value="alx_edit_personal_abonement">
+                        <input type="hidden" name="user_id" value="<?php echo $contributor->user_id; ?>">
+                        <input type="hidden" name="redirect" value="<?php echo site_url() . '/profile/?p=reg'; ?>">
+                        <div class="edit-button"><button class="edit_item_button">Изменить</button></div>
+                        <div class="del-item" data-id="<?php echo $contributor->abonement_id; ?>">
                             <img src="<?=get_template_directory_uri();?>/img/del.png" alt="logo" width="26" height="26">
                             <span>Удалить</span>
                         </div>
                     </div>
+
                 </div>
-                <div class="red-item">
-                    <div class="red-item__numb">
-                        02
-                    </div>
-                    <div class="form__input">
-                        <input type="text" name="name" id="name233" placeholder="Введите имя">
-                    </div>
-                    <div class="form__input form__input--select">
-                        <div class="form__input-arr"><img src="<?=get_template_directory_uri();?>/img/arr.png" alt="logo" width="12" height="10"></div>
-                        <select name="states[]" id="55875" multiple="" aria-labelledby="ggrgr" class="js-select select2-hidden-accessible" data-select2-id="55875" tabindex="-1" aria-hidden="true">
-                            <option value="1">Бокс</option>
-                            <option value="2">Карате</option>
-                            <option value="3">Тайский бокс</option>
-                        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="5" style="width: 93.1875px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                        <label class="form__input-label js-multi-label" for="ggrgr">Выбрать</label>
-                    </div>
-                    <div class="form__input form__input--select">
-                        <div class="form__input-arr"><img src="<?=get_template_directory_uri();?>/img/arr.png" alt="logo" width="12" height="10"></div>
-                        <select name="states[]" id="NGkuykFGN" multiple="" aria-labelledby="ggrgr" class="js-select select2-hidden-accessible" data-select2-id="NGkuykFGN" tabindex="-1" aria-hidden="true">
-                            <option value="1">Бокс</option>
-                            <option value="2">Карате</option>
-                            <option value="3">Тайский бокс</option>
-                        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="6" style="width: 93.1875px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                        <label class="form__input-label js-multi-label" for="ggrgr">Выбрать</label>
-                    </div>
-                    <div class="form__input">
-                        <input type="text" name="name" id="kuykuy" placeholder="Введите счет">
-                    </div>
-                    <div class="del-block">
-                        <div class="change-pass">Сменить пароль</div>
-                        <div class="del-item">
-                            <img src="<?=get_template_directory_uri();?>/img/del.png" alt="logo" width="26" height="26">
-                            <span>Удалить</span>
-                        </div>
-                    </div>
-                </div>
+                </form>
+                <?php $count++; endforeach; ?>
             </div>
         </div>
     </div>
