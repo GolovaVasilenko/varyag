@@ -44,8 +44,17 @@ do_action('woocommerce_before_checkout_form', $checkout); ?>
             <div class="checkout-block__top">
                 <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
                 <div class="checkout-block__left">
-                    <div class="checkout-block__pays">
-                        <div class="checkout-block__pay">
+                    <div class="checkout-block__reg">
+                        <div class="checkout-block__title">
+                            Регистрационные данные
+                        </div>
+                        <?php do_action('woocommerce_checkout_billing'); ?>
+                        <div class="checkout-block__title">
+                            Доставка
+                        </div>
+                        <?php do_action('woocommerce_checkout_shipping'); ?>
+                    </div>
+                    <!--<div class="checkout-block__pays"                        <div class="checkout-block__pay">
                             <div class="checkout-block__title">
                                 Оплата
                             </div>
@@ -57,20 +66,14 @@ do_action('woocommerce_before_checkout_form', $checkout); ?>
                             </div>
                             <?php do_action('woocommerce_checkout_shipping'); ?>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="total-block">
                     <?php do_action('woocommerce_checkout_order_review'); ?>
                 </div>
                 <?php do_action('woocommerce_checkout_after_order_review'); ?>
             </div>
-            <div class="checkout-block__reg">
-                <div class="checkout-block__title">
-                    Регистрационные данные
-                </div>
-                <?php do_action('woocommerce_checkout_billing'); ?>
 
-            </div>
         </form>
         <?php do_action('woocommerce_after_checkout_form', $checkout); ?>
         <div class="checkout-block__prods">

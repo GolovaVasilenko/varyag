@@ -56,6 +56,7 @@ function alx_cart_recalculate_price_by_qty()
             }
         }
     }
+    $result = recalculate_price_by_bonuses();
 
     echo json_encode(['status' => 1, 'data' => ['total_cost' => $result['total_cost'], 'bonuses' => $result['bonuses']]]);
     wp_die();
@@ -442,8 +443,8 @@ if (!function_exists('woocommerce_form_field')) {
         if (!empty($field)) {
             $field_html = '';
 
-            if ($args['label'] && 'checkbox' !== $args['type']) {
-                $field_html .= '<label for="' . esc_attr($label_id) . '" class="' . esc_attr(implode(' ', $args['label_class'])) . '">' . wp_kses_post($args['label']) . $required . '</label>';
+            if ( $args['label'] && 'checkbox' !== $args['type'] ) {
+                $field_html .= '<label for="' . esc_attr( $label_id ) . '" class="' . esc_attr( implode( ' ', $args['label_class'] ) ) . '">' . wp_kses_post( $args['label'] ) . $required . '</label>';
             }
 
             $field_html .= '<span class="woocommerce-input-wrapper">' . $field;

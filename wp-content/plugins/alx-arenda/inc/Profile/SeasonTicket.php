@@ -42,6 +42,28 @@ class SeasonTicket
         add_action('wp_ajax_alx_get_individual_abonements_list', [$this, 'getIndividualAbonementByDiscipline']);
         add_action('wp_ajax_nopriv_alx_get_individual_abonements_list', [$this, 'getIndividualAbonementByDiscipline']);
 
+        add_action('admin_post_alx_edit_personal_abonement', [$this, 'editPersonalAbonement']);
+        add_action('admin_post_nopriv_alx_edit_personal_abonement', [$this, 'editPersonalAbonement']);
+    }
+
+    public function editPersonalAbonement()
+    {
+        global $wpdb;
+        $display_name = $_POST['display_name'];
+        $user_id = $_POST['user_id'];
+        $redirect = $_POST["redirect"];
+        $id = $_POST["id"];
+        $data['abonement_id'] = $_POST['abonement_id'];
+        $data['discipline_id'] = $_POST["discipline_id"];
+
+        $wpdb->update( $this->table_ticket, $data, ['id' => $id], ['%d', '%d'], '%d' );
+        $user_id = wp_update_user( [
+            'ID'       => $user_id,
+            'display_name' => $display_name
+        ] );
+
+        wp_redirect($redirect);
+        exit;
     }
 
     public function setPersonalAbonement()
@@ -50,6 +72,8 @@ class SeasonTicket
         $data['abonement_id'] = (int) $_POST['abonement_id'];
         $data['discipline_id'] = (int) $_POST['discipline_id'];
         $data['action_id'] = serialize($_POST['action_id']);
+        $data['abonement_full_info'] = stripslashes(strip_tags(trim($_POST['count_trening'])));
+
         $username   = stripslashes(strip_tags(trim($_POST['login'])));
         $password   = uniqid();
         $email      = stripslashes(strip_tags(trim($_POST['email'])));
@@ -68,10 +92,10 @@ class SeasonTicket
     public function getIndividualAbonementByDiscipline()
     {
         global $wpdb;
-        $output = '';
+        $output = '<option value="0">Выбрать Абонемент</option>';
         $results = $wpdb->get_results("SELECT * FROM " . $this->table . " WHERE type_trening = 1 AND discipline_id = " . (int) $_POST['discipline_id']);
         foreach($results as $result) {
-            $output .= '<option value="' . $result->id . '">Абонемент ' . $result->count_month . ' ' . $result->total_price . ' ' . $result->count_trening . ' занятий</option>';
+            $output .= '<option value="' . $result->id . '">Абонемент ' . $result->count_month . ' ' . $result->total_price . ' <span>' . $result->count_trening . '</span> занятий</option>';
         }
         echo $output;
         exit;

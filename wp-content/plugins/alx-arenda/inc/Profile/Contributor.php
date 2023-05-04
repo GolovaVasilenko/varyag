@@ -132,6 +132,18 @@ class Contributor
         echo json_encode(['status' => 0]); exit;
     }
 
+    public function getContributorsIndividualTrening()
+    {
+        global $wpdb;
+        $sql = "SELECT uti.id AS main_id, u.user_login, u.display_name, uti.user_id, uti.abonement_id, uti.abonement_full_info, p.post_title, p.ID, ti.* FROM " . $wpdb->prefix . "users u 
+            INNER JOIN " . $wpdb->prefix . "user_tiket_disciplin uti ON u.ID = uti.user_id 
+            INNER JOIN " . $wpdb->prefix . "ticket_info ti ON uti.abonement_id = ti.id 
+            INNER JOIN " . $wpdb->prefix . "posts p ON uti.discipline_id = p.ID 
+            WHERE ti.type_trening = " . SeasonTicket::PERSONAL;
+        return $wpdb->get_results($sql);
+    }
+
+
 
     public function notAuth(){
 

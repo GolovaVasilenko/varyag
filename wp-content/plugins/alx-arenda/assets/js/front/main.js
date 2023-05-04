@@ -170,14 +170,39 @@ jQuery(document).ready(function($) {
 
   $('.select-discipline-id').on('change', function() {
     let discipline_id = $(this).val();
+    if(discipline_id === '0') {
+      return;
+    }
+    AjaxGetAbonementList(discipline_id);
+  });
+
+  $('#edit_discipline_id').on('click', function() {
+    let discipline_id = $(this).val();
+    if(discipline_id === '0') {
+      return;
+    }
+    AjaxGetAbonementList(discipline_id, 'edit');
+  });
+
+  function AjaxGetAbonementList(discipline_id, flag = 'create') {
     $.ajax({
       type: 'post',
       url: '/wp-admin/admin-ajax.php',
       data: { 'action': 'alx_get_individual_abonements_list', 'discipline_id': discipline_id },
       success: function(response) {
-        $('.select-abonement-id-js').html(response);
+        if(flag === 'edit') {
+          $('#edit_abonement').html(response).attr('disabled', false);
+        } else {
+          $('.select-abonement-id-js').html(response);
+        }
+
       }
     });
+  }
+
+  $('.select-abonement-id-js').on('change', function() {
+    let count_trening = $(this).find('option:selected').text();
+    $('.count-trening-str').val(count_trening);
     $('.button-send-js').attr('disabled', false);
   });
 
