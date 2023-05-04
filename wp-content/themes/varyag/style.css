@@ -503,6 +503,9 @@ textarea.input-text {
 .build-route.show {
     right: -82px;
 }
+.checkout-block {
+    color: #333;
+}
 
 @media (min-width: 641px){
     .checkout-block__reg-list .form__input--area {

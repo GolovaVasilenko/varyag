@@ -115,7 +115,7 @@ function recalculate_price_by_bonuses()
         $cart_total_session['subtotal'] = $total_cost_new;
         WC()->session->set('cart_totals', $cart_total_session);
 
-        var_dump(WC()->session->get('cart_totals')); die;
+        //var_dump(WC()->session->get('cart_totals')); die;
         $data_cookie[$user_id] = [
             'total_cost_new' => $total_cost_new,
             'user_bonuses' => $bonuses,
@@ -140,14 +140,7 @@ function recalculate_price_by_bonuses()
         return [];
     }
 }
-add_filter( 'woocommerce_calculated_total', 'alx_custom_calculated_total', 10, 2 );
-function alx_custom_calculated_total( $total, $cart ) {
-    // Вычисляем новую общую стоимость заказа
-    $new_total = 199;
 
-    // Возвращаем новую общую стоимость заказа
-    return $new_total;
-}
 
 if( wp_doing_ajax() ) {
     add_action('wp_ajax_alx_cart_clear', 'alx_cart_clear');
