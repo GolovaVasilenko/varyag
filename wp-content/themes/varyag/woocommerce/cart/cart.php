@@ -17,6 +17,18 @@
 
 defined('ABSPATH') || exit;
 
+$finish = false;
+
+if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
+    $user_id = (int)wp_get_current_user()->id;
+    $cookie_info = json_decode(base64_decode($_COOKIE['_recalculate']), true)[$user_id];
+
+    $cart = WC()->cart;
+    $item_count = $cart->get_cart_contents_count();
+    $finish = $cookie_info['item_count'] !== $item_count ? false : true;
+}
+
+
 ?>
 <div class="top-block top-block--short"
      style="background-image: url(<?= get_template_directory_uri(); ?>/img/basketback.jpg)">
@@ -44,20 +56,15 @@ defined('ABSPATH') || exit;
         <div class="basket__top">
             <?php if(is_user_logged_in()) : ?>
             <?php
-                $finish = 0;
                 $user_id = (int)wp_get_current_user()->id;
                 $userBonuses = new \inc\Classes\UserBonuses();
                 $result = $userBonuses->getAllUserBonuses((wp_get_current_user())->data->ID);
                 $res_bonus_calculate = get_bonuses_info();
-                if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
-                    $cookie_info = json_decode(base64_decode($_COOKIE['_recalculate']), true);
-                    $finish = $cookie_info[$user_id]['finish'];
-                }
             ?>
             <form id="bonus-product-form" class="basket__form" action="" method="post">
                 <?php if($result->bonuses) : ?>
                     <div class="basket__input">
-                        <label class="user-bonuses-label">Ваши бонусы: <span><?php echo $result->bonuses; ?></span></label>
+                        <label class="user-bonuses-label">Ваши бонусы: <span><?php echo $result->bonuses - $cookie_info['allowed_user_bonuses']; ?></span></label>
                         <input type="hidden" name="bonuses" id="user-bonuses" value="<?php echo $result->bonuses; ?>" />
                         <?php if(!empty($res_bonus_calculate) && !$finish): ?>
                         <button class="recalculate-cost button--full button--middle recalculate-cost-js"><spsn>Применить Бонусы</spsn></button>
@@ -77,14 +84,14 @@ defined('ABSPATH') || exit;
                     <a href="#" class="basket-login-link basket-show-form-js">авторизоваться</a>!</p>
             <?php endif; ?>
             <div class="basket__text">
-                <div class="price-total-block">Итого: &nbsp; <?php echo WC()->cart->get_cart_contents_total();?> руб.</div>
+                <div class="price-total-block">Итого: &nbsp; <?php echo WC()->cart->get_cart_contents_total() - $cookie_info['allowed_user_bonuses'];?> руб.</div>
                 <div style="clear: both"></div>
 
                 <?php if(is_user_logged_in() && !empty($res_bonus_calculate)) : ?>
 
                 <div class="bonus-total-results">
                     <div class="total-results"><span><?php echo $res_bonus_calculate['total_cost'];?></span> руб.</div>
-                    <div class="different-results">Экономия: <span><?php echo WC()->cart->get_discount_total() ?? 0;?></span> руб.</div>
+                    <div class="different-results">Экономия: <span><?php echo $finish ?   $cookie_info['allowed_user_bonuses'] : 0;?></span> руб.</div>
                 </div>
                 <?php endif; ?>
             </div>

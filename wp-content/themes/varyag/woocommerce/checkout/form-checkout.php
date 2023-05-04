@@ -19,6 +19,10 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+
+$cart = WC()->cart;
+
+
 do_action('woocommerce_before_checkout_form', $checkout); ?>
 
 <?php if (!$checkout->is_registration_enabled() && $checkout->is_registration_required() && !is_user_logged_in()) : ?>
@@ -29,7 +33,8 @@ do_action('woocommerce_before_checkout_form', $checkout); ?>
 
 <div class="container">
     <div class="checkout-block">
-        <form name="checkout" action="" class="form checkout woocommerce-checkout" method="post" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
+        <form name="checkout" action="" class="form checkout woocommerce-checkout" method="post"
+              action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
             <?php if ($checkout->get_checkout_fields()) : ?>
 
             <?php do_action('woocommerce_checkout_before_customer_details'); ?>
@@ -56,28 +61,6 @@ do_action('woocommerce_before_checkout_form', $checkout); ?>
                 </div>
                 <div class="total-block">
                     <?php do_action('woocommerce_checkout_order_review'); ?>
-                    <!--<div class="total-block__item">
-                        <span>Товаров на:</span>
-                        <span>3984 руб.</span>
-                    </div>
-                    <div class="total-block__item">
-                        <span>Доставка:</span>
-                        <span>3984 руб.</span>
-                    </div>
-                    <div class="total-block__item">
-                        <span>Скидка:</span>
-                        <span>10%</span>
-                    </div>
-                    <div class="total-block__bottom">
-                        <div class="total-block__total">
-                            Итого:
-                        </div>
-                        <div class="total-block__b-text">
-                            <span>2984 руб.</span>
-                            <span>3390 руб.</span>
-                            <span>Экономия: <span>490 руб.</span></span>
-                        </div>
-                    </div>-->
                 </div>
                 <?php do_action('woocommerce_checkout_after_order_review'); ?>
             </div>
@@ -94,6 +77,10 @@ do_action('woocommerce_before_checkout_form', $checkout); ?>
             <div class="checkout-block__title">
                 Товары в заказе
             </div>
+            <button class="recalculate-cost button--full button--middle recalculate-cost-js">
+                <spsn>Применить Бонусы</spsn>
+            </button>
+
             <form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
                 <?php do_action('woocommerce_before_cart_table'); ?>
                 <div class="basket__list">
@@ -213,6 +200,9 @@ do_action('woocommerce_before_checkout_form', $checkout); ?>
                     <?php
                     }
                     }
+//                    WC()->cart->calculate_totals();
+//                    WC()->cart->set_session();
+
                     ?>
                 </div>
 

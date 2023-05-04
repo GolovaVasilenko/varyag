@@ -149,11 +149,11 @@ jQuery(document).ready(function ($) {
             url: '/wp-admin/admin-ajax.php',
             data: { "action": "alx_cart_recalculate_price_by_bonuses" },
             success: function(response) {
-                let result = JSON.parse(response);
-                if(result.status) {
-                    location.reload();
+                var response = jQuery.parseJSON(response);
+                if(response.status) {
+                    $('.different-results span').html(response.data.bonuses );
+                    $('.price-total-block ').html('Итого: ' + response.data.total_cost + 'руб' );
                 } else {
-                    $('.bonus-total-results').html('<p>' + result.data.message + '</p>');
                 }
             }
         });
