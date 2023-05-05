@@ -177,9 +177,12 @@ function add_custom_total_sum($cart)
 {
     $user_id = (int)wp_get_current_user()->id;
 
-    $cookies_data = json_decode(base64_decode($_COOKIE['_recalculate']), true)[$user_id];
+    if (!empty($_COOKIE['_recalculate'])) {
+        $cookies_data = json_decode(base64_decode($_COOKIE['_recalculate']), true)[$user_id];
 
-    $cart->add_fee('Списаные бонусы', $cookies_data['allowed_user_bonuses'] * -1);
+        $cart->add_fee('Списаные бонусы', $cookies_data['allowed_user_bonuses'] * -1);
+    }
+
 
 }
 
