@@ -531,10 +531,55 @@ textarea.input-text {
 .checkout-block {
     color: #333;
 }
+.checkout-block__left {
+    width: 100%;
+}
+#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
+    background: #fff;
+}
+.woocommerce-privacy-policy-text p {
+    font-size: 12px;
+}
+.woocommerce-privacy-policy-text p a,
+.woocommerce-table__product-name.product-name a {
+    color: #d6ad72;
+}
+.total-block {
+    width: 460px;
+}
+
+.woocommerce-checkout-review-order-table .woocommerce-Price-amount.amount,
+.woocommerce-order .woocommerce-Price-amount.amount {
+    color: #333;
+}
+.woocommerce-order {
+    color: #333;
+}
+.woocommerce-breadcrumb span a {
+    color: #fff;
+}
+
+
+.filter__checkers {
+    max-height: 197px;
+    overflow: auto;
+    margin-bottom: 16px;
+    margin-top: 20px;
+}
+
+.wc-block-components-price-slider--is-input-inline .wc-block-components-price-slider__controls .wc-block-components-price-slider__amount {
+    border-radius: 25px !important;
+    border: 1px solid rgba(85,85,85,.5) !important;
+}
+
 
 @media (min-width: 641px){
     .checkout-block__reg-list .form__input--area {
         grid-column: 1/5!important;
     }
 }
-
+@media (max-width: 1024px){
+    .total-block {
+        width: 100%;
+    }
+}

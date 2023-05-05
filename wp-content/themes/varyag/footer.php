@@ -380,7 +380,7 @@
                     // Необходимо указать данный тип макета.
                     iconLayout: "default#image",
                     // Своё изображение иконки метки.
-                    iconImageHref: "../img/logo.png",
+                    iconImageHref: "<?=get_template_directory_uri();?>/img/logo.png",
                     // Размеры метки.
                     iconImageSize: [100, 100],
                     // Смещение левого верхнего угла иконки относительно

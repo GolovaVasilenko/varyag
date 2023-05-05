@@ -38,8 +38,8 @@ $user_bonuses->setUserBonusByUserId($bonuses + $bonus_to_user, $user_id);
 
 setcookie('_recalculate', null, -1, '/');
 ?>
-
-<div class="woocommerce-order">
+<div class="container">
+    <div class="woocommerce-order">
 
     <?php
     if ($order) :
@@ -107,5 +107,5 @@ setcookie('_recalculate', null, -1, '/');
         <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__('Thank you. Your order has been received.', 'woocommerce'), null); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
     <?php endif; ?>
-
+    </div>
 </div>

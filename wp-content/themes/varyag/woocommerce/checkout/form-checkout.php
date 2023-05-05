@@ -49,10 +49,7 @@ do_action('woocommerce_before_checkout_form', $checkout); ?>
                             Регистрационные данные
                         </div>
                         <?php do_action('woocommerce_checkout_billing'); ?>
-                        <div class="checkout-block__title">
-                            Доставка
-                        </div>
-                        <?php do_action('woocommerce_checkout_shipping'); ?>
+
                     </div>
                     <!--<div class="checkout-block__pays"                        <div class="checkout-block__pay">
                             <div class="checkout-block__title">

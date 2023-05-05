@@ -165,12 +165,10 @@ add_action( 'widgets_init', 'varyag_widgets_init' );
  * Enqueue scripts and styles.
  */
 function varyag_scripts() {
-	wp_enqueue_style( 'varyag-style', get_stylesheet_uri(), array(), _S_VERSION );
     wp_enqueue_style( 'varyag-main-style', get_template_directory_uri() . '/css/style.bundle.css', array(), _S_VERSION );
-
 	wp_enqueue_script( 'varyag-bundle', get_template_directory_uri() . '/js/bundle.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'varyag-custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), _S_VERSION, true );
-
+    wp_enqueue_style( 'varyag-style', get_stylesheet_uri(), array(), _S_VERSION );
 }
 add_action( 'wp_enqueue_scripts', 'varyag_scripts' );
 
