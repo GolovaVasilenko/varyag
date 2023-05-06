@@ -183,5 +183,24 @@ jQuery(document).ready(function ($) {
     }
 
     $('.set-mask-js input').addClass('js-input-mask');
+
+    $('body .wc-block-components-checkbox').hover(
+        function() {
+        alert(8888);
+            let linkSticker = $('.filter__shower-item').clone(true, true);
+            $(this).append(linkSticker.addClass('show'));
+        },
+        function() {
+
+        });
+
+    $(".wc-block-components-checkbox").on({
+        mouseenter: function () {
+            alert(1234);
+        },
+        mouseleave: function () {
+            //stuff to do on mouse leave
+        }
+    });
 });
 

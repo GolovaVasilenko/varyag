@@ -572,6 +572,61 @@ textarea.input-text {
     border: 1px solid rgba(85,85,85,.5) !important;
 }
 
+.filter {
+    position: relative;
+}
+.filter .filter__shower-item {
+    display:inline-flex;
+    justify-content:flex-end;
+    position:sticky;
+    z-index:4;
+    left:100%;
+    top:100px;
+    transform:translateX(calc(100% + 30px));
+    opacity:0;
+    visibility:hidden;
+    height:27px
+}
+@media (max-width:1024px){
+    .filter .filter__shower-item {
+        display:none;
+        height:50px;
+        top:93%;
+        width:100%;max-width:100%;transform:none
+    }
+}
+.filter .filter__shower-item.show {
+    opacity:1;visibility:visible
+}
+.filter .filter__shower-item:after{
+    content:"";position:absolute;
+    background:#c09f6f;
+    left:-10px;
+    top:4px;
+    width:19px;
+    height:19px;
+    transform:rotate(45deg);
+}
+@media (max-width:1024px){
+    .filter .filter__shower-item:after{display:none;}
+}
+.filter .filter__shower-item:hover .filter__shower-body,
+.filter .filter__shower-item:hover:after{
+    background-color:red;
+}
+.filter .filter__shower-item:hover span{
+    text-decoration:underline;
+}
+
+.wc-block-checkbox-list li {
+    position: relative;
+}
+
+.wc-block-checkbox-list li .filter__shower-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 @media (min-width: 641px){
     .checkout-block__reg-list .form__input--area {
