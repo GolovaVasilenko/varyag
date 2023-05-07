@@ -1,10 +1,17 @@
 <?php
+
+add_filter ('woocommerce_enqueue_styles', '__return_empty_array');
+
 add_action('template_redirect', function () {
     if (is_product()) {
         remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
     }
 });
 
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woocommerce_add_to_cart_button_text_single' );
+function woocommerce_add_to_cart_button_text_single() {
+    return __( 'Добавить в корзину', 'woocommerce' );
+}
 
 // Хлебные крошки
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
@@ -197,18 +204,6 @@ function my_custom_checkout_update_order_meta($order_id)
     $user_bonuses->setUserBonusByUserId($cookies_data['user_bonuses'] - $cookies_data['allowed_user_bonuses'], $cookies_data['user_id']);
     $user_bonuses = json_decode(base64_decode($_COOKIE['_recalculate']), true)[$user_id]['allowed_user_bonuses'];
 }
-
-//TODO потом удалить, сначала тест (ЛЕША Я ПОМНЮ)
-//add_filter('woocommerce_calculated_total', 'alx_custom_calculated_total', 10, 2);
-//function alx_custom_calculated_total($total, $cart)
-//{
-//    // Вычисляем новую общую стоимость заказа
-//    $new_total = 199;
-//
-//    // Возвращаем новую общую стоимость заказа
-//    return $new_total;
-//}
-
 
 if (wp_doing_ajax()) {
     add_action('wp_ajax_alx_cart_clear', 'alx_cart_clear');

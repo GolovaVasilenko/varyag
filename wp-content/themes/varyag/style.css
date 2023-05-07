@@ -111,7 +111,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     color: white;
 }
 .product {
-    padding-top: 60px!important;
+    padding-top: 30px!important;
     color: #676767;
 }
 .woocommerce div.product form.cart div.quantity {
@@ -125,6 +125,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     color: #fff;
     padding: 20px 0!important;
     text-transform: uppercase;
+    font-family: "Druk Wide Cyr","Helvetica Neue",sans-serif;
+    font-weight: 500;
+    letter-spacing: .04em;
+    font-size: 14px;
+}
+.inner-cart__size {
+    margin: 23px 0 21px!important;
 }
 .product_meta a {
     color: #c09f6f!important;
@@ -169,8 +176,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .tel-info-link {
     display: inline!important;
 }
-.about-block__slider {
-    max-width: 590px!important;
+.wp-block-lazyblock-about-as .about-block__slider {
+    max-width: 700px!important;
 }
 .text-block--inner a.button {
     color: white!important;
@@ -279,6 +286,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .wc-block-components-price-slider__range-input--max {
 
 }
+.inner-cart, .inner-cart__art {
+    margin: 0!important;
+}
 .wc-block-components-checkbox .wc-block-components-checkbox__input[type=checkbox] {
     border: 2px solid #d6ad72!important;
 }
@@ -321,9 +331,32 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     height: 46px;
     transition: right .3s linear;
 }
-.inner-cart__old-price .woocommerce-Price-amount.amount  {
-    color: #333;!important;
+.price ins .woocommerce-Price-amount.amount  {
+    text-decoration: none;
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 700;
+    margin-right: 5px;
+    display: inline-block;
 }
+.price del .woocommerce-Price-amount.amount {
+    display: inline-block;
+    color: #404040;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 700;
+    text-decoration: line-through;
+    margin: 5px 12px 5px 5px;
+}
+.price .woocommerce-Price-amount.amount  {
+    text-decoration: none;
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 700;
+    margin-right: 5px;
+    display: inline-block;
+}
+
 .inner-cart__old-price span, .inner-cart__price span {
     display: inline-block!important;
 }
@@ -370,11 +403,14 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     width: 43%!important;
     margin-top: 16px;
 }
+.inner-cart__textb {
+    margin-top: -14px!important;
+}
 .block-bocks-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 6px;
+    padding-bottom: 18px;
 }
 .basket__buttons .button-transparent {
     background: transparent!important;
@@ -571,6 +607,10 @@ textarea.input-text {
     border-radius: 25px !important;
     border: 1px solid rgba(85,85,85,.5) !important;
 }
+.reset_variations {
+    display: none;
+}
+
 
 
 @media (min-width: 641px){

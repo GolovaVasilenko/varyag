@@ -561,6 +561,8 @@
                 </div>
                 <?php if(is_shop()): ?>
                     <h1 class="top-block__title">Каталог товаров</h1>
+                <?php elseif(is_product()): ?>
+
                 <?php else: ?>
                 <h1 class="top-block__title">
                     <?php the_title(); ?>

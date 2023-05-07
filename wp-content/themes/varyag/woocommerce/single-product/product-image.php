@@ -35,7 +35,7 @@ $attachment_ids = $product->get_gallery_image_ids();
             <?php foreach($attachment_ids as $img_id) { ?>
                 <?php
                 if ( $post_thumbnail_id ) { ?>
-                    <img src="<?php echo wp_get_attachment_image_url($img_id, 'thumbnail');?>" alt="prod1" width="600" height="450" />
+                    <img src="<?php echo wp_get_attachment_image_url($img_id, 'full');?>" alt="prod1" width="600" height="450" />
                 <?php } else {
                     $html  = '<div class="woocommerce-product-gallery__image--placeholder">';
                     $html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
@@ -47,7 +47,7 @@ $attachment_ids = $product->get_gallery_image_ids();
         <?php } else {
 
             if ( $post_thumbnail_id ) { ?>
-                <img src="<?php echo wp_get_attachment_image_url($post_thumbnail_id, 'thumbnail');?>" alt="prod1" width="600" height="450" />
+                <img src="<?php echo wp_get_attachment_image_url($post_thumbnail_id, 'full');?>" alt="prod1" width="600" height="450" />
             <?php } else {
                 $html  = '<div class="woocommerce-product-gallery__image--placeholder">';
                 $html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );

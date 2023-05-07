@@ -185,3 +185,11 @@ jQuery(document).ready(function ($) {
     $('.set-mask-js input').addClass('js-input-mask');
 });
 
+jQuery(document).on({
+    mouseenter: function () {
+
+    },
+    mouseleave: function () {
+
+    }
+}, ".wc-block-components-checkbox");

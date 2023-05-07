@@ -29,7 +29,7 @@ $attachment_ids = $product->get_gallery_image_ids();
 if ( $attachment_ids && $product->get_image_id() ) : ?>
 <div class="slider-nav">
 	  <?php foreach($attachment_ids as $img_id) : ?>
-          <img src="<?php echo wp_get_attachment_image_url($img_id, 'thumbnail');?>" alt="prod1" width="126" height="108" />
+          <img src="<?php echo wp_get_attachment_image_url($img_id, 'full');?>" alt="prod1" width="126" height="108" />
       <?php endforeach; ?>
 </div>
 <?php endif; ?>
