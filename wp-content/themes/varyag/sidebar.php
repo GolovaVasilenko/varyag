@@ -17,7 +17,7 @@ return;
             <img src="<?php echo get_template_directory_uri(); ?>/img/close.svg" alt="close" width="25" height="25">
         </div>
         <div class="filter">
-            <a href="/" class="filter__shower js-filter-shower show">
+            <a href="/" class="filter__shower-item filter-shower-js">
                 <div class="filter__shower-body">
                     <div class="filter__shower-count">27</div>
                     <span>Показать</span>

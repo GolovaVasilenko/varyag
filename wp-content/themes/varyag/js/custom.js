@@ -183,13 +183,22 @@ jQuery(document).ready(function ($) {
     }
 
     $('.set-mask-js input').addClass('js-input-mask');
-});
 
+});
 jQuery(document).on({
     mouseenter: function () {
+        let offset = jQuery(this).offset();
 
+        let sticker = jQuery('.filter-shower-js');
+        let screenText = jQuery(this).find('.screen-reader-text').text();
+        let lastIndex = screenText.lastIndexOf(" ");       // позиция последнего пробела
+        screenText = screenText.substring(0, lastIndex);
+        sticker.find('.filter__shower-count').text(screenText);
+        let Left = offset.left + jQuery(this).width
+        sticker.offset({top:offset.top,left: Left});
+        sticker.addClass('show');
     },
     mouseleave: function () {
-
+        jQuery('.filter-shower-js').removeClass('show');
     }
 }, ".wc-block-components-checkbox");

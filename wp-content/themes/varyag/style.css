@@ -176,8 +176,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .tel-info-link {
     display: inline!important;
 }
-.wp-block-lazyblock-about-as .about-block__slider {
-    max-width: 700px!important;
+.about-block__slider {
+    max-width: 590px!important;
 }
 .text-block--inner a.button {
     color: white!important;
@@ -410,7 +410,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 18px;
+    padding-bottom: 6px;
 }
 .basket__buttons .button-transparent {
     background: transparent!important;
@@ -618,6 +618,63 @@ textarea.input-text {
 }
 .woocommerce-ordering .orderby {
     border: none;
+}
+.filter {
+    position: relative;
+}
+.filter__shower-item {
+    display:inline-flex;
+    justify-content:flex-end;
+    position:sticky;
+    z-index:999;
+    left:100%;
+    top:100px;
+    transform:translateX(calc(100% + 30px));
+    opacity:0;
+    visibility:hidden;
+    height:27px
+}
+@media (max-width:1024px){
+.filter__shower-item {
+        display:none;
+        height:50px;
+        top:93%;
+        width:100%;max-width:100%;transform:none;
+    }
+}
+.filter__shower-item.show {
+    opacity:1;
+    visibility:visible;
+}
+.filter__shower-item:after{
+    content:"";
+    position:absolute;
+    background:#c09f6f;
+    left:-10px;
+    top:4px;
+    width:19px;
+    height:19px;
+    transform:rotate(45deg);
+}
+@media (max-width:1024px){
+    .filter__shower-item:after{display:none;}
+}
+.filter__shower-item:hover .filter__shower-body,
+.filter__shower-item:hover:after{
+    background-color:red;
+}
+.filter__shower-item:hover span{
+    text-decoration:underline;
+}
+
+.wc-block-checkbox-list li {
+    position: relative;
+}
+
+.wc-block-checkbox-list li .filter__shower-item {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 @media (min-width: 641px){
