@@ -611,7 +611,14 @@ textarea.input-text {
     display: none;
 }
 
-
+.woocommerce-ordering {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: end;
+}
+.woocommerce-ordering .orderby {
+    border: none;
+}
 
 @media (min-width: 641px){
     .checkout-block__reg-list .form__input--area {
