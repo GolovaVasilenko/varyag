@@ -575,11 +575,11 @@ textarea.input-text {
 .filter {
     position: relative;
 }
-.filter .filter__shower-item {
+.filter__shower-item {
     display:inline-flex;
     justify-content:flex-end;
     position:sticky;
-    z-index:4;
+    z-index:999;
     left:100%;
     top:100px;
     transform:translateX(calc(100% + 30px));
@@ -588,18 +588,20 @@ textarea.input-text {
     height:27px
 }
 @media (max-width:1024px){
-    .filter .filter__shower-item {
+.filter__shower-item {
         display:none;
         height:50px;
         top:93%;
-        width:100%;max-width:100%;transform:none
+        width:100%;max-width:100%;transform:none;
     }
 }
-.filter .filter__shower-item.show {
-    opacity:1;visibility:visible
+.filter__shower-item.show {
+    opacity:1;
+    visibility:visible;
 }
-.filter .filter__shower-item:after{
-    content:"";position:absolute;
+.filter__shower-item:after{
+    content:"";
+    position:absolute;
     background:#c09f6f;
     left:-10px;
     top:4px;
@@ -608,13 +610,13 @@ textarea.input-text {
     transform:rotate(45deg);
 }
 @media (max-width:1024px){
-    .filter .filter__shower-item:after{display:none;}
+    .filter__shower-item:after{display:none;}
 }
-.filter .filter__shower-item:hover .filter__shower-body,
-.filter .filter__shower-item:hover:after{
+.filter__shower-item:hover .filter__shower-body,
+.filter__shower-item:hover:after{
     background-color:red;
 }
-.filter .filter__shower-item:hover span{
+.filter__shower-item:hover span{
     text-decoration:underline;
 }
 
