@@ -88,9 +88,13 @@ function alx_cart_recalculate_price_by_bonuses()
 
 function get_bonuses_info()
 {
+    $bonuses = 0;
     $user_id = (int)wp_get_current_user()->id;
     $user_bonuses = new \inc\Classes\UserBonuses();
-    $bonuses = (int)($user_bonuses->getAllUserBonuses($user_id))->bonuses;
+    $bonusesObject = (int) $user_bonuses->getAllUserBonuses($user_id);
+    if ($bonusesObject) {
+        $bonuses = $bonusesObject->bonuses;
+    }
     $total_cost = (int)WC()->cart->get_cart_contents_total();
 
     $percent = (int)WC()->cart->get_total_discount() ?? floor((20 / $total_cost) * 100);

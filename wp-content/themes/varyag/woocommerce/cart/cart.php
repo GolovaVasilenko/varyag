@@ -56,13 +56,14 @@ if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
         <div class="basket__top">
             <?php if(is_user_logged_in()) : ?>
             <?php
+                $bonuses = 0;
                 $user_id = (int)wp_get_current_user()->id;
                 $userBonuses = new \inc\Classes\UserBonuses();
-                $result = $userBonuses->getAllUserBonuses((wp_get_current_user())->data->ID);
+                $result = (int) $userBonuses->getAllUserBonuses($user_id);
                 $res_bonus_calculate = get_bonuses_info();
             ?>
             <form id="bonus-product-form" class="basket__form" action="" method="post">
-                <?php if($result->bonuses) : ?>
+                <?php if($result) : ?>
                     <div class="basket__input">
                         <label class="user-bonuses-label">Ваши бонусы: <span><?php echo $result->bonuses - $cookie_info['allowed_user_bonuses']; ?></span></label>
                         <input type="hidden" name="bonuses" id="user-bonuses" value="<?php echo $result->bonuses; ?>" />

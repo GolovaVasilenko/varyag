@@ -73,11 +73,12 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                 </div>
             </div>
             <div class="tab-inner__block js-tab-block" data-id="3">
-                <form action="" id="reggfeg" class="form form--rev form--black">
+                <form action="" method="post" id="reggfeg" class="form form--rev form--black">
                     <div class="star-choose" data-rate="">
                         <div class="star-choose__text">
                             Оцените товар
                         </div>
+                        <div class="result_message"></div>
                         <div class="star-choose__body">
                             <input type="radio" class="star-choose__input" id="1" name="mark" value="1" />
                             <div class="star-choose__svg-holder">
@@ -163,8 +164,9 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                               class="form__field form__field--textarea"
                               placeholder="Напишите отзыв *"
                       ></textarea>
+                        <input type="hidden" name="action" value="alx_send_review_and_rating" />
                     </div>
-                    <button class="button button--full button--middle">
+                    <button type="button" class="button button--full button--middle btn-send-review-js">
                         Добавить отзыв
                     </button>
                 </form>

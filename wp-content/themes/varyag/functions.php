@@ -194,6 +194,31 @@ function callback_alx_send_mail()
     }
 }
 
+add_action('wp_ajax_alx_send_review_and_rating', 'alx_send_review_and_rating');
+add_action('wp_ajax_nopriv_alx_send_review_and_rating', 'alx_send_review_and_rating');
+
+function alx_send_review_and_rating()
+{
+    $mark = (int) $_POST["mark"];
+    $name = strip_tags(trim($_POST["name"]));
+    $email = strip_tags(trim($_POST["email"]));
+    $message = strip_tags(trim($_POST["text"]));
+    $subject = "Оценка товара " . $email . " пользователем";
+    $message .= " Оценка товара " . $mark;
+
+    if ($name) {
+        $to      = 'varyagclub-pd@yandex.ru';
+        $headers = 'From: tyler145688887@gmail.com' . "\r\n" .
+            'Reply-To: serhdmc96@gmail.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        wp_mail($to, $subject, $message, $headers);
+        echo json_encode(['status' => 1, 'message' => 'Сообщение успешно отправлено!']);
+
+    } else {
+        echo json_encode(array('status' => 0, 'message' => 'Произощла ошибка сообщение не отправлено'));
+    }
+}
+
 /**
  * Implement the Custom Header feature.
  */

@@ -148,8 +148,8 @@ jQuery(document).ready(function ($) {
             type: 'post',
             url: '/wp-admin/admin-ajax.php',
             data: { "action": "alx_cart_recalculate_price_by_bonuses" },
-            success: function(response) {
-                var response = jQuery.parseJSON(response);
+            success: function(res) {
+                let response = jQuery.parseJSON(res);
                 if(response.status) {
                     $('.different-results span').html(response.data.bonuses );
                     $('.price-total-block ').html('Итого: ' + response.data.total_cost + 'руб' );
@@ -181,6 +181,26 @@ jQuery(document).ready(function ($) {
             }
         });
     }
+
+    $('.btn-send-review-js').on('click', function(e) {
+        e.preventDefault();
+        let form = $(this).closest('form').serialize();
+
+        $.ajax({
+            type: 'post',
+            url: '/wp-admin/admin-ajax.php',
+            data: form,
+            success: function(response) {
+                let data = response.JSON.parse();
+                if(data.status) {
+                    $('.result_message').html(data.message);
+                } else {
+                    $('.result_message').html(data.message);
+                }
+
+            }
+        });
+    });
 
     $('.set-mask-js input').addClass('js-input-mask');
 
