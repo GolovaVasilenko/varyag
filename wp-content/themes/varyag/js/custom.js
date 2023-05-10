@@ -184,6 +184,11 @@ jQuery(document).ready(function ($) {
 
     $('.set-mask-js input').addClass('js-input-mask');
 
+    $(".head-popup").css({"display": "flex"});
+    setTimeout(function() {
+        $(".head-popup").addClass("show");
+    }, 800);
+
 });
 jQuery(document).on({
     mouseenter: function () {

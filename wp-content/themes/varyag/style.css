@@ -303,34 +303,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     background-color: #d6ad72!important;
     color: #fff!important;
 }
-.build-route.show {
-     right: -68px;
- }
-.build-route {
-    display: flex;
-    position: fixed;
-    z-index: 10;
-    right: -120px;
-    top: 44%;
-    padding: 10px 12px 4px;
-    border-radius: 12px 12px 0 0;
-    background-color: #fff;
-    transform: rotate(-90deg) translateZ(0);
-    transition: right .3s linear;
-}
+
 .yandex-maps.show {
     right: 0;
 }
-.yandex-maps {
-    display: flex;
-    position: fixed;
-    z-index: 10;
-    right: -50px;
-    top: calc(44% + 150px);
-    width: 47px;
-    height: 46px;
-    transition: right .3s linear;
-}
+
 .price ins .woocommerce-Price-amount.amount  {
     text-decoration: none;
     font-size: 42px;
@@ -561,9 +538,7 @@ textarea.input-text {
 #billing_email_field {
     width: 100%!important;
 }
-.build-route.show {
-    right: -82px;
-}
+
 .checkout-block {
     color: #333;
 }
@@ -675,6 +650,12 @@ textarea.input-text {
     position: absolute;
     top: 0;
     right: 0;
+}
+.footer__connect .footer__number {
+    color: #c09f6f!important;
+}
+.form__bottom .button {
+    display: block!important;
 }
 
 @media (min-width: 641px){

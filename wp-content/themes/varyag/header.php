@@ -82,6 +82,18 @@
 <a href="https://yandex.ru/maps/org/varyag/1172045747/?ll=37.531249%2C55.422689&amp;mode=search&amp;sll=37.544737%2C55.431177&amp;sspn=0.246506%2C0.075844&amp;text=%D0%BF%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%20%D0%B2%D0%B0%D1%80%D1%8F%D0%B3&amp;utm_source=share&amp;z=15" target="_blank" class="yandex-maps show">
     <img src="<?=get_template_directory_uri();?>/img/yandex-maps2.png" alt="logo" width="47" height="56">
 </a>
+<div class="head-popup">
+    <div class="head-popup__left">
+        Июнь/Июль/Август
+    </div>
+    <div class="head-popup__center">
+        <span>Спортивные сборы на море </span>
+    </div>
+    <div class="head-popup__link">
+        <a href="/sbory/">Подробнее→</a>
+    </div>
+</div>
+
 <div class="wrapper">
     <div class="big-menu" style="display: none;">
         <div class="container">
@@ -514,7 +526,7 @@
                     </div>
                     <div class="header__bottom">
                         <div class="header__menu">
-                            <a href="/katalog/" class="link--menu is-current">Каталог</a>
+                            <a href="/katalog/" class="link--menu">Каталог</a>
                             <div class="drop-wrap">
                                 <a href="/services/" class="link--menu link--dropdown">
                                     Услуги
