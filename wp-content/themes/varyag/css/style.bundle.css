@@ -2054,3 +2054,22 @@ input[type="range"]::-moz-range-thumb {
         min-height: 310px!important;
     }
 }
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .num-block{
+        width: 95px;
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    .num-in__input {
+        color: black !important;
+    }
+    .num-block{
+        width: 100px;
+    }
+    .num-in__button{
+        width: 10px!important;
+    }
+}
