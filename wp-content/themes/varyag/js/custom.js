@@ -198,7 +198,6 @@ jQuery(document).ready(function ($) {
                 } else {
                     $('.result_message').text(data.message);
                 }
-
             }
         });
     });

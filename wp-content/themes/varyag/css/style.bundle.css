@@ -1853,4 +1853,233 @@ input[type="range"]::-moz-range-thumb {
     height: 14px !important;
 }
 /*# sourceMappingURL=style.bundle.css.map*/
+basket-item
+.basket-item {
+    display: grid;
+    align-items: center;
+    padding: 12px 14px;
+    grid-template-columns: 39% 12.5% 13% 17% 14% 54px;
+    border: 1px solid #dcdcdc;
+    margin: 0 0 13px;
+    position: relative
+}
 
+@media (max-width: 1024px) {
+    .basket-item {
+        grid-template-columns: 33% 11.5% 16% 16% 18% 54px
+    }
+}
+
+@media (max-width: 900px) {
+    .basket-item {
+        grid-template-columns: 27% 12.5% 19% 19% 16% 54px
+    }
+}
+
+@media (max-width: 768px) {
+    .basket-item {
+        grid-template-columns: repeat(3, 1fr)
+    }
+
+    .basket-item .num-block {
+        margin: 0 auto
+    }
+}
+
+@media (max-width: 480px) {
+    .basket-item {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: flex-start
+    }
+
+    .basket-item .basket-item__name {
+        grid-column: 1/3
+    }
+
+    .basket-item .num-block {
+        margin: 0
+    }
+}
+
+.basket-item--head {
+    border: none;
+    margin: 0 0 20px;
+    padding: 0
+}
+
+@media (max-width: 768px) {
+    .basket-item--head {
+        display: none
+    }
+}
+
+.basket-item__text {
+    color: rgba(0, 0, 0, .5);
+    font-weight: 500;
+    font-family: Gilroy, Helvetica Neue, sans-serif;
+    font-size: 16px
+}
+
+@media (max-width: 768px) {
+    .basket-item__text {
+        font-size: 12px;
+        margin: 0 0 6px
+    }
+}
+
+@media (max-width: 768px) {
+    .basket-item__count {
+        text-align: center
+    }
+}
+
+@media (max-width: 480px) {
+    .basket-item__count {
+        text-align: left
+    }
+}
+
+.basket-item__name {
+    font-family: Druk Wide Cyr, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color: #000;
+    display: flex;
+    align-items: center
+}
+
+@media (max-width: 1024px) {
+    .basket-item__name {
+        font-size: 12px
+    }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+    .basket-item__name {
+        flex-direction: column;
+        align-items: flex-start
+    }
+}
+
+@media (max-width: 768px) {
+    .basket-item__name {
+        margin: 0 0 30px
+    }
+}
+
+.basket-item__name a {
+    color: #000
+}
+
+.basket-item__sale {
+    font-family: Druk Wide Cyr, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color: #000
+}
+
+@media (max-width: 1024px) {
+    .basket-item__sale {
+        font-size: 12px
+    }
+}
+
+@media (max-width: 768px) {
+    .basket-item__sale {
+        text-align: center
+    }
+}
+
+@media (max-width: 480px) {
+    .basket-item__sale {
+        text-align: left
+    }
+}
+
+.basket-item__img {
+    width: 90px;
+    height: 90px;
+    border: 1px solid #e0e0e0;
+    margin-right: 40px
+}
+
+@media (max-width: 1024px) {
+    .basket-item__img {
+        width: 75px;
+        height: 75px;
+        margin-right: 20px
+    }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+    .basket-item__img {
+        margin-right: 0;
+        margin-bottom: 10px
+    }
+}
+
+.basket-item__img img {
+    width: 100%;
+    height: 100%
+}
+
+.basket-item__price {
+    font-family: Druk Wide Cyr, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color: #000
+}
+
+@media (max-width: 1024px) {
+    .basket-item__price {
+        font-size: 12px
+    }
+}
+
+@media (max-width: 480px) {
+    .basket-item__price {
+        margin: 8px 0 0
+    }
+}
+
+@media (max-width: 768px) {
+    .basket-item__price:nth-child(5) {
+        text-align: center
+    }
+}
+
+@media (max-width: 480px) {
+    .basket-item__price:nth-child(5) {
+        text-align: left
+    }
+}
+
+.basket-item__delete {
+    background-color: transparent;
+    border: none
+}
+
+@media (max-width: 768px) {
+    .basket-item__delete {
+        display: flex;
+        justify-content: center
+    }
+}
+
+@media (max-width: 480px) {
+    .basket-item__delete {
+        position: absolute;
+        top: 10px;
+        right: 10px
+    }
+}
+.top-block--shorter {
+    height: 375px;
+    padding: 12.4% 0 60px;
+    min-height: 375px
+}
+
+@media (max-width: 800px) {
+    .top-block--shorter {
+        height: 310px;
+        padding: 203px 0 60px;
+        min-height: 310px
+    }
+}
