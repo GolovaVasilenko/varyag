@@ -179,7 +179,7 @@
                             <div class="subscribe__text">
                                 Запишитесь на бесплатное пробное занятие прямо сейчас
                             </div>
-                            <a href="#form-block" class="link link--small">
+                            <a href="#" class="link link--small js-open-form">
                                 <span>Записаться</span>
                                 <span class="link__arrow"></span>
                             </a>
@@ -274,7 +274,7 @@
                         <a href="https://wa.me/79037284090" target="_blank" class="footer__soc">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/whatsap.png" alt="logo" width="17" height="17">
                         </a>
-                        <a href="https://t.me/varyag_podolsk" target="_blank" class="footer__soc">
+                        <a href="https://t.me/varyag_pd" target="_blank" class="footer__soc">
                             <img src="<?php echo get_template_directory_uri(); ?>/img/telegram.png" alt="logo" width="17" height="17">
                         </a>
                         <a href="mailto: varyagclub-pd@yandex.ru">varyagclub-pd@yandex.ru</a>

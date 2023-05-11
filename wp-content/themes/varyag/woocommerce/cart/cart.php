@@ -30,7 +30,7 @@ if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
 
 
 ?>
-<div class="top-block top-block—shorter" style="background-image: url(<?= get_template_directory_uri(); ?>/img/basketback.jpg)">
+<div class="top-block top-block--shorter" style="background-image: url(<?= get_template_directory_uri(); ?>/img/basketback.jpg)">
     <div class="top-block__body container">
         <div class="top-block__middle">
             <div class="breadcrumbs breadcrumbs">
@@ -84,7 +84,7 @@ if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
                     <a href="#" class="basket-login-link basket-show-form-js">авторизоваться</a>!</p>
             <?php endif; ?>
             <div class="basket__text">
-                <div class="price-total-block">Итого: &nbsp; <?php echo WC()->cart->get_cart_contents_total() - $cookie_info['allowed_user_bonuses'];?> руб.</div>
+                <div class="price-total-block">Итого: &nbsp; <?php echo WC()->cart->get_cart_contents_total() - ($cookie_info['allowed_user_bonuses'] ?? 0);?> руб.</div>
                 <div style="clear: both"></div>
 
                 <?php if(is_user_logged_in() && !empty($res_bonus_calculate)) : ?>
@@ -164,9 +164,6 @@ if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
                                         </a>
                                     </div>
                                 </div>
-                                <!--<div class="basket-item__sale">
-                                    10%
-                                </div>-->
                                 <div class="basket-item__count product-quantity" data-id="<?php echo $_product->get_id();?>" data-title="<?php esc_attr_e('Quantity', 'woocommerce'); ?>">
                                     <?php
                                     if ($_product->is_sold_individually()) {
@@ -191,7 +188,7 @@ if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
                                     echo apply_filters('woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item); // PHPCS: XSS ok.
                                     ?>
                                 </div>
-                                <div class="basket-item__price product-price data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
+                                <div class="basket-item__price product-price" data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
                                     <?php
                                     echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
                                     ?>

@@ -6,7 +6,7 @@ $coach = get_queried_object();
 $polnoe_opisanie = get_field('polnoe_opisanie', $coach);
 $foto_dlya_polnogo_opisaniya = get_field('foto_dlya_polnogo_opisaniya', $coach);
 ?>
-    <div class="top-block top-block--shorter" style="background-image: url(<?=get_template_directory_uri();?>/img/basketback.jpg)">
+    <div class="top-block top-block--short" style="background-image: url(<?=get_template_directory_uri();?>/img/basketback.jpg)">
         <div class="top-block__body container">
             <div class="top-block__middle">
                 <div class="breadcrumbs breadcrumbs">

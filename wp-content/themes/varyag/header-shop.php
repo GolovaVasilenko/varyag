@@ -552,8 +552,13 @@
             </div>
         </div>
     </header>
-
-    <div class="top-block top-block--shorter" style="background-image: url(<?php echo get_template_directory_uri();?>/img/basketback.jpg)">
+<?php
+$class_shorter = 'top-block--short';
+if(is_checkout()) {
+    $class_shorter = 'top-block--shorter';
+}
+?>
+    <div class="top-block <?=$class_shorter;?>" style="background-image: url(<?php echo get_template_directory_uri();?>/img/basketback.jpg)">
         <div class="top-block__body container">
             <div class="top-block__middle">
                 <div class="breadcrumbs breadcrumbs">

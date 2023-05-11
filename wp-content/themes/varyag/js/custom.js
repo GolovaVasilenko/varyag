@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    $('.header__log--login').on('click', function(e) {
+    $('.header__log--login, .mobile-menu__log--login').on('click', function(e) {
         e.preventDefault();
         $('.login-layout').show();
     });

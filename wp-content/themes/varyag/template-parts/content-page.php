@@ -12,7 +12,7 @@ if(is_page('o-klube-varyag')) {
     $imageBg = get_template_directory_uri() . "/img/pic.jpg";
 }
 ?>
-<div class="top-block top-block--shorter" style="background-image: url(<?=$imageBg;?>)">
+<div class="top-block top-block--short" style="background-image: url(<?=$imageBg;?>)">
     <div class="top-block__body container">
         <?php if(is_page('o-klube-varyag')):?>
         <div class="top-block__middle">

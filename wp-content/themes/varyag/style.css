@@ -660,9 +660,18 @@ textarea.input-text {
 }
 
 .result_message {
-    color: #c09f6f
+    color: #c09f6f;
 }
-
+.wc_payment_method {
+    list-style: none;
+}
+.wp-element-button {
+    color: #fff!important;
+    width: 100%!important;
+    padding: 16px!important;
+    font-weight: 500!important;
+    font-size: 18px;
+}
 @media (min-width: 641px){
     .checkout-block__reg-list .form__input--area {
         grid-column: 1/5!important;
@@ -672,4 +681,43 @@ textarea.input-text {
     .total-block {
         width: 100%;
     }
+}
+@media (max-width: 660px) {
+    .reg-block__top {
+        padding-top: 26px;
+    }
+    .reg-block__top a {
+        color: #c09f6f;
+    }
+    .button-popup-close {
+        font-size: 38px;
+        top: 14px;
+        right: 33px;
+    }
+    .btn-block-wrap {
+        display: block;
+    }
+    .log-button {
+        width: 100%;
+    }
+    #alx-reg-form{
+        padding: 0;
+    }
+    .btn-block-wrap button {
+        width: 100%;
+    }
+    .reg-block-wrapp .reg-bloc {
+        padding: 10px;
+    }
+    .reg-block-wrapp {
+        margin: 18px auto 0;
+    }
+    .reg-block__top-left p {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+}
+.mobile-menu__log a {
+    display: flex;
+    color: #c09f6f;
 }

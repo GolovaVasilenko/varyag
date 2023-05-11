@@ -77,10 +77,13 @@ do_action('woocommerce_before_checkout_form', $checkout); ?>
             <div class="checkout-block__title">
                 Товары в заказе
             </div>
+            <?php if(!is_user_logged_in()) :?>
+                <a href="#" class="button button--full button--middle header__log header__log--login">Войти</a>
+            <?php else: ?>
             <button class="recalculate-cost button--full button--middle recalculate-cost-js">
                 <spsn>Применить Бонусы</spsn>
             </button>
-
+            <?php endif; ?>
             <form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
                 <?php do_action('woocommerce_before_cart_table'); ?>
                 <div class="basket__list">
