@@ -6,7 +6,7 @@ $coaches = new WP_Term_Query( [
     'hide_empty' => false,
 ] );
 ?>
-    <div class="top-block top-block--short" style="background-image: url(<?=get_template_directory_uri();?>/img/basketback.jpg)">
+    <div class="top-block op-block—shorter" style="background-image: url(<?=get_template_directory_uri();?>/img/basketback.jpg)">
         <div class="top-block__body container">
             <div class="top-block__middle">
                 <div class="breadcrumbs breadcrumbs">

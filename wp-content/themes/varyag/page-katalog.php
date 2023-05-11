@@ -6,7 +6,7 @@ $products = $query->get_products();
 get_header();
 ?>
 
-    <div class="top-block top-block--short" style="background-image: url(/wp-content/themes/varyag/img/basketback.jpg)">
+    <div class="top-block op-block—shorter" style="background-image: url(/wp-content/themes/varyag/img/basketback.jpg)">
         <div class="top-block__body container">
             <div class="top-block__middle">
                 <div class="breadcrumbs breadcrumbs">
@@ -71,10 +71,7 @@ get_header();
                 <div class="title title--big title--black">
                     Новинки
                 </div>
-                <!--<a href="#" class="link link--watch">
-                    <span>Смотреть всё</span>
-                    <span class="link__arrow"> </span>
-                </a>-->
+
             </div>
             <div class="slider-block slider-block--prod" data-slider="11">
                 <div class="slider-block__slider">
@@ -107,10 +104,7 @@ get_header();
                 <div class="title title--big title--black">
                     для тайского бокса
                 </div>
-                <!--<a href="#" class="link link--watch">
-                    <span>Смотреть всё</span>
-                    <span class="link__arrow"> </span>
-                </a>-->
+
             </div>
             <div class="slider-block slider-block--prod" data-slider="12">
                 <div class="slider-block__slider">

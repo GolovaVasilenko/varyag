@@ -55,10 +55,10 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                 <span>Характеристики</span>
             </div>
             <div class="tab-inner__button js-tab-btn" data-id="2">
-                <span>Рукщводство по размерам</span>
+                <span>Руководство по размерам</span>
             </div>
             <div class="tab-inner__button js-tab-btn" data-id="3">
-                <span>Задате вопрос, коментарий или отзыв</span>
+                <span>Задайте вопрос, коментарий или отзыв</span>
             </div>
         </div>
         <div class="tab-inner__body">
@@ -79,7 +79,7 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                             Оцените товар
                         </div>
                         <div class="star-choose__body">
-                            <input type="radio" class="star-choose__input" id="1" name="mark" value="1" />
+                            <input type="radio" class="star-choose__input" id="1" name="mark" value="5" />
                             <div class="star-choose__svg-holder">
                                 <svg
                                         class="star-choose__svg"
@@ -93,7 +93,7 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                                     />
                                 </svg>
                             </div>
-                            <input type="radio" class="star-choose__input" id="2" name="mark" value="2" />
+                            <input type="radio" class="star-choose__input" id="2" name="mark" value="4" />
                             <div class="star-choose__svg-holder">
                                 <svg
                                         class="star-choose__svg"
@@ -121,7 +121,7 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                                     />
                                 </svg>
                             </div>
-                            <input type="radio" class="star-choose__input" id="4" name="mark" value="4" />
+                            <input type="radio" class="star-choose__input" id="4" name="mark" value="2" />
                             <div class="star-choose__svg-holder">
                                 <svg
                                         class="star-choose__svg"
@@ -135,7 +135,7 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                                     />
                                 </svg>
                             </div>
-                            <input type="radio" class="star-choose__input" id="5" name="mark" value="5" />
+                            <input type="radio" class="star-choose__input" id="5" name="mark" value="1" />
                             <div class="star-choose__svg-holder">
                                 <svg
                                         class="star-choose__svg"

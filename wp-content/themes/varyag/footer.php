@@ -304,7 +304,7 @@
             </div>
             <div class="footer__bottom">
                 <div class="footer__left">
-                    <div class="footer__text">2008 - 2022 © Варяг Все права защищены</div>
+                    <div class="footer__text">2008 - <?=date('Y');?> © Варяг Все права защищены</div>
                 </div>
                 <div class="footer__column">
                     <div class="footer__text">

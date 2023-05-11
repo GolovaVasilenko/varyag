@@ -30,8 +30,7 @@ if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
 
 
 ?>
-<div class="top-block top-block--short"
-     style="background-image: url(<?= get_template_directory_uri(); ?>/img/basketback.jpg)">
+<div class="top-block top-block—shorter" style="background-image: url(<?= get_template_directory_uri(); ?>/img/basketback.jpg)">
     <div class="top-block__body container">
         <div class="top-block__middle">
             <div class="breadcrumbs breadcrumbs">
@@ -113,7 +112,7 @@ if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
             <div class="basket__list">
                 <div class="basket-item basket-item--head">
                     <div class="basket-item__text"><?php esc_html_e('Product', 'woocommerce'); ?></div>
-                    <!--<div class="basket-item__text">Скидка</div>-->
+
                     <div class="basket-item__text"><?php esc_html_e('Quantity', 'woocommerce'); ?></div>
                     <div class="basket-item__text"><?php esc_html_e('Price', 'woocommerce'); ?> за 1 шт.</div>
                     <div class="basket-item__text">Сумма</div>
@@ -218,7 +217,6 @@ if(isset($_COOKIE['_recalculate']) && !empty($_COOKIE['_recalculate'])) {
                                     );
                                     ?>
                                 </div>
-
                             </div>
                             <?php
                         }

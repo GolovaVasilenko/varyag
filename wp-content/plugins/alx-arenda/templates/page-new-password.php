@@ -6,7 +6,7 @@ if(!isset($_GET['token']) && $_GET['token'] !== $_SESSION['forgot_token']) {
 get_header();
 
 ?>
-<div class="top-block top-block--short" style="background-image: url(<?=get_template_directory_uri();?>/img/basketback.jpg)">
+<div class="top-block op-block—shorter" style="background-image: url(<?=get_template_directory_uri();?>/img/basketback.jpg)">
     <div class="top-block__body container">
         <div class="top-block__middle">
             <div class="breadcrumbs breadcrumbs">
