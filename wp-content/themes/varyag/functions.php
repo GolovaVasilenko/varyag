@@ -206,17 +206,19 @@ function alx_send_review_and_rating()
     $subject = "Оценка товара " . $email . " пользователем";
     $message .= " Оценка товара " . $mark;
 
+    //header('Content-Type: application/json; charset=utf-8');
     if ($name) {
         $to      = 'varyagclub-pd@yandex.ru';
         $headers = 'From: tyler145688887@gmail.com' . "\r\n" .
             'Reply-To: serhdmc96@gmail.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
         wp_mail($to, $subject, $message, $headers);
-        echo json_encode(['status' => 1, 'message' => 'Сообщение успешно отправлено!']);
 
+        echo json_encode(['status' => 1, 'message' => 'Сообщение успешно отправлено!'], JSON_PRETTY_PRINT);
     } else {
-        echo json_encode(array('status' => 0, 'message' => 'Произощла ошибка сообщение не отправлено'));
+        echo json_encode(['status' => 0, 'message' => 'Произощла ошибка сообщение не отправлено'], JSON_PRETTY_PRINT);
     }
+    exit;
 }
 
 /**

@@ -78,7 +78,6 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                         <div class="star-choose__text">
                             Оцените товар
                         </div>
-                        <div class="result_message"></div>
                         <div class="star-choose__body">
                             <input type="radio" class="star-choose__input" id="1" name="mark" value="1" />
                             <div class="star-choose__svg-holder">
@@ -169,6 +168,7 @@ $bonus_for_product = get_field('bonus_za_pokupku_tovara', $product->get_id());
                     <button type="button" class="button button--full button--middle btn-send-review-js">
                         Добавить отзыв
                     </button>
+                    <p class="result_message"></p>
                 </form>
             </div>
         </div>

@@ -191,11 +191,12 @@ jQuery(document).ready(function ($) {
             url: '/wp-admin/admin-ajax.php',
             data: form,
             success: function(response) {
-                let data = response.JSON.parse();
+                let data = JSON.parse(response);
                 if(data.status) {
-                    $('.result_message').html(data.message);
+                    $('.result_message').text(data.message);
+                    $("#reggfeg").trigger('reset');
                 } else {
-                    $('.result_message').html(data.message);
+                    $('.result_message').text(data.message);
                 }
 
             }

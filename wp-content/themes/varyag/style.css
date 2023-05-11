@@ -654,8 +654,13 @@ textarea.input-text {
 .footer__connect .footer__number {
     color: #c09f6f!important;
 }
+
 .form__bottom .button {
     display: block!important;
+}
+
+.result_message {
+    color: #c09f6f
 }
 
 @media (min-width: 641px){
