@@ -2062,6 +2062,7 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 
+
 @supports (-webkit-touch-callout: none) {
     .num-in__input {
         color: black !important;
@@ -2071,5 +2072,13 @@ input[type="range"]::-moz-range-thumb {
     }
     .num-in__button{
         width: 10px!important;
+    }
+
+    .inner-cart__select #size{
+        background: white;
+        border-radius: 0px;
+        border: 1px solid #c09f6f;
+        color: #333a41;
+
     }
 }
