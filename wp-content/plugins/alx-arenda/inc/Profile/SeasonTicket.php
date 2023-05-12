@@ -101,6 +101,12 @@ class SeasonTicket
         exit;
     }
 
+    public function getAbonementsByDisciplineIds(array $ids)
+    {
+        global $wpdb;
+        return $wpdb->get_results("SELECT * FROM " . $this->table . " WHERE discipline_id IN ( " . implode(',', $ids) . " )");
+    }
+
     public function filterAbonement()
     {
         global $wpdb;

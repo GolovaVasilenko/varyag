@@ -221,6 +221,23 @@ function alx_send_review_and_rating()
     exit;
 }
 
+function alx_get_disciplines_by_coach_id($coach_id)
+{
+    $args = [
+        'posts_per_page' => -1,
+        'post_type'   => 'discipline',
+        'tax_query' => [
+            [
+                'taxonomy' => 'coach',
+                'field'    => 'id',
+                'terms'    => $coach_id
+            ]
+        ]
+    ];
+    $query = new WP_Query($args);
+    return $query->posts;
+}
+
 /**
  * Implement the Custom Header feature.
  */

@@ -717,6 +717,9 @@ textarea.input-text {
         margin-bottom: 0;
     }
 }
+.prog-item__img {
+    overflow: hidden;
+}
 .mobile-menu__log a {
     display: flex;
     color: #c09f6f;
