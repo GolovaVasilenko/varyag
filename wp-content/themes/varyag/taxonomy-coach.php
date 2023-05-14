@@ -1,10 +1,13 @@
 <?php
 get_header();
 
+$season_ticket = new \inc\Profile\SeasonTicket();
 $coach = get_queried_object();
 $ticket_list = [];
 $discipline_ids = [];
 $discipline_name = [];
+$count_month_personal = [];
+$count_month_group = [];
 $allowed_display_month_group = [
     '1 месяц' => 'one-group',
     '3 месяца' => 'three_group',
@@ -13,17 +16,18 @@ $allowed_display_month_group = [
     '10 месяцев' => 'ten-group',
     '1 год' => 'twelv-group',
 ];
-
 $disciplines = alx_get_disciplines_by_coach_id($coach->term_id);
+
 foreach($disciplines as $discipline) {
     $discipline_ids[] = $discipline->ID;
     $discipline_name[$discipline->ID] = $discipline->post_title;
 }
-$season_ticket = new \inc\Profile\SeasonTicket();
+
+if(isset($_GET['discipline_id'])) {
+    $discipline_ids[] = (int) $_GET['discipline_id'];
+}
 $ticket_list = $season_ticket->getAbonementsByDisciplineIds($discipline_ids);
 
-$count_month_personal = [];
-$count_month_group = [];
 foreach($ticket_list as $item) {
     if($item->type_trening == 2) {
         if(!in_array($item->count_month, $count_month_group)) {
@@ -126,15 +130,20 @@ $foto_dlya_polnogo_opisaniya = get_field('foto_dlya_polnogo_opisaniya', $coach);
                     Тренировки
                 </div>
                 <div class="abon-block__buttons ">
-                    <button class="button button--tab-uniq button--border js-tabTop-btn active" data-id="taba">
-                        <span>Tabata</span>
-                    </button>
-                    <button class="button button--tab-uniq button--border js-tabTop-btn " data-id="sil">
-                        <span>Силовые</span>
-                    </button>
-                    <button class="button button--tab-uniq button--border js-tabTop-btn" data-id="emc">
-                        <span>EMC</span>
-                    </button>
+                    <?php $count = 0; foreach($disciplines as $discipline) : ?>
+                    <?php
+                    $active_btn = '';
+                        if($count < 1 && !isset($_GET['discipline_id'])) {
+                            $active_btn = " active";
+                        }
+                        if(isset($_GET['discipline_id']) && $_GET['discipline_id'] == $discipline->ID) {
+                            $active_btn = " active";
+                        }
+                    ?>
+                    <a href="/coach/<?=$coach->slug;?>/?discipline_id=<?=$discipline->ID;?>" class="button button--tab-uniq button--border js-tabTop-btn<?php echo $active_btn; ?>" data-id="taba">
+                        <span><?=$discipline->post_title;?> <?php $count++; ?></span>
+                    </a>
+                    <?php endforeach; ?>
                 </div>
                 <div class="abon-block__all active js-tabTop-block" data-id="taba">
                     <div class="tab-mob">
