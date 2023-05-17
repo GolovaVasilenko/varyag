@@ -453,8 +453,8 @@
                 </a>
             </div>
         </div>
-        <div class="mobile-menu__close">
-            <div class="js-mmenu-hide">
+        <div class="mobile-menu__close js-menu-hide">
+            <div class="mmenu-hide-icon">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/close-white.svg" alt="" width="26" height="26">
             </div>
         </div>
