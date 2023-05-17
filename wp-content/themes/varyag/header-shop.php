@@ -565,11 +565,11 @@
     </header>
 <?php
 $class_shorter = 'top-block--short';
-if(is_checkout()) {
+if(is_checkout() || is_product()) {
     $class_shorter = 'top-block--shorter';
 }
 ?>
-    <div class="top-block <?=$class_shorter;?>" style="background-image: url(<?php echo get_template_directory_uri();?>/img/basketback.jpg)">
+    <div class="top-block <?=$class_shorter;?>" <?php if(!is_product()) :?>style="background-image: url(<?php echo get_template_directory_uri();?>/img/basketback.jpg)"<?php else: ?> style="background: #000;" <?php endif; ?>>
         <div class="top-block__body container">
             <div class="top-block__middle">
                 <div class="breadcrumbs breadcrumbs">
